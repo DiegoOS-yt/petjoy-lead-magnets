@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Machine Gallery | PetJoy | Days 21-30</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1628;--navy-mid:#0F1F3D;--navy-light:#1A2F50;--navy-card:#132240;
+  --coral:#C8502A;--coral-light:#FEF0EB;
+  --gold:#F2C94C;
+  --green:#1B5E3B;--green-bright:#2ECC71;
+  --blue:#4FA3E0;
+  --bg:#FAFAF7;--bg-alt:#F3F2EE;
+  --text:#1A2332;--muted:#6B7280;--border:#E5E7EB;
+  --white:#FFFFFF;
+  --sidebar-w:240px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;min-height:100vh;}
+.main{min-width:0;overflow-x:hidden;}
+
+/* SIDEBAR */
+.sidebar{background:var(--navy);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:28px 0 24px;z-index:100;overflow-y:auto;}
+.sb-logo{padding:0 22px 20px;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:18px;}
+.sb-brand{font-size:17px;font-weight:800;color:#fff;letter-spacing:-0.5px;}
+.sb-brand span{color:var(--coral);}
+.sb-doc{font-size:9px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1.5px;margin-top:5px;}
+.sb-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(200,80,42,0.14);border:1px solid rgba(200,80,42,0.25);color:var(--coral);font-size:9px;font-weight:700;padding:3px 9px;border-radius:5px;margin-top:10px;text-transform:uppercase;letter-spacing:0.5px;}
+.sb-section-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:2px;padding:0 22px 8px;}
+.sb-nav{flex:1;padding:0 12px;}
+.sb-link{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:7px;text-decoration:none;font-size:12px;color:rgba(255,255,255,0.45);font-weight:500;transition:all 0.15s;margin-bottom:1px;cursor:pointer;}
+.sb-link:hover{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.8);}
+.sb-link.active{background:rgba(200,80,42,0.16);color:#fff;}
+.sb-link.active .sb-dot{background:var(--coral);}
+.sb-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.12);flex-shrink:0;transition:background 0.15s;}
+.sb-count{font-size:10px;font-weight:700;color:rgba(255,255,255,0.2);margin-left:auto;}
+.sb-foot{padding:16px 22px 0;border-top:1px solid rgba(255,255,255,0.07);margin-top:12px;}
+.sb-prep{font-size:10px;color:rgba(255,255,255,0.3);line-height:1.6;}
+.sb-prep strong{display:block;color:rgba(255,255,255,0.5);font-weight:600;margin-bottom:1px;}
+
+/* TOP BAR */
+.topbar{background:var(--white);border-bottom:1px solid var(--border);padding:16px 48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;}
+.topbar-left{display:flex;align-items:center;gap:16px;}
+.topbar-title{font-size:15px;font-weight:700;color:var(--text);}
+.topbar-sub{font-size:12px;color:var(--muted);}
+.topbar-divider{width:1px;height:24px;background:var(--border);}
+.topbar-right{display:flex;align-items:center;gap:10px;}
+.filter-btn{font-size:11px;font-weight:600;padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.15s;}
+.filter-btn.active,
+.filter-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+/* HERO STRIP */
+.hero-strip{background:var(--navy);padding:52px 48px 48px;position:relative;overflow:hidden;}
+.hero-strip::before{content:'CONTENT';position:absolute;right:-30px;top:-20px;font-size:160px;font-weight:900;color:rgba(255,255,255,0.025);line-height:1;pointer-events:none;white-space:nowrap;}
+.hs-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:14px;}
+.hs-eyebrow::before{content:'';width:20px;height:2px;background:var(--gold);}
+.hs-title{font-size:48px;font-weight:900;color:#fff;letter-spacing:-2px;line-height:1.05;margin-bottom:8px;}
+.hs-title em{font-style:normal;color:var(--coral);}
+.hs-sub{font-size:15px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.6;margin-bottom:32px;}
+.hs-stats{display:flex;gap:40px;}
+.hs-stat{text-align:left;}
+.hs-stat-val{font-size:32px;font-weight:900;color:#fff;letter-spacing:-1.5px;line-height:1;}
+.hs-stat-lbl{font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px;}
+
+/* SECTION */
+.section{padding:48px 48px 56px;}
+.section-alt{background:var(--bg-alt);}
+.sec-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;}
+.sec-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:6px;}
+.sec-eyebrow::before{content:'';width:20px;height:2px;background:var(--coral);}
+.sec-title{font-size:28px;font-weight:900;color:var(--text);letter-spacing:-1px;line-height:1.1;}
+.sec-sub{font-size:13px;color:var(--muted);max-width:540px;line-height:1.6;margin-top:6px;}
+.sec-link{font-size:12px;font-weight:700;color:var(--coral);text-decoration:none;}
+.sec-link:hover{text-decoration:underline;}
+
+/* LINKEDIN CARD */
+.li-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.li-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;}
+.li-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.1);}
+.li-card-img{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden;}
+.li-mock{width:100%;aspect-ratio:1/1;padding:24px;display:flex;flex-direction:column;justify-content:space-between;position:relative;}
+.li-mock-bg-navy{background:var(--navy);}
+.li-mock-bg-coral{background:linear-gradient(135deg,#2C1810,var(--coral));}
+.li-mock-bg-light{background:var(--bg-alt);}
+.li-mock-bg-gold{background:linear-gradient(135deg,#2A2010,#4A3A00);}
+.li-mock-header{display:flex;align-items:center;gap:10px;}
+.li-mock-avatar{width:36px;height:36px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0;}
+.li-mock-avatar.gold{background:var(--gold);}
+.li-mock-name{font-size:12px;font-weight:700;color:#fff;line-height:1.2;}
+.li-mock-role{font-size:10px;color:rgba(255,255,255,0.45);margin-top:1px;}
+.li-mock-content{flex:1;padding:14px 0 10px;}
+.li-mock-text{font-size:13px;font-weight:600;color:#fff;line-height:1.55;}
+.li-mock-text.dark{color:var(--text);}
+.li-mock-hook{font-size:16px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:8px;}
+.li-mock-hook.coral{color:var(--coral);}
+.li-mock-hook.gold{color:var(--gold);}
+.li-mock-list{list-style:none;margin-top:8px;}
+.li-mock-list li{font-size:11px;color:rgba(255,255,255,0.7);padding:3px 0;padding-left:14px;position:relative;}
+.li-mock-list li::before{content:'→';position:absolute;left:0;color:var(--coral);font-size:10px;}
+.li-mock-stat{font-size:36px;font-weight:900;color:var(--gold);letter-spacing:-2px;line-height:1;}
+.li-mock-stat-lbl{font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;}
+.li-mock-footer{display:flex;align-items:center;justify-content:space-between;}
+.li-mock-tag{font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;}
+.li-mock-react{font-size:10px;color:rgba(255,255,255,0.35);}
+.li-body{padding:16px 18px 18px;}
+.li-format{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+.fmt-insight{background:#EBF5FF;color:var(--blue);}
+.fmt-story{background:#FEF0EB;color:var(--coral);}
+.fmt-list{background:var(--green-light);color:var(--green);}
+.fmt-data{background:var(--gold-light,#FEF9E7);color:#92710A;}
+.fmt-myth{background:#F3E8FF;color:#7C3AED;}
+.fmt-hot{background:#FEF0EB;color:var(--coral);}
+.li-headline{font-size:13px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:6px;}
+.li-meta{display:flex;align-items:center;gap:12px;}
+.li-metric{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--muted);}
+.li-metric strong{color:var(--text);font-weight:700;}
+.li-metric-dot{width:3px;height:3px;border-radius:50%;background:var(--border);}
+
+/* INFOGRAPHIC CARDS */
+.inf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.inf-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;gap:0;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;}
+.inf-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.1);}
+.inf-visual{width:200px;flex-shrink:0;display:flex;flex-direction:column;padding:24px 20px;}
+.inf-visual-navy{background:var(--navy);}
+.inf-visual-coral{background:linear-gradient(160deg,#1A0A04,var(--coral));}
+.inf-visual-green{background:linear-gradient(160deg,#0A1A0F,var(--green));}
+.inf-visual-gold{background:linear-gradient(160deg,#1A1400,#5A4700);}
+.inf-v-title{font-size:14px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:16px;}
+.inf-v-stat{font-size:40px;font-weight:900;letter-spacing:-2px;line-height:1;margin-bottom:4px;}
+.inf-v-stat.coral{color:var(--coral);}
+.inf-v-stat.gold{color:var(--gold);}
+.inf-v-stat.green{color:var(--green-bright);}
+.inf-v-stat.blue{color:var(--blue);}
+.inf-v-sublabel{font-size:10px;color:rgba(255,255,255,0.4);}
+.inf-v-bars{margin-top:14px;display:flex;flex-direction:column;gap:6px;}
+.inf-v-bar-row{display:flex;align-items:center;gap:7px;}
+.inf-v-bar-label{font-size:9px;color:rgba(255,255,255,0.5);width:40px;flex-shrink:0;text-align:right;}
+.inf-v-bar-track{flex:1;height:5px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;}
+.inf-v-bar-fill{height:100%;border-radius:3px;}
+.inf-body{flex:1;padding:24px 22px;}
+.inf-format{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+.inf-title{font-size:15px;font-weight:800;color:var(--text);line-height:1.35;margin-bottom:8px;letter-spacing:-0.3px;}
+.inf-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px;}
+.inf-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+.inf-tag{font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;background:var(--bg-alt);color:var(--muted);}
+.inf-metrics{display:flex;gap:16px;}
+.inf-metric{font-size:11px;color:var(--muted);}
+.inf-metric strong{display:block;font-size:15px;font-weight:800;color:var(--text);letter-spacing:-0.5px;}
+
+/* EMAIL CAPTURES */
+.email-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.email-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;}
+.email-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.08);}
+.email-mock{padding:20px;aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:space-between;}
+.em-navy{background:var(--navy);}
+.em-light{background:var(--bg-alt);}
+.em-coral{background:var(--coral-light);}
+.email-subject{font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;}
+.email-subject.dark{color:var(--muted);}
+.email-headline{font-size:16px;font-weight:800;line-height:1.3;color:#fff;margin-bottom:8px;}
+.email-headline.dark{color:var(--text);}
+.email-preview{font-size:11px;line-height:1.6;color:rgba(255,255,255,0.5);}
+.email-preview.dark{color:var(--muted);}
+.email-cta{display:inline-block;font-size:11px;font-weight:700;padding:8px 16px;border-radius:6px;text-decoration:none;margin-top:8px;}
+.email-cta-coral{background:var(--coral);color:#fff;}
+.email-cta-navy{background:var(--navy);color:#fff;}
+.email-cta-gold{background:var(--gold);color:var(--navy);}
+.email-body{padding:14px 16px 16px;}
+.email-type{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.email-title{font-size:13px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:6px;}
+.email-open{font-size:12px;color:var(--muted);}
+.email-open strong{color:var(--text);}
+
+/* RESULTS STRIP */
+.results-strip{background:var(--navy);padding:48px;display:grid;grid-template-columns:repeat(5,1fr);gap:0;}
+.rs-stat{padding:0 24px;border-right:1px solid rgba(255,255,255,0.07);text-align:center;}
+.rs-stat:last-child{border-right:none;}
+.rs-val{font-size:40px;font-weight:900;color:#fff;letter-spacing:-2px;line-height:1;margin-bottom:6px;}
+.rs-val.coral{color:var(--coral);}
+.rs-val.gold{color:var(--gold);}
+.rs-val.green{color:var(--green-bright);}
+.rs-val.blue{color:var(--blue);}
+.rs-lbl{font-size:10px;color:rgba(255,255,255,0.4);line-height:1.4;}
+
+/* DIVIDER */
+.sec-divider{height:1px;background:var(--border);margin:0 48px;}
+
+/* MODAL OVERLAY */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{background:var(--white);border-radius:16px;max-width:560px;width:90%;max-height:85vh;overflow-y:auto;padding:32px;}
+.modal-close{float:right;background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);margin-top:-4px;}
+.modal-type{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+.modal-title{font-size:20px;font-weight:800;color:var(--text);line-height:1.3;margin-bottom:12px;}
+.modal-copy{font-size:13px;color:var(--muted);line-height:1.7;white-space:pre-line;}
+.modal-metrics{display:flex;gap:20px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);}
+.modal-metric{font-size:11px;color:var(--muted);}
+.modal-metric strong{display:block;font-size:18px;font-weight:800;color:var(--text);}
+
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.1);border-radius:2px;}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-brand">Pet<span>Joy</span></div>
+    <div class="sb-doc">Content Machine</div>
+    <div class="sb-badge">Days 21-30</div>
+  </div>
+  <div class="sb-section-label">Gallery</div>
+  <nav class="sb-nav">
+    <a class="sb-link active" href="#linkedin"><span class="sb-dot"></span>LinkedIn Posts<span class="sb-count">9</span></a>
+    <a class="sb-link" href="#infographics"><span class="sb-dot"></span>Infographics<span class="sb-count">4</span></a>
+    <a class="sb-link" href="#emails"><span class="sb-dot"></span>Email Sequences<span class="sb-count">6</span></a>
+    <a class="sb-link" href="#results"><span class="sb-dot"></span>10-Day Results</a>
+  </nav>
+  <div class="sb-foot">
+    <div class="sb-prep">
+      <strong>Michelle Joy</strong>
+      Founder &amp; CEO, PetJoy<br>
+      Content Sprint Report
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <div>
+        <div class="topbar-title">Content Machine Gallery</div>
+        <div class="topbar-sub">Days 21-30 Sprint Output</div>
+      </div>
+      <div class="topbar-divider"></div>
+      <div class="topbar-sub">30 pieces &nbsp;|&nbsp; 3 formats &nbsp;|&nbsp; 10 days</div>
+    </div>
+    <div class="topbar-right">
+      <button class="filter-btn active" onclick="filterAll(this,'all')">All</button>
+      <button class="filter-btn" onclick="filterAll(this,'linkedin')">LinkedIn</button>
+      <button class="filter-btn" onclick="filterAll(this,'infographic')">Infographic</button>
+      <button class="filter-btn" onclick="filterAll(this,'email')">Email</button>
+    </div>
+  </div>
+
+  <!-- HERO STRIP -->
+  <div class="hero-strip">
+    <div class="hs-eyebrow">Content Sprint</div>
+    <div class="hs-title">30 Pieces.<br><em>10 Days.</em> Zero Agency.</div>
+    <div class="hs-sub">The full output from PetJoy's Day 21-30 content machine sprint. Every post, infographic, and email sequence built from a single brand voice and deployed across three channels.</div>
+    <div class="hs-stats">
+      <div class="hs-stat"><div class="hs-stat-val">284K</div><div class="hs-stat-lbl">Total reach in 10 days</div></div>
+      <div class="hs-stat"><div class="hs-stat-val">9,140</div><div class="hs-stat-lbl">LinkedIn impressions</div></div>
+      <div class="hs-stat"><div class="hs-stat-val">47%</div><div class="hs-stat-lbl">Email open rate</div></div>
+      <div class="hs-stat"><div class="hs-stat-val">22</div><div class="hs-stat-lbl">Inbound B2B inquiries</div></div>
+    </div>
+  </div>
+
+  <!-- LINKEDIN POSTS -->
+  <section class="section" id="linkedin">
+    <div class="sec-header">
+      <div>
+        <div class="sec-eyebrow">LinkedIn</div>
+        <div class="sec-title">9 Posts That Opened Doors</div>
+        <div class="sec-sub">Every post built on Michelle's expertise as a pet wellness operator. No fluff. No generic content. Real insight, real results.</div>
+      </div>
+    </div>
+
+    <div class="li-grid">
+
+      <!-- Post 1: Hook stat -->
+      <div class="li-card" onclick="openModal('li1')">
+        <div class="li-mock li-mock-bg-navy">
+          <div class="li-mock-header">
+            <div class="li-mock-avatar">MJ</div>
+            <div><div class="li-mock-name">Michelle Joy</div><div class="li-mock-role">Founder, PetJoy</div></div>
+          </div>
+          <div class="li-mock-content">
+            <div class="li-mock-stat">38%</div>
+            <div class="li-mock-stat-lbl">of pet store inventory never sells.</div>
+            <div style="margin-top:16px;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.5;">I learned this the hard way. Here's what I did about it...</div>
+          </div>
+          <div class="li-mock-footer">
+            <span class="li-mock-tag">Data</span>
+            <span class="li-mock-react">847 reactions</span>
+          </div>
+        </div>
+        <div class="li-body">
+          <span class="li-format fmt-data">Data Hook</span>
+          <div class="li-headline">38% of pet store inventory never sells. Here's what I did about it.</div>
+          <div class="li-meta">
+            <div class="li-metric"><strong>847</strong> reactions</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>134</strong> comments</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>92</strong> reposts</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 2: List -->
+      <div class="li-card" onclick="openModal('li2')">
+        <div class="li-mock li-mock-bg-coral">
+          <div class="li-mock-header">
+            <div class="li-mock-avatar">MJ</div>
+            <div><div class="li-mock-name">Michelle Joy</div><div class="li-mock-role">Founder, PetJoy</div></div>
+          </div>
+          <div class="li-mock-content">
+            <div class="li-mock-hook">5 things vet clinics want from their pet supply partner:</div>
+            <ul class="li-mock-list">
+              <li>Auto-replenishment with no minimums</li>
+              <li>Therapeutic-adjacent SKUs</li>
+              <li>Client education materials included</li>
+              <li>Dedicated account rep</li>
+              <li>Net-60 terms on first order</li>
+            </ul>
+          </div>
+          <div class="li-mock-footer">
+            <span class="li-mock-tag">List</span>
+            <span class="li-mock-react">612 reactions</span>
+          </div>
+        </div>
+        <div class="li-body">
+          <span class="li-format fmt-list">List</span>
+          <div class="li-headline">5 things vet clinics actually want from a pet supply partner (most brands miss all 5)</div>
+          <div class="li-meta">
+            <div class="li-metric"><strong>612</strong> reactions</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>89</strong> comments</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>71</strong> reposts</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 3: Story -->
+      <div class="li-card" onclick="openModal('li3')">
+        <div class="li-mock li-mock-bg-light" style="background:#F3F2EE;">
+          <div class="li-mock-header">
+            <div class="li-mock-avatar gold">MJ</div>
+            <div><div class="li-mock-name" style="color:var(--text);">Michelle Joy</div><div class="li-mock-role" style="color:var(--muted);">Founder, PetJoy</div></div>
+          </div>
+          <div class="li-mock-content">
+            <div class="li-mock-hook dark" style="color:var(--text);">I walked into a vet clinic with 12 SKUs.</div>
+            <div class="li-mock-text dark" style="margin-top:10px;">I walked out with a $4,200 order and a recurring account.</div>
+            <div style="margin-top:10px;font-size:11px;color:var(--muted);">The one thing I said that changed everything...</div>
+          </div>
+          <div class="li-mock-footer">
+            <span class="li-mock-tag" style="background:rgba(0,0,0,0.06);color:var(--muted);">Story</span>
+            <span class="li-mock-react" style="color:var(--muted);">1.2K reactions</span>
+          </div>
+        </div>
+        <div class="li-body">
+          <span class="li-format fmt-story">Story</span>
+          <div class="li-headline">I walked into a vet clinic with 12 SKUs. I walked out with a $4,200 order.</div>
+          <div class="li-meta">
+            <div class="li-metric"><strong>1.2K</strong> reactions</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>203</strong> comments</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>156</strong> reposts</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 4: Myth -->
+      <div class="li-card" onclick="openModal('li4')">
+        <div class="li-mock li-mock-bg-gold">
+          <div class="li-mock-header">
+            <div class="li-mock-avatar">MJ</div>
+            <div><div class="li-mock-name">Michelle Joy</div><div class="li-mock-role">Founder, PetJoy</div></div>
+          </div>
+          <div class="li-mock-content">
+            <div class="li-mock-hook gold">Myth: Pet stores need 500+ SKUs to be competitive.</div>
+            <div style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.65);line-height:1.55;">Reality: Our top 20 SKUs generate 74% of revenue. The other 827 were costing us $150K in dead capital.</div>
+          </div>
+          <div class="li-mock-footer">
+            <span class="li-mock-tag">Myth Bust</span>
+            <span class="li-mock-react">534 reactions</span>
+          </div>
+        </div>
+        <div class="li-body">
+          <span class="li-format fmt-myth">Myth Bust</span>
+          <div class="li-headline">Myth: You need 500+ SKUs. Reality: Your top 20 drive 74% of revenue.</div>
+          <div class="li-meta">
+            <div class="li-metric"><strong>534</strong> reactions</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>77</strong> comments</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>63</strong> reposts</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 5: Insight -->
+      <div class="li-card" onclick="openModal('li5')">
+        <div class="li-mock li-mock-bg-navy">
+          <div class="li-mock-header">
+            <div class="li-mock-avatar">MJ</div>
+            <div><div class="li-mock-name">Michelle Joy</div><div class="li-mock-role">Founder, PetJoy</div></div>
+          </div>
+          <div class="li-mock-content">
+            <div class="li-mock-hook coral">The 70/20/10 inventory rule that saved our business:</div>
+            <ul class="li-mock-list">
+              <li>70% proven bestsellers (reorder always)</li>
+              <li>20% trending products (test with small buys)</li>
+              <li>10% innovation bets (kill fast if no traction)</li>
+            </ul>
+            <div style="margin-top:12px;font-size:11px;color:rgba(255,255,255,0.5);">Dead stock dropped from 38% to 9% in 60 days.</div>
+          </div>
+          <div class="li-mock-footer">
+            <span class="li-mock-tag">Framework</span>
+            <span class="li-mock-react">921 reactions</span>
+          </div>
+        </div>
+        <div class="li-body">
+          <span class="li-format fmt-insight">Framework</span>
+          <div class="li-headline">The 70/20/10 inventory rule that cut our dead stock from 38% to 9%</div>
+          <div class="li-meta">
+            <div class="li-metric"><strong>921</strong> reactions</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>148</strong> comments</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>104</strong> reposts</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 6: Hot take -->
+      <div class="li-card" onclick="openModal('li6')">
+        <div class="li-mock li-mock-bg-coral">
+          <div class="li-mock-header">
+            <div class="li-mock-avatar">MJ</div>
+            <div><div class="li-mock-name">Michelle Joy</div><div class="li-mock-role">Founder, PetJoy</div></div>
+          </div>
+          <div class="li-mock-content">
+            <div class="li-mock-hook">Hot take: Vet clinics are the most underserved B2B channel in pet retail.</div>
+            <div style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.65);line-height:1.55;">They have built-in trust, repeat clients, and zero competition from the big-box stores. And most brands ignore them completely.</div>
+          </div>
+          <div class="li-mock-footer">
+            <span class="li-mock-tag">Hot Take</span>
+            <span class="li-mock-react">743 reactions</span>
+          </div>
+        </div>
+        <div class="li-body">
+          <span class="li-format fmt-hot">Hot Take</span>
+          <div class="li-headline">Vet clinics are the most underserved B2B channel in pet retail. Here's why.</div>
+          <div class="li-meta">
+            <div class="li-metric"><strong>743</strong> reactions</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>112</strong> comments</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>88</strong> reposts</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Posts 7-9 condensed -->
+      <div class="li-card" onclick="openModal('li7')">
+        <div class="li-mock li-mock-bg-light" style="background:#F3F2EE;">
+          <div class="li-mock-header">
+            <div class="li-mock-avatar gold">MJ</div>
+            <div><div class="li-mock-name" style="color:var(--text);">Michelle Joy</div><div class="li-mock-role" style="color:var(--muted);">Founder, PetJoy</div></div>
+          </div>
+          <div class="li-mock-content">
+            <div class="li-mock-hook dark" style="color:var(--text);">3 KPIs every independent pet retailer should track (but most don't):</div>
+            <ul class="li-mock-list" style="">
+              <li style="color:var(--muted);">Revenue per active SKU</li>
+              <li style="color:var(--muted);">Inventory turnover rate</li>
+              <li style="color:var(--muted);">Account reorder rate</li>
+            </ul>
+          </div>
+          <div class="li-mock-footer">
+            <span class="li-mock-tag" style="background:rgba(0,0,0,0.06);color:var(--muted);">List</span>
+            <span class="li-mock-react" style="color:var(--muted);">489 reactions</span>
+          </div>
+        </div>
+        <div class="li-body">
+          <span class="li-format fmt-list">List</span>
+          <div class="li-headline">3 KPIs every independent pet retailer should track (but most don't)</div>
+          <div class="li-meta">
+            <div class="li-metric"><strong>489</strong> reactions</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>67</strong> comments</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="li-card" onclick="openModal('li8')">
+        <div class="li-mock li-mock-bg-navy">
+          <div class="li-mock-header">
+            <div class="li-mock-avatar">MJ</div>
+            <div><div class="li-mock-name">Michelle Joy</div><div class="li-mock-role">Founder, PetJoy</div></div>
+          </div>
+          <div class="li-mock-content">
+            <div class="li-mock-stat" style="font-size:28px;">$150B</div>
+            <div class="li-mock-stat-lbl">pet industry by 2030.</div>
+            <div style="margin-top:14px;font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5;">Most of that money flows to Amazon and Chewy. Independent operators are losing share. Here's how to stop it.</div>
+          </div>
+          <div class="li-mock-footer">
+            <span class="li-mock-tag">Data</span>
+            <span class="li-mock-react">677 reactions</span>
+          </div>
+        </div>
+        <div class="li-body">
+          <span class="li-format fmt-data">Data</span>
+          <div class="li-headline">The $150B pet industry is growing. Independent operators are still losing. Here's the fix.</div>
+          <div class="li-meta">
+            <div class="li-metric"><strong>677</strong> reactions</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>98</strong> comments</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="li-card" onclick="openModal('li9')">
+        <div class="li-mock li-mock-bg-gold">
+          <div class="li-mock-header">
+            <div class="li-mock-avatar">MJ</div>
+            <div><div class="li-mock-name">Michelle Joy</div><div class="li-mock-role">Founder, PetJoy</div></div>
+          </div>
+          <div class="li-mock-content">
+            <div class="li-mock-hook gold">What I wish someone told me in year one:</div>
+            <div style="margin-top:12px;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;">Your best customers are not the ones who buy once. They're the ones who refer three more. Build for reorder, not first order.</div>
+          </div>
+          <div class="li-mock-footer">
+            <span class="li-mock-tag">Insight</span>
+            <span class="li-mock-react">556 reactions</span>
+          </div>
+        </div>
+        <div class="li-body">
+          <span class="li-format fmt-insight">Insight</span>
+          <div class="li-headline">What I wish someone told me in year one of running a pet supply business</div>
+          <div class="li-meta">
+            <div class="li-metric"><strong>556</strong> reactions</div>
+            <div class="li-metric-dot"></div>
+            <div class="li-metric"><strong>81</strong> comments</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="sec-divider"></div>
+
+  <!-- INFOGRAPHICS -->
+  <section class="section section-alt" id="infographics">
+    <div class="sec-header">
+      <div>
+        <div class="sec-eyebrow">Infographics</div>
+        <div class="sec-title">4 Visual Assets That Got Shared</div>
+        <div class="sec-sub">Designed for LinkedIn carousel + email attachment. Each built from a stat in Michelle's own business data.</div>
+      </div>
+    </div>
+
+    <div class="inf-grid">
+
+      <div class="inf-card" onclick="openModal('inf1')">
+        <div class="inf-visual inf-visual-navy">
+          <div class="inf-v-title">The Dead Stock Problem</div>
+          <div class="inf-v-stat coral">38%</div>
+          <div class="inf-v-sublabel">of inventory never sells</div>
+          <div class="inf-v-bars">
+            <div class="inf-v-bar-row"><div class="inf-v-bar-label">Year 1</div><div class="inf-v-bar-track"><div class="inf-v-bar-fill" style="width:75%;background:var(--coral);"></div></div></div>
+            <div class="inf-v-bar-row"><div class="inf-v-bar-label">Year 2</div><div class="inf-v-bar-track"><div class="inf-v-bar-fill" style="width:55%;background:var(--coral);opacity:0.7;"></div></div></div>
+            <div class="inf-v-bar-row"><div class="inf-v-bar-label">Day 60</div><div class="inf-v-bar-track"><div class="inf-v-bar-fill" style="width:18%;background:var(--green-bright);"></div></div></div>
+          </div>
+        </div>
+        <div class="inf-body">
+          <span class="inf-format fmt-data">Data Visual</span>
+          <div class="inf-title">The Dead Stock Progression: From 75% to 9%</div>
+          <div class="inf-desc">Visual breakdown of how PetJoy's dead inventory rate moved over 3 years, with the 70/20/10 framework intervention highlighted.</div>
+          <div class="inf-tags">
+            <span class="inf-tag">Inventory</span><span class="inf-tag">B2B</span><span class="inf-tag">Framework</span>
+          </div>
+          <div class="inf-metrics">
+            <div class="inf-metric"><strong>2,340</strong>Impressions</div>
+            <div class="inf-metric"><strong>187</strong>Saves</div>
+            <div class="inf-metric"><strong>44</strong>Shares</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="inf-card" onclick="openModal('inf2')">
+        <div class="inf-visual inf-visual-coral">
+          <div class="inf-v-title">B2B Channel Comparison</div>
+          <div class="inf-v-stat gold">4.2x</div>
+          <div class="inf-v-sublabel">vet clinic vs retail AOV</div>
+          <div class="inf-v-bars">
+            <div class="inf-v-bar-row"><div class="inf-v-bar-label">Retail</div><div class="inf-v-bar-track"><div class="inf-v-bar-fill" style="width:24%;background:rgba(255,255,255,0.4);"></div></div></div>
+            <div class="inf-v-bar-row"><div class="inf-v-bar-label">Pet shop</div><div class="inf-v-bar-track"><div class="inf-v-bar-fill" style="width:45%;background:rgba(255,255,255,0.5);"></div></div></div>
+            <div class="inf-v-bar-row"><div class="inf-v-bar-label">Vet clinic</div><div class="inf-v-bar-track"><div class="inf-v-bar-fill" style="width:100%;background:var(--gold);"></div></div></div>
+          </div>
+        </div>
+        <div class="inf-body">
+          <span class="inf-format fmt-insight">Channel Analysis</span>
+          <div class="inf-title">Why Vet Clinics Outperform Every Other B2B Channel</div>
+          <div class="inf-desc">Average order value, reorder rate, and lifetime value compared across retail, pet specialty, and vet clinic accounts.</div>
+          <div class="inf-tags">
+            <span class="inf-tag">Wholesale</span><span class="inf-tag">Vet Clinics</span><span class="inf-tag">AOV</span>
+          </div>
+          <div class="inf-metrics">
+            <div class="inf-metric"><strong>1,890</strong>Impressions</div>
+            <div class="inf-metric"><strong>214</strong>Saves</div>
+            <div class="inf-metric"><strong>38</strong>Shares</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="inf-card" onclick="openModal('inf3')">
+        <div class="inf-visual inf-visual-green">
+          <div class="inf-v-title">70 / 20 / 10 Rule</div>
+          <div class="inf-v-stat blue">74%</div>
+          <div class="inf-v-sublabel">revenue from top 20 SKUs</div>
+          <div class="inf-v-bars">
+            <div class="inf-v-bar-row"><div class="inf-v-bar-label" style="width:50px;">Core 70%</div><div class="inf-v-bar-track"><div class="inf-v-bar-fill" style="width:100%;background:var(--green-bright);"></div></div></div>
+            <div class="inf-v-bar-row"><div class="inf-v-bar-label" style="width:50px;">Test 20%</div><div class="inf-v-bar-track"><div class="inf-v-bar-fill" style="width:60%;background:var(--blue);"></div></div></div>
+            <div class="inf-v-bar-row"><div class="inf-v-bar-label" style="width:50px;">Bet 10%</div><div class="inf-v-bar-track"><div class="inf-v-bar-fill" style="width:30%;background:var(--gold);"></div></div></div>
+          </div>
+        </div>
+        <div class="inf-body">
+          <span class="inf-format fmt-list">Framework</span>
+          <div class="inf-title">The 70/20/10 Inventory Framework Explained</div>
+          <div class="inf-desc">Full visual breakdown of how to allocate your catalog: what to reorder always, what to test, and what to kill fast before it becomes dead stock.</div>
+          <div class="inf-tags">
+            <span class="inf-tag">Framework</span><span class="inf-tag">Inventory</span><span class="inf-tag">Strategy</span>
+          </div>
+          <div class="inf-metrics">
+            <div class="inf-metric"><strong>3,120</strong>Impressions</div>
+            <div class="inf-metric"><strong>298</strong>Saves</div>
+            <div class="inf-metric"><strong>67</strong>Shares</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="inf-card" onclick="openModal('inf4')">
+        <div class="inf-visual inf-visual-gold">
+          <div class="inf-v-title">MRR Growth Curve</div>
+          <div class="inf-v-stat green">284%</div>
+          <div class="inf-v-sublabel">MRR growth in 60 days</div>
+          <div class="inf-v-bars">
+            <div class="inf-v-bar-row"><div class="inf-v-bar-label">Day 0</div><div class="inf-v-bar-track"><div class="inf-v-bar-fill" style="width:20%;background:rgba(255,255,255,0.2);"></div></div></div>
+            <div class="inf-v-bar-row"><div class="inf-v-bar-label">Day 30</div><div class="inf-v-bar-track"><div class="inf-v-bar-fill" style="width:50%;background:rgba(255,255,255,0.4);"></div></div></div>
+            <div class="inf-v-bar-row"><div class="inf-v-bar-label">Day 60</div><div class="inf-v-bar-track"><div class="inf-v-bar-fill" style="width:100%;background:var(--gold);"></div></div></div>
+          </div>
+        </div>
+        <div class="inf-body">
+          <span class="inf-format fmt-data">Results</span>
+          <div class="inf-title">$17.8K to $68.4K MRR in 60 Days: The Full Story</div>
+          <div class="inf-desc">Month-by-month MRR progression with the key actions that drove each inflection point annotated directly on the chart.</div>
+          <div class="inf-tags">
+            <span class="inf-tag">Revenue</span><span class="inf-tag">MRR</span><span class="inf-tag">Results</span>
+          </div>
+          <div class="inf-metrics">
+            <div class="inf-metric"><strong>2,780</strong>Impressions</div>
+            <div class="inf-metric"><strong>241</strong>Saves</div>
+            <div class="inf-metric"><strong>52</strong>Shares</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="sec-divider"></div>
+
+  <!-- EMAIL SEQUENCES -->
+  <section class="section" id="emails">
+    <div class="sec-header">
+      <div>
+        <div class="sec-eyebrow">Email</div>
+        <div class="sec-title">6 Emails. 47% Open Rate.</div>
+        <div class="sec-sub">Two 3-email sequences deployed to the wholesale prospect list and the lead magnet download list. No paid sends -- 100% organic list.</div>
+      </div>
+    </div>
+
+    <div class="email-grid">
+
+      <div class="email-card">
+        <div class="email-mock em-navy">
+          <div class="email-subject">Sequence 1 - Email 1</div>
+          <div class="email-headline">The reason 38% of your inventory never sells</div>
+          <div class="email-preview">Most operators assume it's the wrong products. It's almost never the products. It's the system...</div>
+          <div><a class="email-cta email-cta-coral" href="#">Read the framework</a></div>
+        </div>
+        <div class="email-body">
+          <span class="email-type fmt-insight">Value</span>
+          <div class="email-title">The reason 38% of your inventory never sells</div>
+          <div class="email-open">Open rate: <strong>54%</strong> &nbsp;|&nbsp; CTR: <strong>11%</strong></div>
+        </div>
+      </div>
+
+      <div class="email-card">
+        <div class="email-mock em-light">
+          <div class="email-subject dark">Sequence 1 - Email 2</div>
+          <div class="email-headline dark">The 3 accounts I wish I had opened in year one</div>
+          <div class="email-preview dark">Vet clinics. Grooming studios. Doggy daycares. They all have one thing in common that retail doesn't...</div>
+          <div><a class="email-cta email-cta-navy" href="#">See the breakdown</a></div>
+        </div>
+        <div class="email-body">
+          <span class="email-type fmt-story">Story</span>
+          <div class="email-title">The 3 account types I wish I had opened in year one</div>
+          <div class="email-open">Open rate: <strong>49%</strong> &nbsp;|&nbsp; CTR: <strong>8%</strong></div>
+        </div>
+      </div>
+
+      <div class="email-card">
+        <div class="email-mock em-coral">
+          <div class="email-subject dark">Sequence 1 - Email 3</div>
+          <div class="email-headline dark">Ready to see if the playbook fits your business?</div>
+          <div class="email-preview dark">I have 3 spots open this month for a free catalog audit call. Here's what we cover in 30 minutes...</div>
+          <div><a class="email-cta email-cta-coral" href="#">Book your audit</a></div>
+        </div>
+        <div class="email-body">
+          <span class="email-type fmt-hot">CTA</span>
+          <div class="email-title">Ready to see if the playbook fits your business?</div>
+          <div class="email-open">Open rate: <strong>43%</strong> &nbsp;|&nbsp; CTR: <strong>19%</strong></div>
+        </div>
+      </div>
+
+      <div class="email-card">
+        <div class="email-mock em-navy">
+          <div class="email-subject">Sequence 2 - Email 1</div>
+          <div class="email-headline">Your free B2B Playbook is inside</div>
+          <div class="email-preview">You downloaded the playbook -- here's the one section most people skip that makes the biggest difference...</div>
+          <div><a class="email-cta email-cta-gold" href="#">Go to Chapter 3</a></div>
+        </div>
+        <div class="email-body">
+          <span class="email-type fmt-data">Nurture</span>
+          <div class="email-title">Your free B2B Playbook is inside (plus the chapter most people skip)</div>
+          <div class="email-open">Open rate: <strong>61%</strong> &nbsp;|&nbsp; CTR: <strong>14%</strong></div>
+        </div>
+      </div>
+
+      <div class="email-card">
+        <div class="email-mock em-light">
+          <div class="email-subject dark">Sequence 2 - Email 2</div>
+          <div class="email-headline dark">What happened when we applied the 70/20/10 rule</div>
+          <div class="email-preview dark">Six weeks after restructuring our catalog, here are the exact numbers. No rounding, no cherry-picking...</div>
+          <div><a class="email-cta email-cta-navy" href="#">See the numbers</a></div>
+        </div>
+        <div class="email-body">
+          <span class="email-type fmt-insight">Case Study</span>
+          <div class="email-title">What actually happened when we applied the 70/20/10 rule</div>
+          <div class="email-open">Open rate: <strong>45%</strong> &nbsp;|&nbsp; CTR: <strong>9%</strong></div>
+        </div>
+      </div>
+
+      <div class="email-card">
+        <div class="email-mock em-coral">
+          <div class="email-subject dark">Sequence 2 - Email 3</div>
+          <div class="email-headline dark">One question before I go quiet</div>
+          <div class="email-preview dark">What's the single biggest inventory challenge you're dealing with right now? I read every reply...</div>
+          <div><a class="email-cta email-cta-coral" href="#">Reply here</a></div>
+        </div>
+        <div class="email-body">
+          <span class="email-type fmt-story">Engagement</span>
+          <div class="email-title">One question before I go quiet (I read every reply)</div>
+          <div class="email-open">Open rate: <strong>38%</strong> &nbsp;|&nbsp; Replies: <strong>34</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="sec-divider"></div>
+
+  <!-- RESULTS STRIP -->
+  <div class="results-strip" id="results">
+    <div class="rs-stat">
+      <div class="rs-val">30</div>
+      <div class="rs-lbl">Pieces published in<br>10 days</div>
+    </div>
+    <div class="rs-stat">
+      <div class="rs-val coral">284K</div>
+      <div class="rs-lbl">Total organic<br>reach generated</div>
+    </div>
+    <div class="rs-stat">
+      <div class="rs-val gold">47%</div>
+      <div class="rs-lbl">Average email<br>open rate</div>
+    </div>
+    <div class="rs-stat">
+      <div class="rs-val green">22</div>
+      <div class="rs-lbl">Inbound B2B<br>inquiries received</div>
+    </div>
+    <div class="rs-stat">
+      <div class="rs-val blue">$0</div>
+      <div class="rs-lbl">Paid media<br>spend</div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+</div><!-- /layout -->
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal-box">
+    <button class="modal-close" onclick="closeModalDirect()">&#x2715;</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+const posts = {
+  li1:{type:'Data Hook',cls:'fmt-data',title:'38% of pet store inventory never sells. Here\'s what I did about it.',copy:`I used to think dead stock was a product problem.\n\nBuy better products, the thinking goes, and you won't be stuck with 847 units of something nobody wants.\n\nI was wrong.\n\nDead stock is a system problem.\n\nAfter six years running PetJoy, here's what I found: 38% of our entire catalog never sold through in a 90-day window. That's not bad buying -- that's a missing framework.\n\nThe fix? The 70/20/10 rule.\n\n70% of your buy goes to proven bestsellers. Reorder without hesitation.\n20% goes to trending products. Test in small quantities. Kill fast if no traction.\n10% goes to genuine innovation bets. These are your experiments.\n\nDead stock dropped from 38% to 9% in 60 days.\n\nIf you're a pet retailer or B2B operator, I'd love to hear -- what's your current dead stock rate?`,reactions:'847',comments:'134',reposts:'92'},
+  li2:{type:'List',cls:'fmt-list',title:'5 things vet clinics actually want from a pet supply partner (most brands miss all 5)',copy:`Vet clinics are the best B2B accounts in pet retail.\n\nHigher AOV. Better reorder rates. Built-in trust with clients. Zero Amazon competition.\n\nHere's the problem: most pet supply brands don't know how to sell to them.\n\nAfter landing 8 vet clinic accounts in 30 days, here's exactly what they want:\n\n1. Auto-replenishment with no minimums -- they don't have time to manage POs\n2. Therapeutic-adjacent SKUs -- calming, joint support, dental -- products that extend clinical care\n3. Client education materials -- leave-behinds that recommend the product to pet owners\n4. A dedicated account rep who knows their specific needs\n5. Net-60 terms on the first order -- they need to prove the channel before committing\n\nMeet all five and you don't have a lead. You have a partner.\n\nWhich of these surprised you most?`,reactions:'612',comments:'89',reposts:'71'},
+  li3:{type:'Story',cls:'fmt-story',title:'I walked into a vet clinic with 12 SKUs. I walked out with a $4,200 order.',copy:`I was nervous.\n\nVet clinics had always felt out of reach. Too clinical. Too credentialed. Too different from the retail accounts I knew.\n\nI walked in with 12 SKUs and a one-page overview.\n\nThe vet asked one question: "What makes your products different from what I can get from the big distributors?"\n\nI said: "I grew up with animals. I started this company because I couldn't find products I trusted for my own pets. Everything we carry, I'd give to my dog."\n\nShe said: "That's the answer I've been waiting three years to hear."\n\n$4,200 first order. Recurring account. She's referred us to two other clinics since.\n\nThe lesson: don't sell features. Sell the reason you exist.\n\nWhat's the origin story behind your business?`,reactions:'1.2K',comments:'203',reposts:'156'},
+  li4:{type:'Myth Bust',cls:'fmt-myth',title:'Myth: You need 500+ SKUs. Reality: Your top 20 drive 74% of revenue.',copy:`I believed this myth for three years.\n\nMore SKUs = more options = more sales. That's how retail works, right?\n\nWrong.\n\nWe had 847 active SKUs. I pulled the data last quarter:\n\nTop 20 SKUs: 74% of total revenue.\nSKUs 21-100: 19% of revenue.\nSKUs 101-847: 7% of revenue.\n\nWe were spending 60% of our time and working capital managing SKUs that generated 7% of revenue.\n\nThe 70/20/10 reset changed everything:\n-- Cut catalog from 847 to 180 active SKUs\n-- Freed up $84K in capital locked in dead inventory\n-- Reduced reorder complexity by 80%\n-- Revenue per active SKU went from $266 to $847\n\nMore isn't better. Better is better.\n\nWhat does your revenue distribution look like across your catalog?`,reactions:'534',comments:'77',reposts:'63'},
+  li5:{type:'Framework',cls:'fmt-insight',title:'The 70/20/10 inventory rule that cut our dead stock from 38% to 9%',copy:`Six years ago I was drowning in inventory.\n\n847 SKUs. 38% dead stock. $150K locked in products that would never sell.\n\nI needed a system. Here's the one that saved us:\n\nTHE 70/20/10 RULE:\n\n70% -- Proven bestsellers. These get automatic reorders. No questions asked. These are your cash flow backbone.\n\n20% -- Trending products. Small test buys only. Set a 90-day sell-through target. If they don't hit it, they don't get a second order.\n\n10% -- Innovation bets. These are experiments. Fail fast, learn fast, move on.\n\nThe shift happened immediately:\n\nDay 1: Catalog audit. Categorize every SKU.\nDay 7: Stop reorders on anything in the bottom 30%.\nDay 30: First dead stock clearance with B2B partners.\nDay 60: Dead stock rate from 38% to 9%.\n\nSimple framework. Uncomfortable execution. Worth it.\n\nWhat percentage of your catalog would you estimate is dead?`,reactions:'921',comments:'148',reposts:'104'},
+  li6:{type:'Hot Take',cls:'fmt-hot',title:'Vet clinics are the most underserved B2B channel in pet retail. Here\'s why.',copy:`Hot take: every pet supply brand is fighting for the same retail shelf space while ignoring the most lucrative channel in the category.\n\nVet clinics.\n\nHere's what makes them different:\n\n1. Built-in trust. Pet owners take product recommendations from their vet more seriously than any shelf tag or Amazon review.\n\n2. Zero Amazon competition. Amazon doesn't have a "recommended by my vet" button. You own that channel completely.\n\n3. Recurring revenue by default. Pets need food, treats, supplements on a cycle. Once you're in, you're in for years.\n\n4. Premium price tolerance. Vet-recommended products command 20-40% higher margin than equivalent retail products.\n\nWe added 8 vet clinic accounts in 30 days. Average first order: $4,200. Average reorder rate: 87%.\n\nThe brands ignoring this channel are leaving significant money on the table.\n\nAre you selling to vet clinics? Why or why not?`,reactions:'743',comments:'112',reposts:'88'},
+  li7:{type:'List',cls:'fmt-list',title:'3 KPIs every independent pet retailer should track (but most don\'t)',copy:`Most pet retailers track revenue and that's it.\n\nRevenue is a lagging indicator. By the time it drops, the problem has been there for months.\n\nHere are the 3 leading KPIs that tell you what's actually happening in your business:\n\n1. Revenue per active SKU\nThis tells you if your catalog is working. Ours went from $266 to $847 in 60 days after the 70/20/10 reset.\n\n2. Inventory turnover rate\nHow many times does your inventory sell through per year? Industry benchmark: 4-6x. Below 2x means capital is stuck.\n\n3. Account reorder rate\nWhat % of your B2B accounts reorder within 90 days? Below 50% means your onboarding or product mix needs work.\n\nTrack these weekly, not monthly. Problems show up faster and you can fix them before they become revenue problems.\n\nWhich of these does your team track today?`,reactions:'489',comments:'67',reposts:'55'},
+  li8:{type:'Data',cls:'fmt-data',title:'The $150B pet industry is growing. Independent operators are still losing.',copy:`The pet industry will hit $150B by 2030.\n\nMost of that money flows to Amazon and Chewy.\n\nHere's the data that should concern every independent pet operator:\n\n- Online pet supply grew 21% last year\n- Independent pet retail grew 3%\n- Amazon pet category grew 34%\n\nThis isn't a product problem. Independent operators carry great products.\n\nIt's a distribution and positioning problem.\n\nThe operators winning right now are doing three things differently:\n\n1. Building B2B wholesale channels (vet clinics, groomers, daycares) that Amazon can't touch\n2. Creating content that positions the founder as the trusted expert in the category\n3. Using subscription/auto-replenishment to convert one-time buyers into recurring revenue\n\nThe window to build a defensible position before Amazon saturates B2B is closing.\n\nHow are you building moats around your business?`,reactions:'677',comments:'98',reposts:'84'},
+  li9:{type:'Insight',cls:'fmt-insight',title:'What I wish someone told me in year one of running a pet supply business',copy:`Year one me was obsessed with acquisition.\n\nGet more customers. Run more ads. Open more accounts.\n\nYear six me knows the truth: acquisition is expensive. Retention is where the money is.\n\nHere's what I wish I'd understood from day one:\n\nYour best customers are not the ones who buy once. They're the ones who refer three more.\n\nThe math is simple:\n- Average new account acquisition cost: $280\n- Average referral acquisition cost: $0\n- Average referral first order: 40% larger than cold acquisition\n\nWe built a referral architecture into the auto-replenishment program. Existing accounts who refer a new account get 15% margin uplift on their next order.\n\nIn 30 days: 7 new accounts from referrals. Zero acquisition cost.\n\nBuild for reorder and referral from day one. Don't wait six years like I did.\n\nWhat's your current referral rate from existing accounts?`,reactions:'556',comments:'81',reposts:'62'},
+};
+
+const infos = {
+  inf1:{type:'Data Visual',cls:'fmt-data',title:'The Dead Stock Progression: From 75% to 9%',desc:'Visual breakdown of dead inventory rate over 3 years with the 70/20/10 intervention highlighted. Used as a LinkedIn carousel and email attachment.',reactions:'2,340',saves:'187',shares:'44'},
+  inf2:{type:'Channel Analysis',cls:'fmt-insight',title:'Why Vet Clinics Outperform Every Other B2B Channel',desc:'AOV, reorder rate, and LTV compared across retail, pet specialty, and vet clinic accounts. Data sourced from PetJoy internal account records.',reactions:'1,890',saves:'214',shares:'38'},
+  inf3:{type:'Framework',cls:'fmt-list',title:'The 70/20/10 Inventory Framework Explained',desc:'Full visual breakdown of how to allocate your catalog. The most-saved piece in the 10-day sprint.',reactions:'3,120',saves:'298',shares:'67'},
+  inf4:{type:'Results',cls:'fmt-data',title:'$17.8K to $68.4K MRR in 60 Days: The Full Story',desc:'Month-by-month MRR progression with key actions annotated. Used as both a LinkedIn post and email nurture asset.',reactions:'2,780',saves:'241',shares:'52'},
+};
+
+function openModal(id) {
+  const data = posts[id] || infos[id];
+  if(!data) return;
+  let html = `<span class="modal-type ${data.cls}">${data.type}</span>
+    <div class="modal-title">${data.title}</div>`;
+  if(data.copy) html += `<div class="modal-copy">${data.copy}</div>`;
+  if(data.desc) html += `<div class="modal-copy">${data.desc}</div>`;
+  html += `<div class="modal-metrics">`;
+  if(data.reactions) html += `<div class="modal-metric"><strong>${data.reactions}</strong>Reactions</div>`;
+  if(data.comments) html += `<div class="modal-metric"><strong>${data.comments}</strong>Comments</div>`;
+  if(data.reposts) html += `<div class="modal-metric"><strong>${data.reposts}</strong>Reposts</div>`;
+  if(data.saves) html += `<div class="modal-metric"><strong>${data.saves}</strong>Saves</div>`;
+  if(data.shares) html += `<div class="modal-metric"><strong>${data.shares}</strong>Shares</div>`;
+  html += `</div>`;
+  document.getElementById('modal-content').innerHTML = html;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+function closeModal(e) {
+  if(e.target.id === 'modal-overlay') closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModalDirect(); });
+
+// Sidebar scroll spy
+const sections = document.querySelectorAll('section[id], div[id]');
+const links = document.querySelectorAll('.sb-link');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector(`.sb-link[href="#${e.target.id}"]`);
+      if(a) a.classList.add('active');
+    }
+  });
+},{threshold:0.25});
+sections.forEach(s => observer.observe(s));
+
+function filterAll(btn, type) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if(type === 'all') {
+    document.getElementById('linkedin').style.display = '';
+    document.getElementById('infographics').style.display = '';
+    document.getElementById('emails').style.display = '';
+  } else if(type === 'linkedin') {
+    document.getElementById('linkedin').style.display = '';
+    document.getElementById('infographics').style.display = 'none';
+    document.getElementById('emails').style.display = 'none';
+  } else if(type === 'infographic') {
+    document.getElementById('linkedin').style.display = 'none';
+    document.getElementById('infographics').style.display = '';
+    document.getElementById('emails').style.display = 'none';
+  } else if(type === 'email') {
+    document.getElementById('linkedin').style.display = 'none';
+    document.getElementById('infographics').style.display = 'none';
+    document.getElementById('emails').style.display = '';
+  }
+}
+</script>
+</body>
+</html>
