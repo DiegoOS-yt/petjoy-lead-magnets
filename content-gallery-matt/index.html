@@ -124,14 +124,44 @@ body{font-family:'Poppins',sans-serif;color:var(--white);background:var(--black)
 .x-metric strong{color:var(--white);font-weight:700;}
 .x-icon{font-size:12px;}
 
-/* IG CAROUSELS */
-.ig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
-.ig-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;}
-.ig-card:hover{transform:translateY(-4px);border-color:var(--border-hover);box-shadow:0 20px 60px rgba(0,0,0,0.5);}
-.ig-img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:var(--dark);}
-.ig-meta{padding:12px 14px 14px;}
-.ig-badge{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
-.ig-title{font-size:12px;font-weight:700;color:var(--white);line-height:1.4;}
+/* IG CAROUSELS -- stacked fan layout */
+.ig-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.ig-row-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:66.6%;margin-top:22px;}
+.ig-carousel-wrap{position:relative;padding:14px 14px 0;cursor:pointer;}
+.ig-stack{position:relative;aspect-ratio:4/5;}
+/* Slide 3 -- furthest back */
+.ig-stack-bg2{position:absolute;inset:0;border-radius:12px;overflow:hidden;transform:rotate(4deg) translate(10px,-8px);transform-origin:bottom left;z-index:1;box-shadow:0 4px 20px rgba(0,0,0,0.4);}
+/* Slide 2 -- middle */
+.ig-stack-bg1{position:absolute;inset:0;border-radius:12px;overflow:hidden;transform:rotate(2deg) translate(5px,-4px);transform-origin:bottom left;z-index:2;box-shadow:0 4px 20px rgba(0,0,0,0.4);}
+/* Slide 1 -- front */
+.ig-stack-front{position:absolute;inset:0;border-radius:12px;overflow:hidden;z-index:3;box-shadow:0 8px 32px rgba(0,0,0,0.5);}
+.ig-stack img{width:100%;height:100%;object-fit:cover;display:block;}
+.ig-stack-bg2 img,.ig-stack-bg1 img{filter:brightness(0.7);}
+.ig-slide-count{position:absolute;top:10px;right:10px;z-index:10;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);color:var(--white);font-size:10px;font-weight:700;padding:4px 9px;border-radius:20px;display:flex;align-items:center;gap:5px;}
+.ig-slide-count::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--lime);}
+.ig-carousel-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform 0.22s,border-color 0.2s,box-shadow 0.2s;}
+.ig-carousel-card:hover{transform:translateY(-5px);border-color:rgba(212,245,60,0.2);box-shadow:0 24px 64px rgba(0,0,0,0.55);}
+.ig-carousel-card:hover .ig-stack-front{box-shadow:0 12px 40px rgba(0,0,0,0.6);}
+.ig-meta{padding:14px 16px 16px;}
+.ig-badge{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:7px;}
+.ig-title{font-size:13px;font-weight:700;color:var(--white);line-height:1.4;}
+/* Carousel lightbox */
+.clb{position:fixed;inset:0;background:rgba(0,0,0,0.94);z-index:3000;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s;}
+.clb.open{opacity:1;pointer-events:all;}
+.clb-header{display:flex;align-items:center;justify-content:space-between;width:min(520px,90vw);margin-bottom:14px;}
+.clb-title{font-size:13px;font-weight:700;color:var(--white);}
+.clb-counter{font-size:12px;color:var(--muted);}
+.clb-close{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;line-height:1;padding:0;}
+.clb-close:hover{color:var(--white);}
+.clb-stage{position:relative;display:flex;align-items:center;gap:16px;}
+.clb-nav{background:rgba(255,255,255,0.1);border:none;color:var(--white);font-size:20px;cursor:pointer;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background 0.15s;flex-shrink:0;}
+.clb-nav:hover{background:rgba(255,255,255,0.2);}
+.clb-nav:disabled{opacity:0.25;cursor:default;}
+.clb-img-wrap{width:min(480px,80vw);max-height:72vh;overflow:hidden;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#111;}
+.clb-img{max-width:100%;max-height:72vh;object-fit:contain;display:block;border-radius:12px;}
+.clb-dots{display:flex;gap:7px;margin-top:16px;align-items:center;justify-content:center;}
+.clb-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;padding:0;transition:all 0.15s;}
+.clb-dot.active{background:var(--lime);width:20px;border-radius:4px;}
 
 /* PROOF STRIP */
 .proof-strip{background:var(--lime);padding:36px 48px;display:grid;grid-template-columns:repeat(5,1fr);gap:0;}
@@ -173,7 +203,7 @@ body{font-family:'Poppins',sans-serif;color:var(--white);background:var(--black)
     <a class="sb-link active" href="#linkedin"><span class="sb-dot"></span>LinkedIn Posts<span class="sb-count">6</span></a>
     <a class="sb-link" href="#infographics"><span class="sb-dot"></span>LinkedIn Infographics<span class="sb-count">7</span></a>
     <a class="sb-link" href="#x"><span class="sb-dot"></span>X / Twitter<span class="sb-count">6</span></a>
-    <a class="sb-link" href="#ig"><span class="sb-dot"></span>IG Carousels<span class="sb-count">4</span></a>
+    <a class="sb-link" href="#ig"><span class="sb-dot"></span>IG Carousels<span class="sb-count">5</span></a>
     <a class="sb-link" href="#proof"><span class="sb-dot"></span>By the Numbers</a>
   </nav>
   <div class="sb-foot">
@@ -470,40 +500,95 @@ body{font-family:'Poppins',sans-serif;color:var(--white);background:var(--black)
       <div>
         <div class="sec-eyebrow">Instagram Carousels</div>
         <div class="sec-title">Swipeable. Saveable. Repeatable.</div>
-        <div class="sec-sub">Matt's IG carousels are built with a signature handwritten style that feels personal at scale. Each one converts curiosity into followers -- and followers into leads.</div>
+        <div class="sec-sub">Click any carousel to swipe through all slides. Matt's IG carousels span handwritten quotes, step-by-step roadmaps, photo stories, and system breakdowns -- all in one consistent voice.</div>
       </div>
     </div>
-    <div class="ig-grid">
 
-      <div class="ig-card" onclick="openLightbox('assets/ig-carousels/ig1.jpg', 'Your job: make yourself the least important person in your company')">
-        <img class="ig-img" src="assets/ig-carousels/ig1.jpg" alt="IG carousel 1" loading="lazy">
+    <!-- Row 1: 3 carousels -->
+    <div class="ig-row">
+
+      <!-- C1: YOUR JOB -- 4 slides, handwritten -->
+      <div class="ig-carousel-card" onclick="openCarousel('c1')">
+        <div class="ig-carousel-wrap">
+          <div class="ig-stack">
+            <div class="ig-stack-bg2"><img src="assets/ig-carousels/c1/slide4.jpg" alt="" loading="lazy"></div>
+            <div class="ig-stack-bg1"><img src="assets/ig-carousels/c1/slide3.jpg" alt="" loading="lazy"></div>
+            <div class="ig-stack-front"><img src="assets/ig-carousels/c1/slide2.jpg" alt="" loading="lazy"></div>
+            <div class="ig-slide-count">4 slides</div>
+          </div>
+        </div>
         <div class="ig-meta">
           <div class="ig-badge">&#9998; Handwritten</div>
           <div class="ig-title">Your job is making yourself the least important person in your company</div>
         </div>
       </div>
 
-      <div class="ig-card" onclick="openLightbox('assets/ig-carousels/ig2.jpg', 'Your 7-Day Brand')">
-        <img class="ig-img" src="assets/ig-carousels/ig2.jpg" alt="IG carousel 2" loading="lazy">
+      <!-- C2: 7-DAY BRAND -- 6 slides, roadmap -->
+      <div class="ig-carousel-card" onclick="openCarousel('c2')">
+        <div class="ig-carousel-wrap">
+          <div class="ig-stack">
+            <div class="ig-stack-bg2"><img src="assets/ig-carousels/c2/slide6.jpg" alt="" loading="lazy"></div>
+            <div class="ig-stack-bg1"><img src="assets/ig-carousels/c2/slide3.jpg" alt="" loading="lazy"></div>
+            <div class="ig-stack-front"><img src="assets/ig-carousels/c2/slide1.jpg" alt="" loading="lazy"></div>
+            <div class="ig-slide-count">6 slides</div>
+          </div>
+        </div>
         <div class="ig-meta">
           <div class="ig-badge">&#128197; Roadmap</div>
           <div class="ig-title">Your 7-Day Brand: Day-by-day system to build your brand from scratch</div>
         </div>
       </div>
 
-      <div class="ig-card" onclick="openLightbox('assets/ig-carousels/ig3.jpg', 'Level 3: The Positioned Brand')">
-        <img class="ig-img" src="assets/ig-carousels/ig3.jpg" alt="IG carousel 3" loading="lazy">
+      <!-- C3: POSITIONED BRAND -- 4 slides, system -->
+      <div class="ig-carousel-card" onclick="openCarousel('c3')">
+        <div class="ig-carousel-wrap">
+          <div class="ig-stack">
+            <div class="ig-stack-bg2"><img src="assets/ig-carousels/c3/slide4.jpg" alt="" loading="lazy"></div>
+            <div class="ig-stack-bg1"><img src="assets/ig-carousels/c3/slide3.jpg" alt="" loading="lazy"></div>
+            <div class="ig-stack-front"><img src="assets/ig-carousels/c3/slide1.jpg" alt="" loading="lazy"></div>
+            <div class="ig-slide-count">4 slides</div>
+          </div>
+        </div>
         <div class="ig-meta">
           <div class="ig-badge">&#127919; System</div>
           <div class="ig-title">Level 3: The Positioned Brand -- Content GPS and 60+ custom hooks in your voice</div>
         </div>
       </div>
 
-      <div class="ig-card" onclick="openLightbox('assets/ig-carousels/ig4.jpg', 'DM me BOTTLENECK')">
-        <img class="ig-img" src="assets/ig-carousels/ig4.jpg" alt="IG carousel 4" loading="lazy">
+    </div>
+
+    <!-- Row 2: 2 carousels, centered -->
+    <div class="ig-row-2">
+
+      <!-- C4: DOLOMITES PHOTO STORY -- 4 slides, photo -->
+      <div class="ig-carousel-card" onclick="openCarousel('c4')">
+        <div class="ig-carousel-wrap">
+          <div class="ig-stack">
+            <div class="ig-stack-bg2"><img src="assets/ig-carousels/c4/slide4.jpg" alt="" loading="lazy"></div>
+            <div class="ig-stack-bg1"><img src="assets/ig-carousels/c4/slide3.jpg" alt="" loading="lazy"></div>
+            <div class="ig-stack-front"><img src="assets/ig-carousels/c4/slide1.jpg" alt="" loading="lazy"></div>
+            <div class="ig-slide-count">4 slides</div>
+          </div>
+        </div>
         <div class="ig-meta">
-          <div class="ig-badge">&#9998; Handwritten</div>
-          <div class="ig-title">DM "BOTTLENECK" -- find the one thing holding your business back</div>
+          <div class="ig-badge">&#128247; Photo Story</div>
+          <div class="ig-title">I filmed at the top of a mountain in the Dolomites during a thunderstorm. Here's 4 reasons why.</div>
+        </div>
+      </div>
+
+      <!-- C5: STORYTELLING GENIUS -- 3 slides, framework -->
+      <div class="ig-carousel-card" onclick="openCarousel('c5')">
+        <div class="ig-carousel-wrap">
+          <div class="ig-stack">
+            <div class="ig-stack-bg2"><img src="assets/ig-carousels/c5/slide3.jpg" alt="" loading="lazy"></div>
+            <div class="ig-stack-bg1"><img src="assets/ig-carousels/c5/slide2.jpg" alt="" loading="lazy"></div>
+            <div class="ig-stack-front"><img src="assets/ig-carousels/c5/slide1.jpg" alt="" loading="lazy"></div>
+            <div class="ig-slide-count">3 slides</div>
+          </div>
+        </div>
+        <div class="ig-meta">
+          <div class="ig-badge">&#128214; Framework</div>
+          <div class="ig-title">How to become a storytelling genius (the addiction framework)</div>
         </div>
       </div>
 
@@ -521,7 +606,7 @@ body{font-family:'Poppins',sans-serif;color:var(--white);background:var(--black)
       <div class="ps-lbl">Best single X post impressions</div>
     </div>
     <div class="ps-stat">
-      <div class="ps-val">23</div>
+      <div class="ps-val">28</div>
       <div class="ps-lbl">Pieces shown in this gallery</div>
     </div>
     <div class="ps-stat">
@@ -537,7 +622,7 @@ body{font-family:'Poppins',sans-serif;color:var(--white);background:var(--black)
 </div><!-- /main -->
 </div><!-- /layout -->
 
-<!-- LIGHTBOX -->
+<!-- GENERIC LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightboxBg(event)">
   <div class="lb-inner">
     <button class="lb-nav lb-prev" onclick="lbNav(-1)">&#8592;</button>
@@ -548,8 +633,25 @@ body{font-family:'Poppins',sans-serif;color:var(--white);background:var(--black)
   </div>
 </div>
 
+<!-- CAROUSEL LIGHTBOX -->
+<div class="clb" id="clb" onclick="clbCloseBg(event)">
+  <div class="clb-header">
+    <div class="clb-title" id="clb-title"></div>
+    <div class="clb-counter" id="clb-counter"></div>
+    <button class="clb-close" onclick="clbClose()">&#x2715;</button>
+  </div>
+  <div class="clb-stage">
+    <button class="clb-nav" id="clb-prev" onclick="clbNav(-1)">&#8592;</button>
+    <div class="clb-img-wrap">
+      <img class="clb-img" id="clb-img" src="" alt="">
+    </div>
+    <button class="clb-nav" id="clb-next" onclick="clbNav(1)">&#8594;</button>
+  </div>
+  <div class="clb-dots" id="clb-dots"></div>
+</div>
+
 <script>
-// Lightbox
+// ---- Generic lightbox ----
 const gallery = [];
 let lbIndex = 0;
 
@@ -573,7 +675,80 @@ function lbNav(dir) {
   document.getElementById('lb-img').src = g.src;
   document.getElementById('lb-caption').textContent = g.caption;
 }
+
+// ---- Carousel lightbox ----
+const carousels = {
+  c1: {
+    title: 'Your Job -- Making Yourself the Least Important Person',
+    slides: ['assets/ig-carousels/c1/slide1.jpg','assets/ig-carousels/c1/slide2.jpg','assets/ig-carousels/c1/slide3.jpg','assets/ig-carousels/c1/slide4.jpg']
+  },
+  c2: {
+    title: 'Your 7-Day Brand',
+    slides: ['assets/ig-carousels/c2/slide1.jpg','assets/ig-carousels/c2/slide2.jpg','assets/ig-carousels/c2/slide3.jpg','assets/ig-carousels/c2/slide4.jpg','assets/ig-carousels/c2/slide5.jpg','assets/ig-carousels/c2/slide6.jpg']
+  },
+  c3: {
+    title: 'Level 3: The Positioned Brand',
+    slides: ['assets/ig-carousels/c3/slide1.jpg','assets/ig-carousels/c3/slide2.jpg','assets/ig-carousels/c3/slide3.jpg','assets/ig-carousels/c3/slide4.jpg']
+  },
+  c4: {
+    title: 'Filmed in the Dolomites During a Thunderstorm',
+    slides: ['assets/ig-carousels/c4/slide1.jpg','assets/ig-carousels/c4/slide2.jpg','assets/ig-carousels/c4/slide3.jpg','assets/ig-carousels/c4/slide4.jpg']
+  },
+  c5: {
+    title: 'How to Become a Storytelling Genius (The Addiction Framework)',
+    slides: ['assets/ig-carousels/c5/slide1.jpg','assets/ig-carousels/c5/slide2.jpg','assets/ig-carousels/c5/slide3.jpg']
+  }
+};
+
+let clbCurrent = null;
+let clbSlide = 0;
+
+function openCarousel(id) {
+  clbCurrent = carousels[id];
+  clbSlide = 0;
+  clbRender();
+  document.getElementById('clb').classList.add('open');
+}
+function clbRender() {
+  const c = clbCurrent;
+  const total = c.slides.length;
+  document.getElementById('clb-img').src = c.slides[clbSlide];
+  document.getElementById('clb-title').textContent = c.title;
+  document.getElementById('clb-counter').textContent = (clbSlide + 1) + ' / ' + total;
+  document.getElementById('clb-prev').disabled = clbSlide === 0;
+  document.getElementById('clb-next').disabled = clbSlide === total - 1;
+  // Dots
+  const dotsEl = document.getElementById('clb-dots');
+  dotsEl.innerHTML = '';
+  c.slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'clb-dot' + (i === clbSlide ? ' active' : '');
+    d.onclick = () => { clbSlide = i; clbRender(); };
+    dotsEl.appendChild(d);
+  });
+}
+function clbNav(dir) {
+  if(!clbCurrent) return;
+  const next = clbSlide + dir;
+  if(next < 0 || next >= clbCurrent.slides.length) return;
+  clbSlide = next;
+  clbRender();
+}
+function clbClose() {
+  document.getElementById('clb').classList.remove('open');
+}
+function clbCloseBg(e) {
+  if(e.target.id === 'clb') clbClose();
+}
+
 document.addEventListener('keydown', e => {
+  const clbOpen = document.getElementById('clb').classList.contains('open');
+  if(clbOpen) {
+    if(e.key === 'Escape') clbClose();
+    if(e.key === 'ArrowRight') clbNav(1);
+    if(e.key === 'ArrowLeft') clbNav(-1);
+    return;
+  }
   if(e.key === 'Escape') closeLightbox();
   if(e.key === 'ArrowRight') lbNav(1);
   if(e.key === 'ArrowLeft') lbNav(-1);
