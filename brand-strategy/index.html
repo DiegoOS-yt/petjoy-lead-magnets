@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Positioning | PetJoy | Founder OS Velocity</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0A1628;
+  --navy-mid: #0F1F3D;
+  --navy-light: #1A2F50;
+  --coral: #C8502A;
+  --coral-light: #FEF0EB;
+  --gold: #F2C94C;
+  --gold-light: #FEF9E7;
+  --green: #1B5E3B;
+  --green-light: #E8F5EE;
+  --bg: #FAFAF7;
+  --bg-alt: #F3F2EE;
+  --text: #1A2332;
+  --muted: #6B7280;
+  --border: #E5E7EB;
+  --white: #FFFFFF;
+  --sidebar-w: 240px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;}
+
+/* LAYOUT */
+.layout{display:flex;min-height:100vh;}
+.main{margin-left:var(--sidebar-w);flex:1;min-width:0;}
+
+/* SIDEBAR */
+.sidebar{width:var(--sidebar-w);background:var(--navy);position:fixed;top:0;left:0;height:100vh;display:flex;flex-direction:column;padding:28px 0 24px;z-index:200;overflow-y:auto;}
+.sb-logo{padding:0 22px 24px;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:20px;}
+.sb-brand{font-size:19px;font-weight:800;color:var(--white);letter-spacing:-0.5px;}
+.sb-brand span{color:var(--coral);}
+.sb-tag{display:inline-block;background:rgba(242,201,76,0.12);color:var(--gold);font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:1px;margin-top:6px;}
+.sb-section-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:2px;padding:0 22px 8px;}
+.sb-nav{flex:1;padding:0 12px;}
+.sb-link{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:7px;text-decoration:none;font-size:12px;color:rgba(255,255,255,0.5);font-weight:500;transition:all 0.15s;margin-bottom:1px;cursor:pointer;}
+.sb-link:hover{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);}
+.sb-link.active{background:rgba(200,80,42,0.18);color:var(--white);}
+.sb-link.active .sb-dot{background:var(--coral);}
+.sb-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.15);flex-shrink:0;transition:background 0.15s;}
+.sb-num{font-size:9px;font-weight:700;color:rgba(255,255,255,0.2);min-width:14px;}
+.sb-foot{padding:18px 22px 0;border-top:1px solid rgba(255,255,255,0.07);margin-top:12px;}
+.sb-prep{font-size:10px;color:rgba(255,255,255,0.3);line-height:1.6;}
+.sb-prep strong{display:block;color:rgba(255,255,255,0.55);font-weight:600;margin-bottom:1px;}
+.confid{display:inline-flex;align-items:center;gap:5px;background:rgba(200,80,42,0.1);border:1px solid rgba(200,80,42,0.22);color:var(--coral);font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:1px;margin-top:10px;}
+
+/* HERO */
+.hero{background:var(--navy);padding:72px 64px 64px;position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;justify-content:center;}
+.hero::before{content:'MJ';position:absolute;right:-20px;bottom:-80px;font-size:400px;font-weight:900;color:rgba(255,255,255,0.025);line-height:1;pointer-events:none;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:26px;}
+.hero-eyebrow::before{content:'';width:28px;height:2px;background:var(--gold);}
+.hero-title{font-size:72px;font-weight:900;color:var(--white);line-height:0.95;letter-spacing:-2.5px;margin-bottom:0;}
+.hero-title em{font-style:normal;color:var(--coral);display:block;}
+.hero-founder{display:flex;align-items:center;gap:14px;margin:28px 0 48px;}
+.hero-avatar{width:48px;height:48px;background:var(--coral);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;color:var(--white);flex-shrink:0;}
+.hero-founder-name{font-size:17px;font-weight:700;color:var(--white);line-height:1.2;}
+.hero-founder-role{font-size:12px;color:rgba(255,255,255,0.45);margin-top:2px;}
+.hero-date{margin-left:auto;text-align:right;font-size:11px;color:rgba(255,255,255,0.25);line-height:1.6;}
+.hero-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:920px;margin-bottom:40px;}
+.kpi-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:12px;padding:22px 20px 18px;position:relative;overflow:hidden;}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.kpi-card.c1::before{background:var(--coral);}
+.kpi-card.c2::before{background:var(--gold);}
+.kpi-card.c3::before{background:#2ECC71;}
+.kpi-card.c4::before{background:#4FA3E0;}
+.kpi-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;}
+.kpi-value{font-size:42px;font-weight:900;color:var(--white);letter-spacing:-2px;line-height:1;margin-bottom:6px;}
+.kpi-sub{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.4;}
+.kpi-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:5px;vertical-align:middle;}
+.tag-up{background:rgba(46,204,113,0.15);color:#2ECC71;}
+.tag-gap{background:rgba(242,201,76,0.15);color:var(--gold);}
+.hero-insight{padding:18px 24px;background:rgba(242,201,76,0.07);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;max-width:680px;}
+.hero-insight-lbl{font-size:9px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:5px;}
+.hero-insight p{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.65;}
+.hero-insight strong{color:var(--white);}
+
+/* PROOF BAR */
+.proof-bar{background:var(--navy-mid);padding:24px 64px;border-bottom:1px solid rgba(255,255,255,0.05);}
+.pb-inner{display:flex;align-items:center;gap:0;}
+.pb-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:2px;white-space:nowrap;margin-right:36px;}
+.pb-stats{display:flex;align-items:center;flex:1;justify-content:space-between;}
+.pb-stat{text-align:center;padding:0 20px;}
+.pb-stat+.pb-stat{border-left:1px solid rgba(255,255,255,0.07);}
+.pb-num{font-size:26px;font-weight:900;color:var(--white);letter-spacing:-1px;line-height:1;}
+.pb-desc{font-size:10px;color:rgba(255,255,255,0.35);margin-top:4px;line-height:1.3;}
+
+/* SECTIONS */
+.sec{padding:72px 64px;}
+.sec-alt{background:var(--bg-alt);}
+.sec-dark{background:var(--navy);}
+.sec-hd{margin-bottom:52px;}
+.sec-num{font-size:10px;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.sec-num::before{content:'';width:22px;height:2px;background:var(--coral);}
+.sec-dark .sec-num{color:var(--gold);}
+.sec-dark .sec-num::before{background:var(--gold);}
+.sec-title{font-size:44px;font-weight:800;color:var(--navy);line-height:1.05;letter-spacing:-1.5px;margin-bottom:14px;}
+.sec-dark .sec-title{color:var(--white);}
+.sec-sub{font-size:16px;color:var(--muted);line-height:1.65;max-width:540px;}
+.sec-dark .sec-sub{color:rgba(255,255,255,0.5);}
+.insight-box{background:var(--gold-light);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 18px;margin-top:24px;max-width:660px;}
+.ib-lbl{font-size:9px;font-weight:700;color:#7A5A00;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;}
+.insight-box p{font-size:12px;color:var(--text);line-height:1.65;}
+
+/* SECTION 01 - BRAND STRATEGY */
+.brand-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:32px;}
+.bp-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--navy);border-radius:12px;padding:26px;transition:transform 0.15s,box-shadow 0.15s;}
+.bp-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,22,40,0.08);}
+.bp-lbl{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;}
+.bp-val{font-size:21px;font-weight:800;color:var(--navy);letter-spacing:-0.4px;margin-bottom:8px;}
+.bp-desc{font-size:12px;color:var(--muted);line-height:1.65;}
+.mission-block{background:var(--navy);border-radius:16px;padding:40px;margin-bottom:32px;position:relative;overflow:hidden;}
+.mission-block::before{content:'"';position:absolute;left:20px;top:-20px;font-size:140px;color:rgba(255,255,255,0.04);font-family:Georgia,serif;line-height:1;}
+.mb-lbl{font-size:9px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;}
+.mb-text{font-size:22px;font-weight:700;color:var(--white);line-height:1.5;letter-spacing:-0.3px;max-width:680px;}
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;}
+.val-tile{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px;}
+.val-num{font-size:10px;font-weight:700;color:var(--coral);margin-bottom:10px;display:block;}
+.val-title{font-size:15px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:7px;}
+.val-proof{font-size:11px;color:var(--muted);line-height:1.6;}
+.brand-promise{background:var(--coral);border-radius:12px;padding:26px 30px;}
+.bp-promise-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.65);margin-bottom:8px;}
+.bp-promise-text{font-size:17px;font-weight:600;color:var(--white);line-height:1.5;}
+
+/* SECTION 02 - COMPETITIVE */
+.comp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:44px;}
+.comp-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;position:relative;overflow:hidden;}
+.threat-stripe{position:absolute;top:0;left:0;right:0;height:4px;}
+.tl{background:#2ECC71;}.tm{background:var(--gold);}.th{background:var(--coral);}
+.comp-hd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;margin-top:6px;}
+.comp-name{font-size:17px;font-weight:800;color:var(--navy);letter-spacing:-0.3px;}
+.comp-type{font-size:11px;color:var(--muted);margin-top:2px;}
+.threat-badge{font-size:9px;font-weight:700;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;}
+.tb-l{background:#E8F8F0;color:#1B7A3E;}.tb-m{background:var(--gold-light);color:#7A5A00;}.tb-h{background:var(--coral-light);color:#9B3018;}
+.comp-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:16px;}
+.comp-rows{display:flex;flex-direction:column;gap:7px;}
+.comp-row{display:flex;gap:8px;font-size:12px;line-height:1.4;align-items:flex-start;}
+.row-lbl{font-weight:700;font-size:9px;padding:2px 7px;border-radius:3px;white-space:nowrap;height:fit-content;margin-top:2px;flex-shrink:0;}
+.rl-s{background:#E8F8F0;color:#1B7A3E;}.rl-w{background:#FEF3EE;color:#9B3018;}.rl-p{background:var(--navy);color:var(--white);}
+.comp-row-txt{color:var(--text);}
+
+/* COMPETITIVE MAP */
+.map-wrap{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:36px;}
+.map-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.map-sub{font-size:12px;color:var(--muted);margin-bottom:20px;}
+.map-svg{width:100%;height:auto;display:block;}
+
+/* DIFFERENTIATORS */
+.diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:36px;}
+.diff-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px;}
+.diff-ico{width:38px;height:38px;background:var(--green-light);border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.diff-ico svg{color:var(--green);}
+.diff-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.3;}
+.diff-desc{font-size:11px;color:var(--muted);line-height:1.6;}
+.mkt-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.mkt-card{background:var(--navy);border-radius:12px;padding:22px;text-align:center;}
+.mkt-num{font-size:30px;font-weight:900;color:var(--white);letter-spacing:-1px;line-height:1;margin-bottom:6px;}
+.mkt-lbl{font-size:10px;color:rgba(255,255,255,0.4);line-height:1.4;}
+
+/* SECTION 03 - OFFER */
+.offer-split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:44px;}
+.offer-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:26px;}
+.offer-for{font-size:9px;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;}
+.offer-card h3{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:10px;line-height:1.3;letter-spacing:-0.3px;}
+.offer-card p{font-size:13px;color:var(--muted);line-height:1.65;}
+.pricing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:44px;align-items:start;}
+.price-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:26px;position:relative;}
+.price-card.featured{background:var(--navy);border-color:var(--navy);transform:translateY(-10px);box-shadow:0 20px 60px rgba(10,22,40,0.25);}
+.price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:9px;font-weight:800;padding:4px 14px;border-radius:20px;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;}
+.price-tier{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.price-card.featured .price-tier{color:rgba(255,255,255,0.45);}
+.price-amount{font-size:46px;font-weight:900;color:var(--navy);letter-spacing:-2.5px;line-height:1;margin-bottom:4px;}
+.price-card.featured .price-amount{color:var(--white);}
+.price-period{font-size:12px;color:var(--muted);margin-bottom:22px;}
+.price-card.featured .price-period{color:rgba(255,255,255,0.4);}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:22px;}
+.price-features li{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:var(--text);line-height:1.45;}
+.price-card.featured .price-features li{color:rgba(255,255,255,0.75);}
+.pchk{width:17px;height:17px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.price-card.featured .pchk{background:rgba(46,204,113,0.18);}
+.pchk svg{width:9px;height:9px;color:var(--green);}
+.price-card.featured .pchk svg{color:#2ECC71;}
+.price-target{font-size:11px;color:var(--muted);padding-top:14px;border-top:1px solid var(--border);}
+.price-card.featured .price-target{color:rgba(255,255,255,0.35);border-color:rgba(255,255,255,0.1);}
+.journey-steps{display:flex;align-items:stretch;gap:0;}
+.j-step{flex:1;padding:20px;background:var(--white);border:1px solid var(--border);border-right:none;position:relative;}
+.j-step:first-child{border-radius:12px 0 0 12px;}
+.j-step:last-child{border-radius:0 12px 12px 0;border-right:1px solid var(--border);}
+.j-step::after{content:'→';position:absolute;right:-13px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--muted);z-index:1;background:var(--white);width:26px;height:26px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:50%;}
+.j-step:last-child::after{display:none;}
+.j-num{font-size:9px;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+.j-name{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;line-height:1.3;}
+.j-price{font-size:12px;font-weight:700;color:var(--coral);margin-bottom:6px;}
+.j-desc{font-size:11px;color:var(--muted);line-height:1.55;}
+
+/* SECTION 04 - PERSONAS */
+.persona-wrap{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:36px;}
+.persona-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.persona-hd{padding:22px 26px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--border);}
+.persona-av{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--white);flex-shrink:0;}
+.av-g{background:var(--green);}.av-c{background:var(--coral);}
+.persona-name{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-0.3px;}
+.persona-role{font-size:12px;color:var(--muted);margin-top:2px;}
+.persona-badge{margin-left:auto;font-size:10px;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap;}
+.pb-primary{background:var(--green-light);color:var(--green);}
+.pb-secondary{background:var(--coral-light);color:#9B3018;}
+.persona-body{padding:22px 26px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.pcol-title{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;}
+.persona-stats{display:flex;flex-direction:column;gap:0;margin-bottom:14px;}
+.pstat{display:flex;justify-content:space-between;font-size:11px;padding:6px 0;border-bottom:1px solid var(--border);}
+.pstat:last-child{border-bottom:none;}
+.pstat-k{color:var(--muted);}
+.pstat-v{color:var(--text);font-weight:600;}
+.pain-list,.desire-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.pain-list li,.desire-list li{font-size:11px;color:var(--text);line-height:1.45;display:flex;align-items:flex-start;gap:7px;}
+.dot-pain{width:5px;height:5px;border-radius:50%;background:var(--coral);flex-shrink:0;margin-top:4px;}
+.dot-desire{width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:4px;}
+.persona-obj{padding:0 26px 22px;border-top:1px solid var(--border);}
+.pobj-title{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;padding-top:16px;margin-bottom:12px;}
+.obj-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;}
+.obj-q,.obj-a{font-size:11px;padding:9px 11px;border-radius:6px;line-height:1.5;}
+.obj-q{background:#FEF0EB;color:#7A2A10;border-left:3px solid var(--coral);}
+.obj-a{background:var(--green-light);color:#1A3D28;border-left:3px solid var(--green);}
+
+/* SECTION 05 - VOICE */
+.voice-words{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:36px;}
+.vw-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--navy);border-radius:12px;padding:26px;}
+.vw-word{font-size:30px;font-weight:900;color:var(--navy);letter-spacing:-1px;margin-bottom:10px;}
+.vw-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+.tone-bar-wrap{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:26px;margin-bottom:36px;}
+.tb-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:18px;}
+.tone-track{position:relative;height:8px;background:linear-gradient(to right,#BFDBFE,var(--navy));border-radius:4px;margin-bottom:10px;}
+.tone-knob{position:absolute;width:20px;height:20px;background:var(--white);border:3px solid var(--navy);border-radius:50%;top:50%;left:65%;transform:translate(-50%,-50%);box-shadow:0 2px 8px rgba(0,0,0,0.15);}
+.tone-lbls{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);font-weight:600;}
+.tone-pos{text-align:center;margin-top:8px;font-size:11px;font-weight:700;color:var(--navy);}
+.voice-contrast{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:36px;}
+.vc-this{background:var(--green-light);border:1px solid rgba(27,94,59,0.15);border-left:4px solid var(--green);border-radius:0 12px 12px 0;padding:22px;}
+.vc-not{background:var(--coral-light);border:1px solid rgba(200,80,42,0.15);border-left:4px solid var(--coral);border-radius:0 12px 12px 0;padding:22px;}
+.vc-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;}
+.vc-this .vc-lbl{color:var(--green);}
+.vc-not .vc-lbl{color:var(--coral);}
+.vc-text{font-size:13px;line-height:1.7;font-style:italic;}
+.vc-this .vc-text{color:#1A3D28;}
+.vc-not .vc-text{color:#7A2A10;}
+.sample-posts{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:36px;}
+.post-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px;}
+.post-plat{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.plat-dot{width:8px;height:8px;border-radius:50%;}
+.li-dot{background:#0A66C2;}.ig-dot{background:#E4405F;}
+.post-text{font-size:12px;color:var(--text);line-height:1.75;white-space:pre-line;}
+.lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.lang-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px;}
+.lang-title{font-size:11px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:7px;}
+.lang-use .lang-title{color:var(--green);}
+.lang-avoid .lang-title{color:var(--coral);}
+.ldot{width:8px;height:8px;border-radius:50%;}
+.lang-use .ldot{background:var(--green);}
+.lang-avoid .ldot{background:var(--coral);}
+.chips{display:flex;flex-wrap:wrap;gap:7px;}
+.chip{font-size:11px;font-weight:600;padding:4px 11px;border-radius:20px;}
+.lang-use .chip{background:var(--green-light);color:var(--green);}
+.lang-avoid .chip{background:var(--coral-light);color:#9B3018;}
+
+/* SECTION 06 - PILLARS */
+.pillars-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:44px;}
+.pillar-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:22px;transition:background 0.15s;}
+.pillar-card:hover{background:rgba(255,255,255,0.09);}
+.pl-num{font-size:38px;font-weight:900;color:rgba(255,255,255,0.07);line-height:1;margin-bottom:6px;}
+.pl-name{font-size:14px;font-weight:800;color:var(--white);line-height:1.3;margin-bottom:6px;}
+.pl-freq{font-size:10px;font-weight:700;color:var(--gold);margin-bottom:12px;}
+.pl-desc{font-size:11px;color:rgba(255,255,255,0.5);line-height:1.55;margin-bottom:14px;}
+.pl-topics{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.pl-topics li{font-size:10px;color:rgba(255,255,255,0.45);line-height:1.4;padding-left:12px;position:relative;}
+.pl-topics li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:9px;}
+.cal-table{width:100%;border-collapse:collapse;background:rgba(255,255,255,0.04);border-radius:12px;overflow:hidden;}
+.cal-table th{text-align:left;padding:13px 18px;font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1.5px;background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.06);}
+.cal-table td{padding:13px 18px;font-size:12px;color:rgba(255,255,255,0.7);border-bottom:1px solid rgba(255,255,255,0.05);vertical-align:top;}
+.cal-table tr:last-child td{border-bottom:none;}
+.plat-tag{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:0.5px;margin-right:3px;}
+.ptag-li{background:rgba(10,102,194,0.25);color:#7AB3E8;}
+.ptag-ig{background:rgba(228,64,95,0.2);color:#E87AA0;}
+.ptag-em{background:rgba(242,201,76,0.18);color:var(--gold);}
+.ptag-st{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.4);}
+
+/* SECTION 07 - JOURNEY */
+.timeline{display:flex;align-items:flex-start;gap:0;position:relative;margin-bottom:44px;overflow-x:auto;padding-bottom:8px;}
+.tl-step{flex:1;min-width:100px;display:flex;flex-direction:column;align-items:center;position:relative;}
+.tl-step:not(:last-child)::after{content:'';position:absolute;top:20px;left:50%;width:100%;height:2px;z-index:0;}
+.tl-step.done:not(:last-child)::after{background:var(--green);}
+.tl-step.current:not(:last-child)::after{background:linear-gradient(to right,var(--coral),var(--border));}
+.tl-step.future:not(:last-child)::after{background:var(--border);}
+.tl-node{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;position:relative;z-index:1;margin-bottom:10px;}
+.tl-step.done .tl-node{background:var(--green);color:var(--white);}
+.tl-step.current .tl-node{background:var(--coral);color:var(--white);box-shadow:0 0 0 6px rgba(200,80,42,0.15);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 6px rgba(200,80,42,0.15);}50%{box-shadow:0 0 0 14px rgba(200,80,42,0.04);}}
+.tl-step.future .tl-node{background:var(--white);border:2px dashed var(--border);color:var(--muted);}
+.tl-day{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;text-align:center;}
+.tl-step.done .tl-day{color:var(--green);}
+.tl-step.current .tl-day{color:var(--coral);}
+.tl-step.future .tl-day{color:var(--muted);}
+.tl-name{font-size:11px;font-weight:600;color:var(--navy);text-align:center;line-height:1.3;max-width:96px;}
+.tl-step.future .tl-name{color:var(--muted);}
+.tl-desc{font-size:10px;color:var(--muted);text-align:center;margin-top:3px;line-height:1.4;max-width:96px;}
+.yah-box{background:var(--coral-light);border:1px solid rgba(200,80,42,0.2);border-radius:8px;padding:12px 16px;text-align:center;font-size:12px;margin-top:12px;}
+.yah-box span{font-size:9px;color:var(--coral);font-weight:700;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:2px;}
+.next-box{background:var(--navy);border-radius:12px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.next-lbl{font-size:9px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:5px;}
+.next-title{font-size:19px;font-weight:800;color:var(--white);letter-spacing:-0.5px;}
+.next-desc{font-size:12px;color:rgba(255,255,255,0.5);margin-top:3px;}
+.next-cta{background:var(--coral);color:var(--white);font-size:13px;font-weight:700;padding:12px 24px;border-radius:8px;text-decoration:none;white-space:nowrap;}
+
+/* FOOTER */
+footer{background:var(--navy);padding:28px 64px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.ft-brand{font-size:15px;font-weight:800;color:var(--white);}
+.ft-brand span{color:var(--coral);}
+.ft-meta{font-size:11px;color:rgba(255,255,255,0.25);text-align:center;}
+.ft-ver{font-size:11px;color:rgba(255,255,255,0.2);}
+
+/* UTILS */
+.divider{height:1px;background:var(--border);margin:40px 0;}
+.sec-dark .divider{background:rgba(255,255,255,0.08);}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .sidebar{display:none;}
+  .main{margin-left:0;}
+  .sec,.hero{padding:56px 32px;}
+  .proof-bar,footer{padding:20px 32px;}
+  .hero-kpis{grid-template-columns:repeat(2,1fr);}
+  .hero-title{font-size:48px;}
+  .sec-title{font-size:32px;}
+  .brand-pillars,.voice-words{grid-template-columns:1fr;}
+  .values-grid{grid-template-columns:repeat(2,1fr);}
+  .comp-grid,.offer-split,.persona-wrap,.voice-contrast,.sample-posts,.lang-grid{grid-template-columns:1fr;}
+  .diff-grid{grid-template-columns:repeat(2,1fr);}
+  .mkt-stats{grid-template-columns:repeat(3,1fr);}
+  .pricing-cards{grid-template-columns:1fr;}
+  .price-card.featured{transform:none;}
+  .journey-steps{flex-direction:column;}
+  .j-step{border-radius:12px;border:1px solid var(--border);margin-bottom:8px;}
+  .j-step::after{display:none;}
+  .pillars-grid{grid-template-columns:repeat(2,1fr);}
+  .pb-stats{flex-wrap:wrap;gap:0;}
+  .pb-stat{padding:8px 12px;}
+  .pb-label{display:none;}
+}
+@media print{.sidebar,.next-cta{display:none;}.main{margin-left:0;}.hero{min-height:auto;}}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-brand">Pet<span>Joy</span></div>
+    <div class="sb-tag">Velocity Deliverable</div>
+  </div>
+  <div class="sb-section-label">Contents</div>
+  <nav class="sb-nav">
+    <a class="sb-link active" href="#hero" onclick="setActive(this)"><span class="sb-dot"></span>CEO Summary</a>
+    <a class="sb-link" href="#s01" onclick="setActive(this)"><span class="sb-num">01</span><span class="sb-dot"></span>Brand Strategy</a>
+    <a class="sb-link" href="#s02" onclick="setActive(this)"><span class="sb-num">02</span><span class="sb-dot"></span>Competitive Analysis</a>
+    <a class="sb-link" href="#s03" onclick="setActive(this)"><span class="sb-num">03</span><span class="sb-dot"></span>Offer Positioning</a>
+    <a class="sb-link" href="#s04" onclick="setActive(this)"><span class="sb-num">04</span><span class="sb-dot"></span>Target Audience</a>
+    <a class="sb-link" href="#s05" onclick="setActive(this)"><span class="sb-num">05</span><span class="sb-dot"></span>Voice &amp; Tone</a>
+    <a class="sb-link" href="#s06" onclick="setActive(this)"><span class="sb-num">06</span><span class="sb-dot"></span>Content Pillars</a>
+    <a class="sb-link" href="#s07" onclick="setActive(this)"><span class="sb-num">07</span><span class="sb-dot"></span>Journey Map</a>
+  </nav>
+  <div class="sb-foot">
+    <div class="sb-prep"><strong>Michelle Joy</strong>Founder &amp; CEO, PetJoy<br>Prepared April 2026</div>
+    <div class="confid">&#8212; Confidential</div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-eyebrow">Founder OS Velocity &mdash; Brand Positioning Strategy</div>
+  <h1 class="hero-title">Brand<em>Positioning.</em></h1>
+  <div class="hero-founder">
+    <div class="hero-avatar">MJ</div>
+    <div>
+      <div class="hero-founder-name">Michelle Joy</div>
+      <div class="hero-founder-role">Founder &amp; CEO &mdash; PetJoy | B2B Curated Pet Toy Subscriptions</div>
+    </div>
+    <div class="hero-date">Velocity Deliverable<br>April 9, 2026<br>v1.0 &mdash; Day 7</div>
+  </div>
+  <div class="hero-kpis">
+    <div class="kpi-card c1">
+      <div class="kpi-label">Current MRR</div>
+      <div class="kpi-value" data-count="40" data-prefix="$" data-suffix="K">$40K</div>
+      <div class="kpi-sub">200 active B2B subscribers<span class="kpi-tag tag-up">+18% MoM</span></div>
+    </div>
+    <div class="kpi-card c2">
+      <div class="kpi-label">12-Month Revenue Target</div>
+      <div class="kpi-value" data-count="150" data-prefix="$" data-suffix="K">$150K</div>
+      <div class="kpi-sub">MRR within 12 months<span class="kpi-tag tag-gap">3.75x lift</span></div>
+    </div>
+    <div class="kpi-card c3">
+      <div class="kpi-label">Total Addressable Market</div>
+      <div class="kpi-value" data-count="150" data-prefix="$" data-suffix="B">$150B</div>
+      <div class="kpi-sub">US Pet Industry &mdash; toys +17% YoY</div>
+    </div>
+    <div class="kpi-card c4">
+      <div class="kpi-label">Current Penetration</div>
+      <div class="kpi-value">0.3<span style="font-size:24px;letter-spacing:0">%</span></div>
+      <div class="kpi-sub">70,000 target accounts identified<span class="kpi-tag tag-gap">99.7% untapped</span></div>
+    </div>
+  </div>
+  <div class="hero-insight">
+    <div class="hero-insight-lbl">Key Insight</div>
+    <p>At $199/month average, capturing just <strong>1% of the 70,000 identified accounts</strong> produces <strong>$139,300 in monthly recurring revenue</strong> &mdash; before a single upsell to the Annual or White-Label tier. The market constraint is not demand. It is reach and trust.</p>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="pb-inner">
+    <div class="pb-label">Industry Context</div>
+    <div class="pb-stats">
+      <div class="pb-stat"><div class="pb-num">$150B</div><div class="pb-desc">US pet industry value (2026)</div></div>
+      <div class="pb-stat"><div class="pb-num">+17%</div><div class="pb-desc">Toy category YoY growth</div></div>
+      <div class="pb-stat"><div class="pb-num">38K</div><div class="pb-desc">Independent pet stores in the US</div></div>
+      <div class="pb-stat"><div class="pb-num">68%</div><div class="pb-desc">Independents with no trend intelligence</div></div>
+      <div class="pb-stat"><div class="pb-num">$3,192</div><div class="pb-desc">Avg monthly dead inventory cost per store</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 01: BRAND STRATEGY -->
+<section class="sec" id="s01">
+  <div class="sec-hd">
+    <div class="sec-num">Section 01</div>
+    <h2 class="sec-title">Brand Strategy</h2>
+    <p class="sec-sub">The foundational architecture that governs every decision PetJoy makes &mdash; from product selection to the language on an invoice.</p>
+    <div class="insight-box">
+      <div class="ib-lbl">Strategic Note</div>
+      <p>Most B2B pet product brands compete on price. PetJoy competes on <strong>curation certainty</strong> &mdash; the promise that every SKU has been pre-validated for sell-through. This is a defensible moat that price cuts cannot destroy.</p>
+    </div>
+  </div>
+
+  <div class="brand-pillars">
+    <div class="bp-card">
+      <div class="bp-lbl">Brand Archetype</div>
+      <div class="bp-val">The Curator</div>
+      <div class="bp-desc">PetJoy doesn't sell products &mdash; it edits the market. Every SKU Michelle Joy selects goes through a 7-point curation framework before it reaches a subscriber's door. The Curator archetype builds trust through discernment, not volume.</div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-lbl">Brand Energy</div>
+      <div class="bp-val">Confident Warmth</div>
+      <div class="bp-desc">The authority of a category expert combined with the care of a trusted supplier who has personally tested every product. Never cold. Never corporate. Warm like a partner who genuinely wants your store to win.</div>
+    </div>
+    <div class="bp-card">
+      <div class="bp-lbl">Brand Style</div>
+      <div class="bp-val">Premium Simplicity</div>
+      <div class="bp-desc">No clutter. No noise. Every touchpoint &mdash; from the unboxing experience to the monthly invoice &mdash; communicates that PetJoy respects the buyer's time and believes that simplicity is itself a luxury.</div>
+    </div>
+  </div>
+
+  <div class="mission-block">
+    <div class="mb-lbl">Mission Statement</div>
+    <div class="mb-text">"PetJoy exists to give independent pet store owners and veterinary clinics the curation intelligence that big-box retail pays millions to develop &mdash; delivered monthly, without the overhead."</div>
+  </div>
+
+  <div class="values-grid">
+    <div class="val-tile">
+      <span class="val-num">Value 01</span>
+      <div class="val-title">Curation Over Quantity</div>
+      <div class="val-proof">We evaluate 400+ SKUs per quarter and ship only the top 12. Every product earns its spot or it doesn't ship. "Enough selection to matter. Tight enough to trust."</div>
+    </div>
+    <div class="val-tile">
+      <span class="val-num">Value 02</span>
+      <div class="val-title">Independent First</div>
+      <div class="val-proof">Every feature, every pricing decision, every logistical choice is designed for the 38,000 independent operators &mdash; not the chains. If it works for PetSmart, it's not in the box.</div>
+    </div>
+    <div class="val-tile">
+      <span class="val-num">Value 03</span>
+      <div class="val-title">Radical Simplicity</div>
+      <div class="val-proof">Curated monthly. Ready to display. Zero research required on the buyer's end. The complexity exists inside PetJoy so it doesn't have to exist in your store.</div>
+    </div>
+    <div class="val-tile">
+      <span class="val-num">Value 04</span>
+      <div class="val-title">Joy Is the Product</div>
+      <div class="val-proof">The subscriber's unboxing experience is held to the same standard as the product inside. Every touchpoint &mdash; including the packing note &mdash; is considered. Joy is not a byproduct. It is the product.</div>
+    </div>
+  </div>
+
+  <div class="brand-promise">
+    <div class="bp-promise-lbl">The Brand Promise</div>
+    <div class="bp-promise-text">If a product we curate doesn't achieve at least 80% sell-through in your store within 30 days, we replace it &mdash; free. No questions. No paperwork. That's what it means to stand behind curation.</div>
+  </div>
+</section>
+
+<!-- SECTION 02: COMPETITIVE ANALYSIS -->
+<section class="sec sec-alt" id="s02">
+  <div class="sec-hd">
+    <div class="sec-num">Section 02</div>
+    <h2 class="sec-title">Competitive Analysis</h2>
+    <p class="sec-sub">Four categories of competition &mdash; mapped by threat level, weakness, and the specific PetJoy advantage over each.</p>
+    <div class="insight-box">
+      <div class="ib-lbl">Competitive Insight</div>
+      <p>PetJoy's only true direct competitor (PetPak B2B) has <strong>no founder-led curation story and no vet clinic vertical</strong>. Both gaps are structural advantages that cannot be copied quickly &mdash; they require trust built over time.</p>
+    </div>
+  </div>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="threat-stripe tm"></div>
+      <div class="comp-hd">
+        <div><div class="comp-name">BarkBox Wholesale</div><div class="comp-type">Direct Competitor &mdash; B2C Brand Testing B2B</div></div>
+        <div class="threat-badge tb-m">Medium Threat</div>
+      </div>
+      <div class="comp-desc">The largest subscription pet product brand in North America, with a $170M+ B2C business now testing wholesale channels. Strong brand recognition but built for mass retail, not independent curation.</div>
+      <div class="comp-rows">
+        <div class="comp-row"><span class="row-lbl rl-s">Strength</span><span class="comp-row-txt">Consumer brand trust &mdash; store owners' customers already recognize BarkBox</span></div>
+        <div class="comp-row"><span class="row-lbl rl-w">Weakness</span><span class="comp-row-txt">Product mix optimized for mass appeal, not independent store differentiation</span></div>
+        <div class="comp-row"><span class="row-lbl rl-p">PetJoy</span><span class="comp-row-txt">B2B-only model means subscriber stores never compete with BarkBox's D2C sales on the same product</span></div>
+      </div>
+    </div>
+    <div class="comp-card">
+      <div class="threat-stripe th"></div>
+      <div class="comp-hd">
+        <div><div class="comp-name">PetPak B2B</div><div class="comp-type">Direct Competitor &mdash; Closest Model Match</div></div>
+        <div class="threat-badge tb-h">High Threat</div>
+      </div>
+      <div class="comp-desc">A subscription-model competitor specifically targeting independent pet stores with curated monthly boxes. Closest competitive comparison with 800+ active subscribers and established distribution infrastructure.</div>
+      <div class="comp-rows">
+        <div class="comp-row"><span class="row-lbl rl-s">Strength</span><span class="comp-row-txt">Established B2B subscriber base and distribution infrastructure already in place</span></div>
+        <div class="comp-row"><span class="row-lbl rl-w">Weakness</span><span class="comp-row-txt">No vet clinic vertical, generic curation with no founder-led expertise signal</span></div>
+        <div class="comp-row"><span class="row-lbl rl-p">PetJoy</span><span class="comp-row-txt">Founder curation story + vet clinic expansion creates a 2x addressable market PetPak cannot reach</span></div>
+      </div>
+    </div>
+    <div class="comp-card">
+      <div class="threat-stripe tl"></div>
+      <div class="comp-hd">
+        <div><div class="comp-name">Fetch Supply Co</div><div class="comp-type">Indirect Competitor &mdash; Volume Wholesaler</div></div>
+        <div class="threat-badge tb-l">Low Threat</div>
+      </div>
+      <div class="comp-desc">A traditional pet product wholesaler competing for the same budget but not the same positioning. They sell volume. PetJoy sells curation certainty. Stores don't choose between them &mdash; they outgrow Fetch.</div>
+      <div class="comp-rows">
+        <div class="comp-row"><span class="row-lbl rl-s">Strength</span><span class="comp-row-txt">Deep product catalog and long-standing distributor relationships with margin leverage</span></div>
+        <div class="comp-row"><span class="row-lbl rl-w">Weakness</span><span class="comp-row-txt">No differentiation narrative &mdash; pure price competition with no sell-through guarantee</span></div>
+        <div class="comp-row"><span class="row-lbl rl-p">PetJoy</span><span class="comp-row-txt">Stores that subscribe to PetJoy stop sourcing their toy category from Fetch within 60 days on average</span></div>
+      </div>
+    </div>
+    <div class="comp-card">
+      <div class="threat-stripe tl"></div>
+      <div class="comp-hd">
+        <div><div class="comp-name">Traditional Wholesale</div><div class="comp-type">Legacy Category &mdash; Status Quo to Displace</div></div>
+        <div class="threat-badge tb-l">Low Threat</div>
+      </div>
+      <div class="comp-desc">Regional distributors with hundreds of SKUs and zero curation value. PetJoy is not competing with traditional wholesale &mdash; it is replacing it as the toy category source of truth for independent operators.</div>
+      <div class="comp-rows">
+        <div class="comp-row"><span class="row-lbl rl-s">Strength</span><span class="comp-row-txt">Entrenched relationships and established credit terms make switching feel risky</span></div>
+        <div class="comp-row"><span class="row-lbl rl-w">Weakness</span><span class="comp-row-txt">No trend intelligence, no merchandising support, no sell-through guarantees whatsoever</span></div>
+        <div class="comp-row"><span class="row-lbl rl-p">PetJoy</span><span class="comp-row-txt">The only brand that explicitly positions against traditional wholesale. Owning this narrative is the growth engine.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPETITIVE MAP SVG -->
+  <div class="map-wrap">
+    <div class="map-title">Competitive Positioning Map</div>
+    <div class="map-sub">Where PetJoy sits relative to every major category of competition across two axes that matter most to the independent buyer.</div>
+    <svg viewBox="0 0 640 440" class="map-svg" xmlns="http://www.w3.org/2000/svg">
+      <!-- Quadrant fills -->
+      <rect x="70" y="60" width="255" height="310" fill="#F9F9F9" opacity="0.8"/>
+      <rect x="325" y="60" width="255" height="155" fill="#E8F5EE" opacity="0.6"/>
+      <rect x="325" y="215" width="255" height="155" fill="#FFFBF0" opacity="0.5"/>
+      <rect x="70" y="215" width="255" height="155" fill="#F9F9F9" opacity="0.5"/>
+      <!-- Quadrant labels -->
+      <text x="197" y="88" text-anchor="middle" font-size="11" fill="#9CA3AF" font-family="Poppins,sans-serif" font-weight="600">Relationship Builders</text>
+      <text x="452" y="88" text-anchor="middle" font-size="11" fill="#1B5E3B" font-family="Poppins,sans-serif" font-weight="700">Market Leaders</text>
+      <text x="452" y="374" text-anchor="middle" font-size="11" fill="#9CA3AF" font-family="Poppins,sans-serif" font-weight="600">Product Specialists</text>
+      <text x="197" y="374" text-anchor="middle" font-size="11" fill="#9CA3AF" font-family="Poppins,sans-serif" font-weight="600">Commodity Players</text>
+      <!-- Grid dividers -->
+      <line x1="325" y1="60" x2="325" y2="370" stroke="#E5E7EB" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <line x1="70" y1="215" x2="580" y2="215" stroke="#E5E7EB" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <!-- Axes -->
+      <line x1="70" y1="370" x2="580" y2="370" stroke="#D1D5DB" stroke-width="1.5"/>
+      <line x1="70" y1="60" x2="70" y2="370" stroke="#D1D5DB" stroke-width="1.5"/>
+      <polygon points="580,370 568,364 568,376" fill="#D1D5DB"/>
+      <polygon points="70,60 64,72 76,72" fill="#D1D5DB"/>
+      <!-- Axis labels -->
+      <text x="325" y="408" text-anchor="middle" font-size="12" fill="#6B7280" font-family="Poppins,sans-serif" font-weight="600">Curation Quality</text>
+      <text x="22" y="215" text-anchor="middle" font-size="12" fill="#6B7280" font-family="Poppins,sans-serif" font-weight="600" transform="rotate(-90,22,215)">Relationship Depth</text>
+      <!-- Traditional Wholesale -->
+      <circle cx="172" cy="326" r="14" fill="#D1D5DB"/>
+      <text x="172" y="331" text-anchor="middle" font-size="10" font-weight="800" fill="#374151" font-family="Poppins,sans-serif">TW</text>
+      <text x="172" y="307" text-anchor="middle" font-size="10" fill="#9CA3AF" font-family="Poppins,sans-serif">Traditional Wholesale</text>
+      <!-- Fetch Supply -->
+      <circle cx="350" cy="286" r="14" fill="#FDE68A"/>
+      <text x="350" y="291" text-anchor="middle" font-size="10" font-weight="800" fill="#374151" font-family="Poppins,sans-serif">FS</text>
+      <text x="350" y="267" text-anchor="middle" font-size="10" fill="#9CA3AF" font-family="Poppins,sans-serif">Fetch Supply Co</text>
+      <!-- PetPak -->
+      <circle cx="256" cy="208" r="14" fill="#FCA5A5"/>
+      <text x="256" y="213" text-anchor="middle" font-size="10" font-weight="800" fill="#374151" font-family="Poppins,sans-serif">PP</text>
+      <text x="256" y="189" text-anchor="middle" font-size="10" fill="#9CA3AF" font-family="Poppins,sans-serif">PetPak B2B</text>
+      <!-- BarkBox -->
+      <circle cx="420" cy="218" r="14" fill="#FCA5A5"/>
+      <text x="420" y="223" text-anchor="middle" font-size="10" font-weight="800" fill="#374151" font-family="Poppins,sans-serif">BB</text>
+      <text x="420" y="199" text-anchor="middle" font-size="10" fill="#9CA3AF" font-family="Poppins,sans-serif">BarkBox Wholesale</text>
+      <!-- PetJoy (top right, dominant) -->
+      <circle cx="504" cy="90" r="22" fill="#0A1628"/>
+      <text x="504" y="95" text-anchor="middle" font-size="11" font-weight="800" fill="white" font-family="Poppins,sans-serif">PJ</text>
+      <text x="504" y="124" text-anchor="middle" font-size="12" fill="#0A1628" font-family="Poppins,sans-serif" font-weight="800">PetJoy</text>
+      <!-- Arrow to PetJoy -->
+      <path d="M504 68 L498 56 L510 56 Z" fill="#C8502A"/>
+      <!-- Quadrant arrow hint -->
+      <text x="558" y="76" text-anchor="middle" font-size="16" fill="#1B5E3B">&#8599;</text>
+    </svg>
+  </div>
+
+  <div class="diff-grid">
+    <div class="diff-card">
+      <div class="diff-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="diff-title">B2B-Exclusive Products</div>
+      <div class="diff-desc">Every SKU is sourced and licensed for independent B2B distribution only. Subscribers never find PetJoy products on Amazon or in PetSmart.</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+      <div class="diff-title">Founder-Led Curation</div>
+      <div class="diff-desc">Michelle Joy personally tests and approves every product. The founder's credibility is the brand's credibility &mdash; a trust signal no algorithm can replicate.</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <div class="diff-title">Display-Ready Merchandising</div>
+      <div class="diff-desc">Ships pre-merchandised with shelf-ready packaging and a printed placement guide. Store owners spend zero time on setup. Open the box, set the display, done.</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="diff-title">Margin-Protected Pricing</div>
+      <div class="diff-desc">Minimum $12 gross profit per unit at standard retail pricing. PetJoy does not sell below MAP. Subscriber margins are protected by contract.</div>
+    </div>
+  </div>
+
+  <div class="mkt-stats">
+    <div class="mkt-card"><div class="mkt-num">$150B</div><div class="mkt-lbl">US Pet Industry Value</div></div>
+    <div class="mkt-card"><div class="mkt-num">38K</div><div class="mkt-lbl">Independent Pet Stores</div></div>
+    <div class="mkt-card"><div class="mkt-num">32K</div><div class="mkt-lbl">US Vet Clinics</div></div>
+    <div class="mkt-card"><div class="mkt-num">0.3%</div><div class="mkt-lbl">Current Penetration</div></div>
+    <div class="mkt-card"><div class="mkt-num">$142M</div><div class="mkt-lbl">Serviceable Annual Market at Current Pricing</div></div>
+  </div>
+</section>
+
+<!-- SECTION 03: OFFER POSITIONING -->
+<section class="sec" id="s03">
+  <div class="sec-hd">
+    <div class="sec-num">Section 03</div>
+    <h2 class="sec-title">Offer Positioning</h2>
+    <p class="sec-sub">How PetJoy is framed for each buyer segment &mdash; and the pricing architecture designed to maximize long-term subscriber value.</p>
+    <div class="insight-box">
+      <div class="ib-lbl">Revenue Insight</div>
+      <p>At current subscriber mix, <strong>60% of Monthly subscribers upgrade to Annual within 90 days</strong>. Every Annual conversion adds $360/year in incremental revenue per account at zero additional acquisition cost.</p>
+    </div>
+  </div>
+
+  <div class="offer-split">
+    <div class="offer-card">
+      <div class="offer-for">For the Independent Store Owner</div>
+      <h3>"Curated monthly boxes that increase toy category sell-through by an average of 31%."</h3>
+      <p>PetJoy eliminates the research, the vendor meetings, the trade show guessing, and the buyer's remorse that come with traditional sourcing. The store owner gets a proven selection, a sell-through guarantee, and products their customers won't find on Amazon.</p>
+    </div>
+    <div class="offer-card">
+      <div class="offer-for">For the Veterinary Clinic</div>
+      <h3>"Vetted enrichment products that generate passive retail revenue without any active selling."</h3>
+      <p>The Clinic Edition ships only vet-approved enrichment and wellness toys &mdash; nothing controversial, nothing that contradicts clinical guidance. Clinics average $340/month in additional retail revenue with a single monthly delivery and a single display unit.</p>
+    </div>
+  </div>
+
+  <div class="pricing-cards">
+    <div class="price-card">
+      <div class="price-tier">Monthly</div>
+      <div class="price-amount">$199</div>
+      <div class="price-period">per month &mdash; cancel anytime</div>
+      <ul class="price-features">
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>12 curated SKUs monthly</li>
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>80% sell-through guarantee</li>
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Quarterly trend report</li>
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Display-ready merchandising</li>
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Email support</li>
+      </ul>
+      <div class="price-target">Target: Entry point. First 90-day subscriber journey.</div>
+    </div>
+    <div class="price-card featured">
+      <div class="price-badge">Most Popular</div>
+      <div class="price-tier">Annual</div>
+      <div class="price-amount">$169</div>
+      <div class="price-period">per month &mdash; billed $2,028 annually</div>
+      <ul class="price-features">
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Everything in Monthly</li>
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Priority SKU selection access</li>
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Dedicated account manager</li>
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Quarterly business review call</li>
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Early access to trending products</li>
+      </ul>
+      <div class="price-target">Target: 60% of Monthly subscribers upgrade within 90 days.</div>
+    </div>
+    <div class="price-card">
+      <div class="price-tier">White-Label Partner</div>
+      <div class="price-amount">$349<span style="font-size:18px;letter-spacing:0;font-weight:600">+</span></div>
+      <div class="price-period">per month &mdash; custom contract</div>
+      <ul class="price-features">
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Everything in Annual</li>
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Branded as your "Private Collection"</li>
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Custom SKU curation for your market</li>
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Exclusivity by zip code</li>
+        <li><div class="pchk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>MAP-protected pricing contract</li>
+      </ul>
+      <div class="price-target">Target: Premium tier for multi-location operators and clinic groups.</div>
+    </div>
+  </div>
+
+  <div class="journey-steps">
+    <div class="j-step">
+      <div class="j-num">Step 01 &mdash; Entry</div>
+      <div class="j-name">Free Trial Box</div>
+      <div class="j-price">$0</div>
+      <div class="j-desc">One curated box with 6 SKUs. No credit card. Converts at 61% to Monthly subscription within 30 days.</div>
+    </div>
+    <div class="j-step">
+      <div class="j-num">Step 02 &mdash; Core</div>
+      <div class="j-name">Monthly Subscription</div>
+      <div class="j-price">$199/month</div>
+      <div class="j-desc">Full 12-SKU monthly box with sell-through guarantee. Standard entry contract. 60-day average time to upgrade.</div>
+    </div>
+    <div class="j-step">
+      <div class="j-num">Step 03 &mdash; Retain</div>
+      <div class="j-name">Annual Contract</div>
+      <div class="j-price">$169/month</div>
+      <div class="j-desc">Lock-in at discount. LTV triples. 83% renewal rate at year-end due to relationship depth and sell-through consistency.</div>
+    </div>
+    <div class="j-step">
+      <div class="j-num">Step 04 &mdash; Partner</div>
+      <div class="j-name">White-Label Partnership</div>
+      <div class="j-price">$349+/month</div>
+      <div class="j-desc">Long-term strategic partnership. Subscriber becomes a "PetJoy-powered" brand in their market. Highest LTV segment.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04: TARGET AUDIENCE -->
+<section class="sec sec-alt" id="s04">
+  <div class="sec-hd">
+    <div class="sec-num">Section 04</div>
+    <h2 class="sec-title">Target Audience</h2>
+    <p class="sec-sub">Two distinct buyer personas &mdash; each with a different pain hierarchy, decision timeline, and path to conversion.</p>
+  </div>
+
+  <div class="persona-wrap">
+    <!-- PERSONA 1 -->
+    <div class="persona-card">
+      <div class="persona-hd">
+        <div class="persona-av av-g">SC</div>
+        <div>
+          <div class="persona-name">Sarah Chen</div>
+          <div class="persona-role">Independent Pet Store Owner</div>
+        </div>
+        <div class="persona-badge pb-primary">Primary ICP</div>
+      </div>
+      <div class="persona-body">
+        <div>
+          <div class="pcol-title">Demographics</div>
+          <div class="persona-stats">
+            <div class="pstat"><span class="pstat-k">Age</span><span class="pstat-v">35&ndash;55</span></div>
+            <div class="pstat"><span class="pstat-k">Revenue</span><span class="pstat-v">$400K&ndash;$1.5M</span></div>
+            <div class="pstat"><span class="pstat-k">Team Size</span><span class="pstat-v">1&ndash;3 employees</span></div>
+            <div class="pstat"><span class="pstat-k">In Business</span><span class="pstat-v">8+ years</span></div>
+            <div class="pstat"><span class="pstat-k">Market</span><span class="pstat-v">Suburban, independent</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="pcol-title">Top Pain Points</div>
+          <ul class="pain-list">
+            <li><div class="dot-pain"></div>Dead inventory eating $3K+/month in locked capital</li>
+            <li><div class="dot-pain"></div>No time to research what toys are actually trending</li>
+            <li><div class="dot-pain"></div>Vendor reps pushing volume, not curation</li>
+            <li><div class="dot-pain"></div>Can't compete with PetSmart on price</li>
+            <li><div class="dot-pain"></div>Products that sell well sell out; the wrong ones linger</li>
+          </ul>
+          <div class="pcol-title" style="margin-top:14px;">Core Desires</div>
+          <ul class="desire-list">
+            <li><div class="dot-desire"></div>Consistent 80%+ sell-through in toy category</li>
+            <li><div class="dot-desire"></div>Products customers ask for by name</li>
+            <li><div class="dot-desire"></div>Zero research time spent on toy selection</li>
+            <li><div class="dot-desire"></div>Something PetSmart doesn't carry</li>
+            <li><div class="dot-desire"></div>A supplier who backs their curation with a guarantee</li>
+          </ul>
+        </div>
+      </div>
+      <div class="persona-obj">
+        <div class="pobj-title">Top Objections &amp; Responses</div>
+        <div class="obj-row">
+          <div class="obj-q">"I already have suppliers I'm happy with."</div>
+          <div class="obj-a">Most subscribers keep existing suppliers and use PetJoy exclusively for the toy and novelty category. It's additive, not a replacement.</div>
+        </div>
+        <div class="obj-row">
+          <div class="obj-q">"What if the products don't sell?"</div>
+          <div class="obj-a">The 30-day 80% sell-through guarantee means you never absorb a failed order. We replace it free. No questions, no paperwork.</div>
+        </div>
+        <div class="obj-row">
+          <div class="obj-q">"I can't afford another subscription."</div>
+          <div class="obj-a">The average subscriber sees $892/month in incremental toy category revenue within 60 days. The subscription pays for itself in week three.</div>
+        </div>
+      </div>
+    </div>
+    <!-- PERSONA 2 -->
+    <div class="persona-card">
+      <div class="persona-hd">
+        <div class="persona-av av-c">JO</div>
+        <div>
+          <div class="persona-name">Dr. James Ortiz</div>
+          <div class="persona-role">Veterinary Clinic Manager</div>
+        </div>
+        <div class="persona-badge pb-secondary">Expansion ICP</div>
+      </div>
+      <div class="persona-body">
+        <div>
+          <div class="pcol-title">Demographics</div>
+          <div class="persona-stats">
+            <div class="pstat"><span class="pstat-k">Age</span><span class="pstat-v">40&ndash;60</span></div>
+            <div class="pstat"><span class="pstat-k">Clinic Revenue</span><span class="pstat-v">$800K&ndash;$3M</span></div>
+            <div class="pstat"><span class="pstat-k">Vets on Staff</span><span class="pstat-v">2&ndash;5</span></div>
+            <div class="pstat"><span class="pstat-k">Retail Today</span><span class="pstat-v">Low or none</span></div>
+            <div class="pstat"><span class="pstat-k">Market</span><span class="pstat-v">Urban/suburban</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="pcol-title">Top Pain Points</div>
+          <ul class="pain-list">
+            <li><div class="dot-pain"></div>Retail products sit on shelves &mdash; clients don't buy them</li>
+            <li><div class="dot-pain"></div>No time or expertise to manage product sourcing</li>
+            <li><div class="dot-pain"></div>Medical margins compressing year over year</li>
+            <li><div class="dot-pain"></div>Clients asking for enrichment recommendations, no easy answer</li>
+            <li><div class="dot-pain"></div>Retail feels like a distraction from the clinical mission</li>
+          </ul>
+          <div class="pcol-title" style="margin-top:14px;">Core Desires</div>
+          <ul class="desire-list">
+            <li><div class="dot-desire"></div>Passive retail revenue with zero active selling</div></li>
+            <li><div class="dot-desire"></div>Products that clinically credible vets can recommend</li>
+            <li><div class="dot-desire"></div>Simple: one delivery, one display, done</li>
+            <li><div class="dot-desire"></div>Client satisfaction and repeat visit triggers</li>
+            <li><div class="dot-desire"></div>Something that differentiates the clinic from a generic vet</li>
+          </ul>
+        </div>
+      </div>
+      <div class="persona-obj">
+        <div class="pobj-title">Top Objections &amp; Responses</div>
+        <div class="obj-row">
+          <div class="obj-q">"We're a clinic, not a pet store."</div>
+          <div class="obj-a">The Clinic Edition contains only enrichment and wellness toys &mdash; products vets already recommend verbally. PetJoy makes those recommendations purchasable at checkout.</div>
+        </div>
+        <div class="obj-row">
+          <div class="obj-q">"My staff doesn't have bandwidth."</div>
+          <div class="obj-a">One delivery per month. One display unit. Zero reordering. The entire program takes 20 minutes of staff time per month maximum.</div>
+        </div>
+        <div class="obj-row">
+          <div class="obj-q">"How do I know clients will actually buy?"</div>
+          <div class="obj-a">Our Clinic subscribers average $340/month in additional retail revenue with zero active selling by staff. Products move because clients trust the clinical endorsement.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 05: VOICE & TONE -->
+<section class="sec" id="s05">
+  <div class="sec-hd">
+    <div class="sec-num">Section 05</div>
+    <h2 class="sec-title">Voice &amp; Tone Guide</h2>
+    <p class="sec-sub">How PetJoy sounds in every context &mdash; from a LinkedIn post to an invoice email. Consistency here is what makes a brand feel premium.</p>
+  </div>
+
+  <div class="voice-words">
+    <div class="vw-card">
+      <div class="vw-word">Warm</div>
+      <div class="vw-desc">Warm doesn't mean soft. It means treating the store owner as an intelligent partner, not a transaction. PetJoy speaks the way an experienced buyer friend would speak &mdash; candid, helpful, never condescending. The tone that says "I've already done the research so you don't have to."</div>
+    </div>
+    <div class="vw-card">
+      <div class="vw-word">Sharp</div>
+      <div class="vw-desc">Sharp means one idea per sentence. Sharp means no filler words. Sharp means the store owner knows the point of the message within the first two lines. PetJoy never buries the lead. The data point comes before the explanation, always.</div>
+    </div>
+    <div class="vw-card">
+      <div class="vw-word">Joyful</div>
+      <div class="vw-desc">Joy isn't frivolous &mdash; it's the brand's core value expressed in every interaction. The unboxing should feel like Christmas morning. The invoice email should not feel like a dentist appointment. There is always room for one line that makes a store owner smile.</div>
+    </div>
+  </div>
+
+  <div class="tone-bar-wrap">
+    <div class="tb-title">Tone Spectrum &mdash; Where PetJoy Lives</div>
+    <div class="tone-track"><div class="tone-knob"></div></div>
+    <div class="tone-lbls"><span>Fully Casual</span><span>Fully Corporate</span></div>
+    <div class="tone-pos">PetJoy sits at 65% professional, 35% casual &mdash; expert enough to be trusted, human enough to be liked.</div>
+  </div>
+
+  <div class="voice-contrast">
+    <div class="vc-this">
+      <div class="vc-lbl">&#10003; The PetJoy Way</div>
+      <div class="vc-text">"847 SKUs evaluated. 12 shipped. That's how we decide what lands in your store this month. Here's why store #47 in Denver moved all of them in under 3 weeks."</div>
+      <div style="margin-top:12px;"></div>
+      <div class="vc-text">"Your customers are about to ask for ChewMax Natural Antler Rings. You'll want to be the store that has them."</div>
+    </div>
+    <div class="vc-not">
+      <div class="vc-lbl">&#10007; What to Avoid</div>
+      <div class="vc-text">"We are pleased to announce our Q2 product selection has been carefully curated by our team of experts to ensure maximum retail performance for your valued customers."</div>
+      <div style="margin-top:12px;"></div>
+      <div class="vc-text">"The ChewMax Natural Antler Ring has been identified as a trending product category with significant consumer interest across multiple demographic segments."</div>
+    </div>
+  </div>
+
+  <div class="sample-posts">
+    <div class="post-card platform-linkedin">
+      <div class="post-plat"><div class="plat-dot li-dot"></div>LinkedIn Sample Post</div>
+      <div class="post-text">847 SKUs evaluated.
+12 shipped.
+
+That's how we decide what lands in your store this month.
+
+Every toy we curate passes our 7-point sell-through framework:
+→ Verified demand (real sales data, not trade show buzz)
+→ B2B-exclusive &mdash; not available at PetSmart or on Amazon
+→ $12+ gross profit per unit at standard retail
+→ Ships display-ready (no setup required)
+→ Vet-approved for any enrichment claim made on packaging
+→ 80% sell-through guarantee trigger confirmed
+→ Michelle's personal endorsement (she tests every product)
+
+We're not a distributor. We're your curator.
+
+What's your biggest frustration with your current toy buying process?</div>
+    </div>
+    <div class="post-card platform-ig">
+      <div class="post-plat"><div class="plat-dot ig-dot"></div>Instagram Caption</div>
+      <div class="post-text">Riverside Pet Supply sold out in 11 days. 🐾
+
+The ChewMax Natural Antler Ring wasn't on any trade show top-10 list.
+
+It came from real-time sell-through data across 200 partner stores.
+
+That's the PetJoy difference &mdash; we don't guess what's trending.
+We track it.
+
+Tag a store owner who deserves this in their inventory.
+
+#IndependentPetStore #PetRetail #PetJoy #CuratedForYou #PetBusiness</div>
+    </div>
+  </div>
+
+  <div class="lang-grid">
+    <div class="lang-card lang-use">
+      <div class="lang-title"><div class="ldot"></div>Words That Build Trust</div>
+      <div class="chips">
+        <span class="chip">curator</span><span class="chip">sell-through</span><span class="chip">data-backed</span><span class="chip">franchise-free</span><span class="chip">margin-protected</span><span class="chip">vetted</span><span class="chip">enrichment</span><span class="chip">independent</span><span class="chip">hand-selected</span><span class="chip">results-tracked</span><span class="chip">founder-approved</span><span class="chip">partner</span>
+      </div>
+    </div>
+    <div class="lang-card lang-avoid">
+      <div class="lang-title"><div class="ldot"></div>Words That Erode Trust</div>
+      <div class="chips">
+        <span class="chip">synergy</span><span class="chip">leverage</span><span class="chip">robust</span><span class="chip">seamless</span><span class="chip">revolutionary</span><span class="chip">disrupt</span><span class="chip">world-class</span><span class="chip">ecosystem</span><span class="chip">best-in-class</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06: CONTENT PILLARS -->
+<section class="sec sec-dark" id="s06">
+  <div class="sec-hd">
+    <div class="sec-num">Section 06</div>
+    <h2 class="sec-title">Content Pillars</h2>
+    <p class="sec-sub">Five pillars that cover every angle of authority. Each has a primary platform, a distinct purpose, and a specific posting cadence.</p>
+  </div>
+
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <div class="pl-num">01</div>
+      <div class="pl-name">Behind the Curation</div>
+      <div class="pl-freq">3x / week &mdash; LinkedIn</div>
+      <div class="pl-desc">The weekly decision-making process of a B2B curator. Shows methodology, builds trust, and demonstrates that PetJoy's selections are earned, not guessed.</div>
+      <ul class="pl-topics">
+        <li>How we rejected the #1 trade show toy this quarter</li>
+        <li>The 7-point curation framework, explained</li>
+        <li>Why we pulled a product after 30 days</li>
+        <li>The data signal that called this quarter's #1 seller</li>
+        <li>Our worst curation mistake and what we learned</li>
+        <li>How Michelle tests every product before it ships</li>
+      </ul>
+    </div>
+    <div class="pillar-card">
+      <div class="pl-num">02</div>
+      <div class="pl-name">Independent Retail Playbook</div>
+      <div class="pl-freq">2x / week &mdash; LinkedIn</div>
+      <div class="pl-desc">Practical, data-driven advice for independent pet store owners. Positions PetJoy as a category intelligence partner, not just a supplier.</div>
+      <ul class="pl-topics">
+        <li>The sell-through rate every toy category should hit</li>
+        <li>How to turn 200 SKUs into 80 winners</li>
+        <li>Dead inventory: your real monthly cost revealed</li>
+        <li>The 70/20/10 buying framework for independents</li>
+        <li>Setting up a toy display that drives impulse buys</li>
+        <li>What big box data says about Q3 trends</li>
+      </ul>
+    </div>
+    <div class="pillar-card">
+      <div class="pl-num">03</div>
+      <div class="pl-name">Store Spotlights</div>
+      <div class="pl-freq">1x / week LinkedIn &bull; 2x / week Instagram</div>
+      <div class="pl-desc">Real subscriber stories with real numbers. The most direct form of social proof available &mdash; store owners trust other store owners more than they trust brands.</div>
+      <ul class="pl-topics">
+        <li>How Riverside Pet Supply doubled toy revenue in 90 days</li>
+        <li>Wild Paws Emporium's first PetJoy unboxing</li>
+        <li>The Denver store that sold out in 11 days</li>
+        <li>A vet clinic that added $340/month with one display</li>
+        <li>Before/after: a store's toy section transformation</li>
+        <li>Why Marcus stopped ordering from his wholesaler</li>
+      </ul>
+    </div>
+    <div class="pillar-card">
+      <div class="pl-num">04</div>
+      <div class="pl-name">Founder Journey</div>
+      <div class="pl-freq">1x / week LinkedIn &bull; 1x / week Instagram</div>
+      <div class="pl-desc">Michelle Joy's personal story, decisions, and perspective. Builds founder brand while humanizing PetJoy into something a buyer wants to root for.</div>
+      <ul class="pl-topics">
+        <li>Why I left the industry to solve its curation problem</li>
+        <li>The moment I realized stores were flying blind</li>
+        <li>How I test every product before it ships</li>
+        <li>Why I turned down Petco as a client</li>
+        <li>The mistake that almost ended PetJoy in month 3</li>
+        <li>What 200 store owners taught me about buying</li>
+      </ul>
+    </div>
+    <div class="pillar-card">
+      <div class="pl-num">05</div>
+      <div class="pl-name">Industry Intelligence</div>
+      <div class="pl-freq">1x / week &mdash; LinkedIn</div>
+      <div class="pl-desc">Trend data, market insights, and category analysis. Positions PetJoy as the intelligence layer of the industry &mdash; the source of truth on what's actually selling.</div>
+      <ul class="pl-topics">
+        <li>Q2 2026 toy category trend report (preview)</li>
+        <li>Why vet clinic retail is the next growth channel</li>
+        <li>5 toy categories declining in independent stores</li>
+        <li>What Gen Z pet owners buy that Boomers don't</li>
+        <li>Trade show vs real data: the gap is widening</li>
+        <li>3 metrics every pet store buyer should track</li>
+      </ul>
+    </div>
+  </div>
+
+  <table class="cal-table">
+    <thead>
+      <tr><th>Platform</th><th>Weekly Frequency</th><th>Pillar Mix</th><th>Primary Goal</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="plat-tag ptag-li">LinkedIn</span></td>
+        <td>8&ndash;10 posts / week</td>
+        <td>All 5 pillars rotating. Intelligence + Curation lead.</td>
+        <td>Awareness, inbound inquiries, subscriber acquisition</td>
+      </tr>
+      <tr>
+        <td><span class="plat-tag ptag-ig">Instagram</span></td>
+        <td>3 posts / week</td>
+        <td>Store Spotlights (2x) + Founder Journey (1x)</td>
+        <td>Brand trust, community, referral amplification</td>
+      </tr>
+      <tr>
+        <td><span class="plat-tag ptag-em">Newsletter</span></td>
+        <td>1x / week (Tuesday)</td>
+        <td>1 trend insight + 1 store spotlight + 1 curation preview</td>
+        <td>Subscriber retention, upgrade conversion</td>
+      </tr>
+      <tr>
+        <td><span class="plat-tag ptag-st">Stories</span></td>
+        <td>Daily</td>
+        <td>Behind-the-scenes curation, packing days, product testing</td>
+        <td>Algorithm reach, founder humanization</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SECTION 07: FOUNDER OS JOURNEY -->
+<section class="sec" id="s07">
+  <div class="sec-hd">
+    <div class="sec-num">Section 07</div>
+    <h2 class="sec-title">Founder OS Journey</h2>
+    <p class="sec-sub">Where you are in the Velocity program and what comes next. Each phase builds on the last &mdash; brand feeds content, content feeds revenue, revenue feeds conversion.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-step done">
+      <div class="tl-node">&#10003;</div>
+      <div class="tl-day">Day 1</div>
+      <div class="tl-name">Brand Deep Dive</div>
+      <div class="tl-desc">60-min call. Voice &amp; vision captured. Fathom transcript complete.</div>
+    </div>
+    <div class="tl-step current">
+      <div class="tl-node">7</div>
+      <div class="tl-day">Day 7</div>
+      <div class="tl-name">Brand Positioning</div>
+      <div class="tl-desc">This document. Complete brand strategy, competitive map, and voice guide.</div>
+    </div>
+    <div class="tl-step future">
+      <div class="tl-node">21</div>
+      <div class="tl-day">Day 21</div>
+      <div class="tl-name">Content GPS</div>
+      <div class="tl-desc">Buyer funnel map, 5 pillars, 200+ custom hooks in your voice.</div>
+    </div>
+    <div class="tl-step future">
+      <div class="tl-node">30</div>
+      <div class="tl-day">Day 30</div>
+      <div class="tl-name">Content Machine</div>
+      <div class="tl-desc">LinkedIn posts, carousels, infographics, 4-week calendar. All live on Vercel.</div>
+    </div>
+    <div class="tl-step future">
+      <div class="tl-node">45</div>
+      <div class="tl-day">Day 45</div>
+      <div class="tl-name">Revenue Engine</div>
+      <div class="tl-desc">VSL script, email sequences, offer stack, 3 lead magnets with landing pages.</div>
+    </div>
+    <div class="tl-step future">
+      <div class="tl-node">60</div>
+      <div class="tl-day">Day 60</div>
+      <div class="tl-name">Conversion Assets</div>
+      <div class="tl-desc">Landing page, 10-slide sales deck, workshop script, KPI dashboard.</div>
+    </div>
+    <div class="tl-step future">
+      <div class="tl-node">75+</div>
+      <div class="tl-day">Day 75+</div>
+      <div class="tl-name">Leadership Blueprint</div>
+      <div class="tl-desc">Thought leadership architecture. Podcast, speaking, media positioning.</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-bottom:28px;">
+    <div class="yah-box">
+      <span>You are here &mdash; Day 7</span>
+      Brand Positioning complete. Next: Content GPS builds directly on this document at Day 21.
+    </div>
+  </div>
+
+  <div class="next-box">
+    <div>
+      <div class="next-lbl">Coming Next &mdash; Day 21</div>
+      <div class="next-title">Content GPS + 200 Custom Hooks</div>
+      <div class="next-desc">Your 5-pillar content strategy, buyer funnel map, and a library of 200+ hooks written in Michelle's voice &mdash; using every insight captured in this document as the input.</div>
+    </div>
+    <a href="#" class="next-cta">See the Program &#8594;</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-brand">Pet<span>Joy</span></div>
+  <div class="ft-meta">Founder OS Velocity &mdash; Brand Positioning v1.0 &bull; Prepared for Michelle Joy &bull; April 9, 2026</div>
+  <div class="ft-ver">Confidential &mdash; Do not distribute</div>
+</footer>
+
+</main>
+</div>
+
+<script>
+// Sidebar active link
+function setActive(el){
+  document.querySelectorAll('.sb-link').forEach(l=>l.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Scroll spy
+const sections=['hero','s01','s02','s03','s04','s05','s06','s07'];
+const links=document.querySelectorAll('.sb-link');
+function onScroll(){
+  let current='hero';
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&window.scrollY>=el.offsetTop-120)current=id;
+  });
+  links.forEach(l=>{
+    l.classList.remove('active');
+    if(l.getAttribute('href')==='#'+current)l.classList.add('active');
+  });
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+
+// Counter animation
+function animateCounters(){
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const target=parseInt(el.getAttribute('data-count'));
+    const prefix=el.getAttribute('data-prefix')||'';
+    const suffix=el.getAttribute('data-suffix')||'';
+    const dur=1200;
+    const start=performance.now();
+    function frame(now){
+      const pct=Math.min((now-start)/dur,1);
+      const ease=1-Math.pow(1-pct,3);
+      el.textContent=prefix+Math.round(ease*target)+suffix;
+      if(pct<1)requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  });
+}
+// Trigger on first paint
+const observer=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){animateCounters();observer.disconnect();}
+},{threshold:0.3});
+const heroEl=document.getElementById('hero');
+if(heroEl)observer.observe(heroEl);
+</script>
+</body>
+</html>
