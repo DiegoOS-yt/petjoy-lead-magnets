@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The B2B Pet Retail Playbook — Free 20-Page Guide from PetJoy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #0F1F3D;
+    --navy-light: #1A2F50;
+    --coral: #C8502A;
+    --coral-light: #FFF0EB;
+    --gold: #F2C94C;
+    --gold-light: #FEF9E7;
+    --green: #1B5E3B;
+    --green-light: #E8F5EE;
+    --bg: #FAFAF7;
+    --text: #1A2332;
+    --muted: #6B7280;
+    --border: #E5E7EB;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-logo { font-size: 20px; font-weight: 800; color: var(--navy); text-decoration: none; letter-spacing: -0.5px; }
+  .nav-logo span { color: var(--coral); }
+
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .nav-link { font-size: 14px; color: var(--muted); text-decoration: none; }
+  .nav-link:hover { color: var(--navy); }
+
+  .nav-cta {
+    background: var(--navy);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--navy-mid); }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 80px 40px 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero::before {
+    content: 'B2B';
+    position: absolute;
+    right: -10px;
+    top: -20px;
+    font-size: 280px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 60px;
+    align-items: flex-end;
+  }
+
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(242,201,76,0.15);
+    border: 1px solid rgba(242,201,76,0.35);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero-label::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .hero-title {
+    font-size: 52px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 520px;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .hero-meta-item svg { opacity: 0.6; flex-shrink: 0; }
+
+  .hero-cta-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--coral);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 32px;
+    border-radius: 10px;
+    text-decoration: none;
+    letter-spacing: -0.3px;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(200,80,42,0.4); }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 16px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.18);
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.15); }
+
+  /* PLAYBOOK PREVIEW CARD */
+  .hero-book {
+    position: relative;
+    padding-bottom: 0;
+  }
+
+  .book-card {
+    background: linear-gradient(135deg, var(--navy-light) 0%, #0D1C3A 100%);
+    border-radius: 16px 16px 0 0;
+    padding: 32px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-bottom: none;
+    position: relative;
+    overflow: hidden;
+    min-height: 360px;
+  }
+
+  .book-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(180deg, var(--coral) 0%, var(--gold) 100%);
+  }
+
+  .book-watermark {
+    position: absolute;
+    right: -8px;
+    bottom: -16px;
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .book-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .book-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+
+  .book-subtitle {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .book-toc {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .book-toc li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+  }
+
+  .toc-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    background: rgba(242,201,76,0.12);
+    min-width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .book-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .book-pages {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 500;
+  }
+
+  .book-logo {
+    font-size: 14px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.5);
+  }
+  .book-logo span { color: var(--coral); }
+
+  /* PROOF BAR */
+  .proof-bar {
+    background: var(--navy-mid);
+    padding: 20px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .proof-bar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .proof-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .proof-divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .proof-stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .proof-stat {
+    text-align: center;
+  }
+
+  .proof-stat-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+
+  .proof-stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 3px;
+    white-space: nowrap;
+  }
+
+  /* SECTION BASE */
+  .section {
+    padding: 80px 40px;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--coral);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+
+  .section-subtitle {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 560px;
+  }
+
+  /* PROBLEM SECTION */
+  .problem-section {
+    background: var(--bg);
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .problem-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+  }
+
+  .problem-icon {
+    width: 44px;
+    height: 44px;
+    background: #FEF0EC;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .problem-icon svg { color: var(--coral); }
+
+  .problem-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .problem-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* CHAPTERS SECTION */
+  .chapters-section {
+    background: var(--white);
+  }
+
+  .chapters-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 48px;
+  }
+
+  .chapter-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .chapter-item:hover {
+    border-color: var(--navy);
+    box-shadow: 0 4px 16px rgba(10,22,40,0.08);
+  }
+
+  .chapter-num {
+    width: 40px;
+    height: 40px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 800;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .chapter-content h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .chapter-content p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .chapter-tag {
+    display: inline-block;
+    background: var(--gold-light);
+    color: #7A5A00;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* PREVIEW SECTION */
+  .preview-section {
+    background: var(--bg);
+  }
+
+  .preview-layout {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 60px;
+    align-items: center;
+    margin-top: 48px;
+  }
+
+  .preview-checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .preview-checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .check-icon {
+    width: 22px;
+    height: 22px;
+    background: var(--green-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .check-icon svg { color: var(--green); }
+
+  .preview-card {
+    background: var(--navy);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .preview-card-header {
+    background: linear-gradient(135deg, var(--navy-light), #0D1C3A);
+    padding: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .preview-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+  }
+
+  .preview-card-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .framework-box {
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .framework-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .framework-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .framework-cell {
+    background: rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .framework-pct {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .framework-name {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 3px;
+    line-height: 1.3;
+  }
+
+  .kpi-box {
+    padding: 20px 24px;
+  }
+
+  .kpi-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .kpi-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .kpi-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .kpi-name {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .kpi-bar-wrap {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 3px;
+    margin: 0 12px;
+    overflow: hidden;
+  }
+
+  .kpi-bar {
+    height: 100%;
+    border-radius: 3px;
+  }
+
+  .kpi-val {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    min-width: 40px;
+    text-align: right;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-section {
+    background: var(--navy);
+    padding: 80px 40px;
+  }
+
+  .testimonials-section .section-eyebrow { color: var(--gold); }
+  .testimonials-section .section-title { color: var(--white); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .testimonial-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 28px;
+    position: relative;
+  }
+
+  .testimonial-quote {
+    font-size: 40px;
+    line-height: 1;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-family: Georgia, serif;
+  }
+
+  .testimonial-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-result {
+    background: rgba(242,201,76,0.1);
+    border-left: 3px solid var(--gold);
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .author-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .author-store {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 2px;
+  }
+
+  /* CTA / FORM SECTION */
+  .cta-section {
+    background: var(--bg);
+    padding: 80px 40px;
+  }
+
+  .cta-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cta-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px;
+    margin-top: 40px;
+  }
+
+  .cta-box-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--coral);
+    margin-bottom: 12px;
+  }
+
+  .cta-box-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+    margin-bottom: 10px;
+  }
+
+  .cta-box-sub {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+  }
+
+  .form-field label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .form-field input,
+  .form-field select {
+    height: 48px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 0 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+    width: 100%;
+  }
+
+  .form-field input:focus,
+  .form-field select:focus {
+    border-color: var(--navy);
+  }
+
+  .form-full {
+    grid-column: 1 / -1;
+  }
+
+  .form-submit {
+    width: 100%;
+    height: 56px;
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 8px;
+    letter-spacing: -0.3px;
+    transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+  }
+
+  .form-submit:hover {
+    background: var(--navy-mid);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(10,22,40,0.2);
+  }
+
+  .form-privacy {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+
+  .form-guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .form-guarantee svg { color: var(--green); flex-shrink: 0; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 32px 40px;
+    text-align: center;
+  }
+
+  .footer-logo { font-size: 18px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+  .footer-logo span { color: var(--coral); }
+  .footer-copy { font-size: 13px; color: rgba(255,255,255,0.35); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-book { display: none; }
+    .hero-title { font-size: 38px; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .chapters-layout { grid-template-columns: 1fr; }
+    .preview-layout { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .proof-stats { gap: 20px; }
+    .section-title { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Pet<span>Joy</span></a>
+  <div class="nav-right">
+    <a href="#chapters" class="nav-link">What's Inside</a>
+    <a href="#form" class="nav-cta">Download Free</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-label">Free 20-Page Playbook</div>
+      <h1 class="hero-title">Turn Your Pet Store Into a <em>Data-Driven Machine</em></h1>
+      <p class="hero-subtitle">The complete B2B pet retail playbook used by 200+ independent store owners to cut dead inventory by 47%, double sell-through, and grow revenue by an average of $184K per year.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          20 Pages
+        </div>
+        <div class="hero-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          6 Chapters
+        </div>
+        <div class="hero-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          45-Min Read
+        </div>
+        <div class="hero-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Free Download
+        </div>
+      </div>
+      <div class="hero-cta-row">
+        <a href="#form" class="btn-primary">Get the Free Playbook</a>
+        <a href="#chapters" class="btn-secondary">See What's Inside</a>
+      </div>
+    </div>
+
+    <!-- BOOK CARD -->
+    <div class="hero-book">
+      <div class="book-card">
+        <div class="book-watermark">B2B</div>
+        <div class="book-badge">Free Download</div>
+        <div class="book-title">The B2B Pet Retail Playbook</div>
+        <div class="book-subtitle">PetJoy Intelligence Series &bull; 2026 Edition</div>
+        <ul class="book-toc">
+          <li>
+            <span class="toc-num">1</span>
+            State of Independent Pet Retail 2026
+          </li>
+          <li>
+            <span class="toc-num">2</span>
+            The Dead Inventory Problem (and How to Fix It)
+          </li>
+          <li>
+            <span class="toc-num">3</span>
+            Data-Driven Curation: The 70/20/10 Rule
+          </li>
+          <li>
+            <span class="toc-num">4</span>
+            Monthly Refresh Merchandising Cycle
+          </li>
+          <li>
+            <span class="toc-num">5</span>
+            The 3 KPIs Every Buyer Must Track
+          </li>
+          <li>
+            <span class="toc-num">6</span>
+            Your 90-Day Revenue Growth Plan
+          </li>
+        </ul>
+        <div class="book-footer">
+          <span class="book-pages">20 pages &bull; PDF format</span>
+          <span class="book-logo">Pet<span>Joy</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-bar-inner">
+    <span class="proof-label">Trusted by store owners across North America</span>
+    <div class="proof-divider"></div>
+    <div class="proof-stats">
+      <div class="proof-stat">
+        <div class="proof-stat-num">200+</div>
+        <div class="proof-stat-label">Stores using PetJoy</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-num">$150B</div>
+        <div class="proof-stat-label">Industry tracked</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-num">$184K</div>
+        <div class="proof-stat-label">Avg annual revenue lift</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-num">47%</div>
+        <div class="proof-stat-label">Avg dead inventory cut</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-num">340%</div>
+        <div class="proof-stat-label">Average ROI on data spend</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM SECTION -->
+<section class="section problem-section">
+  <div class="section-inner">
+    <p class="section-eyebrow">The Challenge</p>
+    <h2 class="section-title">Most pet stores are flying blind</h2>
+    <p class="section-subtitle">While big box retailers run predictive algorithms on billions of transactions, independent stores still rely on gut feel, vendor reps, and expired trade show data.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>
+        </div>
+        <h3>Overloaded with SKUs, underloaded with signal</h3>
+        <p>The average independent store carries 2,400 SKUs but tracks performance on fewer than 200 of them. The other 2,200 are costing you margin every week.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Buying decisions made months too late</h3>
+        <p>Trade publications report trends 60 to 90 days after they break. By the time you reorder a winner, the big chains already have 90-day stock of it on their shelves.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Cash locked in dead inventory</h3>
+        <p>Our audit of 200 stores found an average of $3,192 per month trapped in products with sell-through rates below 40%. That money belongs in your best-performing categories.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTERS SECTION -->
+<section class="section chapters-section" id="chapters">
+  <div class="section-inner">
+    <p class="section-eyebrow">What's Inside</p>
+    <h2 class="section-title">Six chapters. One complete system.</h2>
+    <p class="section-subtitle">This isn't a trend report. It's a repeatable operating system for inventory intelligence, built from what actually works across 200+ stores.</p>
+    <div class="chapters-layout">
+      <div class="chapter-item">
+        <div class="chapter-num">1</div>
+        <div class="chapter-content">
+          <h3>State of Independent Pet Retail 2026</h3>
+          <p>The $150B industry landscape, why independents win on trust and curation, and the three structural advantages you have over big box that most owners never use.</p>
+          <span class="chapter-tag">Market Data</span>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">2</div>
+        <div class="chapter-content">
+          <h3>The Dead Inventory Problem</h3>
+          <p>The three root causes of dead inventory, a clearance math framework that tells you exactly when to cut, and a SKU triage protocol you can run in under two hours.</p>
+          <span class="chapter-tag">Cash Flow</span>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">3</div>
+        <div class="chapter-content">
+          <h3>Data-Driven Curation: The 70/20/10 Rule</h3>
+          <p>The exact category allocation framework: 70% proven sellers, 20% rising trends, 10% new category tests. Includes the full category allocation table by store size.</p>
+          <span class="chapter-tag">Framework</span>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">4</div>
+        <div class="chapter-content">
+          <h3>Monthly Refresh Merchandising Cycle</h3>
+          <p>A week-by-week cadence: data pull on day 1, reorder decisions by day 7, floor plan updates by day 14, performance review by day 28. Built for one-person buying teams.</p>
+          <span class="chapter-tag">Operations</span>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">5</div>
+        <div class="chapter-content">
+          <h3>The 3 KPIs Every Buyer Must Track</h3>
+          <p>Sell-through rate (target: 84%+), inventory turns (target: 8.5x), and category gross margin (target: 42%). How to calculate each, what to do when numbers go red.</p>
+          <span class="chapter-tag">Metrics</span>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">6</div>
+        <div class="chapter-content">
+          <h3>Your 90-Day Revenue Growth Plan</h3>
+          <p>A numbered implementation sequence: 12 actions across three months, with the expected impact of each. Stores using this plan see an average of $184K in additional annual revenue.</p>
+          <span class="chapter-tag">Action Plan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW SECTION -->
+<section class="section preview-section">
+  <div class="section-inner">
+    <div class="preview-layout">
+      <div>
+        <p class="section-eyebrow">Inside the Playbook</p>
+        <h2 class="section-title">Frameworks you can implement this week</h2>
+        <p class="section-subtitle">Every chapter ends with a specific action, not a generic recommendation.</p>
+        <ul class="preview-checklist">
+          <li>
+            <div class="check-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            The 70/20/10 category allocation table segmented by store annual revenue
+          </li>
+          <li>
+            <div class="check-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            A clearance math worksheet to calculate your exact dead inventory cost today
+          </li>
+          <li>
+            <div class="check-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Month-by-month implementation calendar with 12 specific action items
+          </li>
+          <li>
+            <div class="check-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            KPI benchmark table showing where top-quartile stores set their thresholds
+          </li>
+          <li>
+            <div class="check-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Vendor scorecard template to evaluate new products before committing to an order
+          </li>
+        </ul>
+      </div>
+
+      <div class="preview-card">
+        <div class="preview-card-header">
+          <div class="preview-card-title">The 70/20/10 Framework<br><span style="font-weight:400;font-size:12px;color:rgba(255,255,255,0.45)">Chapter 3 Preview</span></div>
+          <div class="preview-card-badge">From Playbook</div>
+        </div>
+        <div class="framework-box">
+          <div class="framework-label">Category Allocation by Budget</div>
+          <div class="framework-row">
+            <div class="framework-cell">
+              <div class="framework-pct" style="color:var(--gold)">70%</div>
+              <div class="framework-name">Proven Sellers</div>
+            </div>
+            <div class="framework-cell">
+              <div class="framework-pct" style="color:var(--coral)">20%</div>
+              <div class="framework-name">Rising Trends</div>
+            </div>
+            <div class="framework-cell">
+              <div class="framework-pct" style="color:rgba(255,255,255,0.6)">10%</div>
+              <div class="framework-name">New Tests</div>
+            </div>
+          </div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">KPI Benchmarks — Chapter 5</div>
+          <div class="kpi-row">
+            <div class="kpi-item">
+              <span class="kpi-name">Sell-Through Rate</span>
+              <div class="kpi-bar-wrap">
+                <div class="kpi-bar" style="width:84%;background:var(--gold);"></div>
+              </div>
+              <span class="kpi-val">84%+</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-name">Inventory Turns</span>
+              <div class="kpi-bar-wrap">
+                <div class="kpi-bar" style="width:71%;background:var(--coral);"></div>
+              </div>
+              <span class="kpi-val">8.5x</span>
+            </div>
+            <div class="kpi-item">
+              <span class="kpi-name">Gross Margin</span>
+              <div class="kpi-bar-wrap">
+                <div class="kpi-bar" style="width:42%;background:var(--green);"></div>
+              </div>
+              <span class="kpi-val">42%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-inner">
+    <p class="section-eyebrow">Store Owner Results</p>
+    <h2 class="section-title" style="color:var(--white)">Real stores. Real numbers.</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">&ldquo;</div>
+        <p class="testimonial-text">I went from ordering by gut to ordering by data inside of 30 days. The 70/20/10 rule alone changed how I think about every buying decision. My sell-through went from 61% to 79% in one quarter.</p>
+        <div class="testimonial-result">+18 pts sell-through in 90 days</div>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div>
+            <div class="author-name">Marcus Delgado</div>
+            <div class="author-store">Wild Paws Emporium &bull; Denver, CO</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">&ldquo;</div>
+        <p class="testimonial-text">The dead inventory chapter was brutal to read because it was so accurate. We had over $4,000 per month sitting on shelves collecting dust. After running the triage protocol, we freed up $38K in cash in 60 days.</p>
+        <div class="testimonial-result">$38K cash freed in 60 days</div>
+        <div class="testimonial-author">
+          <div class="author-avatar">T</div>
+          <div>
+            <div class="author-name">Tamara Yuen</div>
+            <div class="author-store">Pacific Paws Supply &bull; Seattle, WA</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">&ldquo;</div>
+        <p class="testimonial-text">I've read every trade publication for 12 years. This playbook has more actionable frameworks than all of them combined. The 90-day plan gave me a clear sequence for the first time. We're up $220K this year.</p>
+        <div class="testimonial-result">+$220K revenue, year-over-year</div>
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div>
+            <div class="author-name">Ryan Kowalski</div>
+            <div class="author-store">Heartland Pet Depot &bull; Columbus, OH</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FORM -->
+<section class="cta-section" id="form">
+  <div class="cta-inner">
+    <p class="section-eyebrow" style="text-align:center">Free Download</p>
+    <h2 class="section-title" style="text-align:center;margin:0 auto 12px;">Get the Playbook Now</h2>
+    <p class="section-subtitle" style="text-align:center;margin:0 auto;">20 pages. Six chapters. One system that turns your store into a data-driven operation. Free for independent store owners.</p>
+    <div class="cta-box">
+      <p class="cta-box-eyebrow">Access the Full Playbook</p>
+      <h3 class="cta-box-title">The B2B Pet Retail Playbook</h3>
+      <p class="cta-box-sub">Enter your details below and we'll send the PDF directly to your inbox along with a free SKU triage checklist.</p>
+      <form onsubmit="return false;">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="Marcus" autocomplete="given-name">
+          </div>
+          <div class="form-field">
+            <label for="email">Business Email</label>
+            <input type="email" id="email" placeholder="marcus@wildpaws.com" autocomplete="email">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="store">Store Name</label>
+            <input type="text" id="store" placeholder="Wild Paws Emporium">
+          </div>
+          <div class="form-field">
+            <label for="revenue">Annual Revenue</label>
+            <select id="revenue">
+              <option value="" disabled selected>Select range</option>
+              <option>Under $500K</option>
+              <option>$500K - $1M</option>
+              <option>$1M - $3M</option>
+              <option>$3M - $5M</option>
+              <option>Over $5M</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field form-full">
+            <label for="challenge">Biggest Inventory Challenge</label>
+            <select id="challenge">
+              <option value="" disabled selected>Select your #1 challenge</option>
+              <option>Too much dead inventory</option>
+              <option>Missing trends before big box</option>
+              <option>Low sell-through rates</option>
+              <option>Cash flow tied up in stock</option>
+              <option>No clear buying framework</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="form-submit">Send Me the Free Playbook</button>
+        <p class="form-privacy">By downloading, you agree to receive occasional insights from PetJoy. Unsubscribe anytime. We never sell your data.</p>
+      </form>
+      <div class="form-guarantee">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        100% free. No credit card. No commitment. Just the playbook.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Pet<span>Joy</span></div>
+  <p class="footer-copy">&copy; 2026 PetJoy Intelligence. Built for independent pet store owners.</p>
+</footer>
+
+</body>
+</html>

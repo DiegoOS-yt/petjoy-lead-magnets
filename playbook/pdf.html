@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The B2B Pet Retail Playbook — PetJoy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #162236;
+    --navy-light: #EEF2F8;
+    --coral: #C8502A;
+    --coral-light: #FFF0EB;
+    --green: #1B5E3B;
+    --green-light: #E8F5EE;
+    --gold: #F2C94C;
+    --bg: #FAFAF7;
+    --text: #1A2332;
+    --muted: #6B7280;
+    --border: #E5E7EB;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #E5E7EB;
+    color: var(--text);
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    margin: 0 auto 40px;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.1);
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; page-break-after: always; width: 100%; }
+    .page:last-child { page-break-after: avoid; }
+  }
+
+  /* COVER */
+  .cover {
+    background: var(--navy);
+    min-height: 11in;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-bg-text {
+    position: absolute;
+    bottom: -80px;
+    right: -40px;
+    font-size: 280pt;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: -10px;
+  }
+
+  .cover-stripe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--coral) 0%, var(--gold) 100%);
+  }
+
+  .cover-top {
+    padding: 48px 56px 48px 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+  }
+
+  .logo {
+    font-size: 20pt;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+
+  .logo span { color: var(--gold); }
+
+  .cover-badge {
+    background: var(--coral);
+    color: var(--white);
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    border-radius: 4px;
+  }
+
+  .cover-body {
+    flex: 1;
+    padding: 0 56px 0 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-eyebrow {
+    font-size: 9pt;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .cover-title {
+    font-size: 44pt;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    margin-bottom: 28px;
+  }
+
+  .cover-title span {
+    display: block;
+    font-size: 52pt;
+    color: var(--gold);
+  }
+
+  .cover-desc {
+    font-size: 13pt;
+    color: rgba(255,255,255,0.65);
+    max-width: 520px;
+    line-height: 1.65;
+    margin-bottom: 48px;
+  }
+
+  .toc-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 580px;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .toc-num {
+    font-size: 9pt;
+    font-weight: 700;
+    color: var(--gold);
+    min-width: 24px;
+  }
+
+  .toc-title {
+    font-size: 10pt;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.3;
+  }
+
+  .cover-bottom {
+    padding: 24px 56px 24px 72px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-bottom-text { font-size: 9pt; color: rgba(255,255,255,0.4); }
+  .cover-page-count { font-size: 9pt; font-weight: 600; color: rgba(255,255,255,0.5); }
+
+  /* INNER PAGES */
+  .page-inner {
+    display: flex;
+    min-height: 11in;
+  }
+
+  .sidebar {
+    width: 56px;
+    background: var(--navy);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 0;
+  }
+
+  .sidebar-logo {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-size: 10pt;
+    font-weight: 800;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 1px;
+  }
+
+  .page-content {
+    flex: 1;
+    padding: 48px 52px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 36px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--navy);
+  }
+
+  .ph-chapter {
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+
+  .ph-right { display: flex; gap: 16px; align-items: center; }
+  .ph-report { font-size: 9pt; color: var(--muted); }
+  .ph-page { font-size: 9pt; font-weight: 600; color: var(--navy); }
+
+  .chapter-header {
+    background: var(--navy);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .chapter-num-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 20pt;
+    font-weight: 900;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .chapter-header-body { flex: 1; }
+
+  .chapter-eyebrow {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+  }
+
+  .chapter-title {
+    font-size: 20pt;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+  }
+
+  .chapter-sub {
+    font-size: 11pt;
+    color: rgba(255,255,255,0.65);
+    margin-top: 8px;
+    line-height: 1.55;
+  }
+
+  .section-eyebrow {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-size: 18pt;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    margin-bottom: 12px;
+  }
+
+  .body-text {
+    font-size: 11pt;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .divider {
+    width: 40px;
+    height: 3px;
+    background: var(--navy);
+    border-radius: 2px;
+    margin: 12px 0 20px;
+  }
+
+  .callout {
+    background: var(--navy-light);
+    border-left: 4px solid var(--navy);
+    border-radius: 0 10px 10px 0;
+    padding: 18px 22px;
+    margin: 20px 0;
+  }
+
+  .callout-label {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 5px;
+  }
+
+  .callout p { font-size: 11pt; color: var(--navy); font-weight: 500; line-height: 1.6; }
+
+  .stat-trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .stat-card {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: 26pt;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label { font-size: 9pt; color: rgba(255,255,255,0.6); line-height: 1.4; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
+
+  .data-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .data-card-title { font-size: 12pt; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .data-card p { font-size: 10.5pt; color: var(--muted); line-height: 1.6; }
+
+  .numbered-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 20px 0;
+  }
+
+  .numbered-list li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .nl-num {
+    background: var(--navy);
+    color: var(--gold);
+    font-size: 11pt;
+    font-weight: 800;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .nl-body { flex: 1; }
+  .nl-title { font-size: 12pt; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .nl-desc { font-size: 10.5pt; color: var(--muted); line-height: 1.6; }
+
+  .framework-box {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 20px 0;
+  }
+
+  .framework-box-title {
+    font-size: 13pt;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .framework-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .framework-step {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .fs-arrow {
+    color: var(--gold);
+    font-size: 16pt;
+    flex-shrink: 0;
+  }
+
+  .fs-body { flex: 1; }
+  .fs-title { font-size: 11pt; font-weight: 700; color: var(--white); }
+  .fs-desc { font-size: 9.5pt; color: rgba(255,255,255,0.6); }
+
+  .table-wrapper { margin: 20px 0; overflow: hidden; border-radius: 12px; border: 1px solid var(--border); }
+
+  .data-table { width: 100%; border-collapse: collapse; }
+
+  .data-table thead th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.85);
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .data-table tbody tr:nth-child(even) { background: var(--bg); }
+
+  .data-table tbody td {
+    padding: 11px 16px;
+    font-size: 10pt;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  .metric-positive { color: var(--green); font-weight: 700; }
+  .metric-negative { color: var(--coral); font-weight: 700; }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .kpi-card {
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .kpi-card.green { border-color: var(--green); background: var(--green-light); }
+  .kpi-card.coral { border-color: var(--coral); background: var(--coral-light); }
+  .kpi-card.navy { border-color: var(--navy); background: var(--navy-light); }
+
+  .kpi-label {
+    font-size: 9pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .kpi-card.green .kpi-label { color: var(--green); }
+  .kpi-card.coral .kpi-label { color: var(--coral); }
+  .kpi-card.navy .kpi-label { color: var(--navy); }
+
+  .kpi-target {
+    font-size: 22pt;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .kpi-card.green .kpi-target { color: var(--green); }
+  .kpi-card.coral .kpi-target { color: var(--coral); }
+
+  .kpi-desc { font-size: 9pt; color: var(--muted); line-height: 1.4; }
+
+  .cta-chapter {
+    background: linear-gradient(135deg, var(--coral) 0%, #A84020 100%);
+    border-radius: 16px;
+    padding: 32px;
+    margin: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .cta-chapter-body h3 {
+    font-size: 16pt;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .cta-chapter-body p { font-size: 11pt; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+  .cta-chapter-action {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 16px 24px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .cta-chapter-action div:first-child {
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--coral);
+    margin-bottom: 3px;
+  }
+
+  .cta-chapter-action div:last-child { font-size: 9pt; color: var(--muted); }
+
+  /* PAGE FOOTER */
+  .page-footer {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pf-brand { font-size: 9pt; font-weight: 700; color: var(--navy); }
+  .pf-text { font-size: 8pt; color: var(--muted); }
+
+  blockquote {
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 20px 24px;
+    border: 1px solid var(--border);
+    margin: 18px 0;
+  }
+
+  blockquote p { font-size: 11.5pt; font-style: italic; color: var(--navy); line-height: 1.6; margin-bottom: 10px; }
+  blockquote cite { font-size: 9.5pt; font-weight: 600; color: var(--muted); font-style: normal; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+  <div class="cover-stripe"></div>
+  <div class="cover-bg-text">B2B</div>
+  <div class="cover-top">
+    <div class="logo">PET<span>JOY</span></div>
+    <div class="cover-badge">20-Page Playbook</div>
+  </div>
+  <div class="cover-body">
+    <div class="cover-eyebrow">Pet Retail Growth Series — Bottom of Funnel</div>
+    <h1 class="cover-title">The <span>B2B Pet Retail</span> Playbook</h1>
+    <p class="cover-desc">A 20-page operational guide for independent pet store owners ready to build a high-performing toy section — from dead inventory audit to systematic monthly optimization.</p>
+    <div class="toc-preview">
+      <div class="toc-item">
+        <div class="toc-num">01</div>
+        <div class="toc-title">The State of Independent Pet Retail</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">02</div>
+        <div class="toc-title">The Dead Inventory Problem</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">03</div>
+        <div class="toc-title">Data-Driven Curation</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">04</div>
+        <div class="toc-title">Merchandising for Monthly Refresh</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">05</div>
+        <div class="toc-title">The Numbers That Matter</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">06</div>
+        <div class="toc-title">Building Your Growth Plan</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-bottom-text">Published by PetJoy · petjoy.com · Retail Intelligence for Independent Pet Stores · 2026</div>
+    <div class="cover-page-count">Pages 1–20</div>
+  </div>
+</div>
+
+<!-- PAGE 2: CHAPTER 1 — STATE OF RETAIL -->
+<div class="page">
+  <div class="page-inner">
+    <div class="sidebar"><div class="sidebar-logo">PETJOY</div></div>
+    <div class="page-content">
+      <div class="page-header">
+        <div class="ph-chapter">Chapter 01</div>
+        <div class="ph-right">
+          <div class="ph-report">The B2B Pet Retail Playbook</div>
+          <div class="ph-page">Page 2</div>
+        </div>
+      </div>
+
+      <div class="chapter-header">
+        <div class="chapter-num-badge">01</div>
+        <div class="chapter-header-body">
+          <div class="chapter-eyebrow">Chapter One</div>
+          <div class="chapter-title">The State of Independent Pet Retail</div>
+          <div class="chapter-sub">Why the market opportunity is larger than ever — and why most independents are leaving it on the table.</div>
+        </div>
+      </div>
+
+      <p class="body-text">The U.S. pet industry crossed $150 billion in 2025. Toy sales alone grew 17% year-over-year. But for every independent pet store owner capturing a disproportionate share of this growth, three others are watching their margins compress while mass-market competitors expand their floor space.</p>
+
+      <p class="body-text">The gap isn't product selection. It isn't customer loyalty. The gap is data. Big-box retailers run sophisticated inventory management systems that tell them exactly what to stock, when to reorder, and what to clearance. Independent operators are running on gut feel, vendor relationship, and quarterly distributor catalogs.</p>
+
+      <div class="stat-trio">
+        <div class="stat-card">
+          <div class="stat-num">$150B</div>
+          <div class="stat-label">US pet industry revenue — 2025</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">+17%</div>
+          <div class="stat-label">toy category growth year-over-year</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">68%</div>
+          <div class="stat-label">of independent stores use no formal velocity tracking</div>
+        </div>
+      </div>
+
+      <div class="section-eyebrow" style="margin-top:24px;">The Independent Advantage</div>
+      <h3 class="section-title">What Chain Stores Will Never Have</h3>
+      <div class="divider"></div>
+
+      <p class="body-text">Independent pet stores have three structural advantages over national chains that no amount of scale can replicate: deep product expertise, authentic customer relationships, and the ability to carry specialty and emerging brands years before they reach chain distribution.</p>
+
+      <div class="two-col">
+        <div class="data-card">
+          <div class="data-card-title">Community Trust Premium</div>
+          <p>Independent pet store customers spend an average of 31% more per visit than chain store customers — when they feel confident in product recommendations. That confidence is earned through expertise, not advertising.</p>
+        </div>
+        <div class="data-card">
+          <div class="data-card-title">First-Mover Advantage</div>
+          <p>7 of the top 10 products in PetJoy's Q2 2026 trending report were being sold by independent stores 18+ months before reaching national chain shelves. The data advantage closes this gap further.</p>
+        </div>
+      </div>
+
+      <blockquote>
+        <p>"The independents who are winning right now are the ones who figured out how to combine the trust advantage they've always had with the data discipline that chains use. They're not matching chains — they're beating them."</p>
+        <cite>Michelle Torres, VP of Retail Strategy — American Pet Products Association (APPA)</cite>
+      </blockquote>
+
+      <div class="page-footer">
+        <div class="pf-brand">PETJOY</div>
+        <div class="pf-text">petjoy.com · The B2B Pet Retail Playbook · Chapter 01</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: CHAPTER 2 — DEAD INVENTORY -->
+<div class="page">
+  <div class="page-inner">
+    <div class="sidebar"><div class="sidebar-logo">PETJOY</div></div>
+    <div class="page-content">
+      <div class="page-header">
+        <div class="ph-chapter">Chapter 02</div>
+        <div class="ph-right">
+          <div class="ph-report">The B2B Pet Retail Playbook</div>
+          <div class="ph-page">Page 4</div>
+        </div>
+      </div>
+
+      <div class="chapter-header">
+        <div class="chapter-num-badge">02</div>
+        <div class="chapter-header-body">
+          <div class="chapter-eyebrow">Chapter Two</div>
+          <div class="chapter-title">The Dead Inventory Problem</div>
+          <div class="chapter-sub">How to identify, quantify, and systematically eliminate the silent margin killer in your toy section.</div>
+        </div>
+      </div>
+
+      <p class="body-text">Dead inventory is any product that hasn't sold within 30 days of purchase. The industry average for independent pet stores is 23% of all toy inventory. That means for every $10,000 you spend on toys, $2,300 is sitting frozen — unavailable as cash, consuming shelf space, and blocking faster-moving product from taking its place.</p>
+
+      <div class="callout">
+        <div class="callout-label">The Core Problem</div>
+        <p>Dead inventory compounds. Unsold Month 1 product occupies shelf space needed for Month 2 winners. This is why stores with high dead inventory consistently have lower overall turns — it's not that they can't find good products. It's that they can't make room for them.</p>
+      </div>
+
+      <div class="section-eyebrow">The Three Root Causes</div>
+      <ul class="numbered-list">
+        <li>
+          <div class="nl-num">1</div>
+          <div class="nl-body">
+            <div class="nl-title">Vendor-Led Buying</div>
+            <div class="nl-desc">Most independent buyers make decisions based on trade show presentations and sales rep visits — both contexts designed to maximize purchase volume, not sell-through rate. Products are bought based on presentation quality, not market velocity.</div>
+          </div>
+        </li>
+        <li>
+          <div class="nl-num">2</div>
+          <div class="nl-body">
+            <div class="nl-title">No 30-Day Velocity Review</div>
+            <div class="nl-desc">Category A stores review product velocity every 7–14 days. Most independents review quarterly at best — by which point a dead product has already blocked 2–3 buying cycles and absorbed reorder budget that should have gone to high-velocity items.</div>
+          </div>
+        </li>
+        <li>
+          <div class="nl-num">3</div>
+          <div class="nl-body">
+            <div class="nl-title">Sunk Cost Paralysis</div>
+            <div class="nl-desc">Once a product is purchased and sits unsold for 60+ days, most owners hold it rather than clearance it — rationalizing that it will eventually move. The math is wrong: a 30% clearance loss is better than a 100% capital freeze compounded over 12 months.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="two-col">
+        <div>
+          <div class="section-eyebrow">The Clearance Math</div>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Scenario</th>
+                  <th>12-Month Impact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Hold dead stock</td>
+                  <td class="metric-negative">-100% capital frozen</td>
+                </tr>
+                <tr>
+                  <td>Clearance at -30%</td>
+                  <td class="metric-negative">-30% one-time loss</td>
+                </tr>
+                <tr>
+                  <td>Reinvest in top-20</td>
+                  <td class="metric-positive">+42% capital recovered</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <div class="section-eyebrow">30-Day Triage Protocol</div>
+          <ul class="numbered-list" style="gap:10px;">
+            <li>
+              <div class="nl-num" style="font-size:10pt; width:24px; height:24px;">1</div>
+              <div class="nl-body">
+                <div class="nl-desc" style="font-size:10pt; color:var(--text);">Pull all toy SKUs not sold in last 30 days</div>
+              </div>
+            </li>
+            <li>
+              <div class="nl-num" style="font-size:10pt; width:24px; height:24px;">2</div>
+              <div class="nl-body">
+                <div class="nl-desc" style="font-size:10pt; color:var(--text);">Group into A (velocity), B (slow), C (dead)</div>
+              </div>
+            </li>
+            <li>
+              <div class="nl-num" style="font-size:10pt; width:24px; height:24px;">3</div>
+              <div class="nl-body">
+                <div class="nl-desc" style="font-size:10pt; color:var(--text);">Clearance all C items at -25 to -40%</div>
+              </div>
+            </li>
+            <li>
+              <div class="nl-num" style="font-size:10pt; width:24px; height:24px;">4</div>
+              <div class="nl-body">
+                <div class="nl-desc" style="font-size:10pt; color:var(--text);">Reinvest recovered capital into top 5 A items</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="page-footer">
+        <div class="pf-brand">PETJOY</div>
+        <div class="pf-text">petjoy.com · The B2B Pet Retail Playbook · Chapter 02</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 4: CHAPTER 3 — DATA-DRIVEN CURATION -->
+<div class="page">
+  <div class="page-inner">
+    <div class="sidebar"><div class="sidebar-logo">PETJOY</div></div>
+    <div class="page-content">
+      <div class="page-header">
+        <div class="ph-chapter">Chapter 03</div>
+        <div class="ph-right">
+          <div class="ph-report">The B2B Pet Retail Playbook</div>
+          <div class="ph-page">Page 7</div>
+        </div>
+      </div>
+
+      <div class="chapter-header">
+        <div class="chapter-num-badge">03</div>
+        <div class="chapter-header-body">
+          <div class="chapter-eyebrow">Chapter Three</div>
+          <div class="chapter-title">Data-Driven Curation</div>
+          <div class="chapter-sub">How to build a toy assortment that reflects real market demand instead of vendor preference or personal taste.</div>
+        </div>
+      </div>
+
+      <p class="body-text">Curation is the independent store's highest-value activity. A well-curated 80-SKU toy section will outsell a 300-SKU section with 30% dead stock every time. The difference is the signal-to-noise ratio: every product on the shelf earns its space, and customers trust the recommendation implied by the selection.</p>
+
+      <p class="body-text">Data-driven curation doesn't mean buying whatever the algorithm says. It means using velocity data to eliminate guesswork from the 80% of decisions that are purely mechanical, so you can apply your expertise to the 20% that require judgment.</p>
+
+      <div class="section-eyebrow">The Curation Framework</div>
+      <div class="framework-box">
+        <div class="framework-box-title">The 70/20/10 Assortment Rule</div>
+        <div class="framework-steps">
+          <div class="framework-step">
+            <div class="fs-arrow">&#9656;</div>
+            <div class="fs-body">
+              <div class="fs-title">70% — Proven Velocity (Score 75+)</div>
+              <div class="fs-desc">Products with demonstrated sell-through velocity in your market. Reorder automatically when par level drops below 3 units. This is the foundation of your section.</div>
+            </div>
+          </div>
+          <div class="framework-step">
+            <div class="fs-arrow">&#9656;</div>
+            <div class="fs-body">
+              <div class="fs-title">20% — Rising Stars (Score 60–74, trending up)</div>
+              <div class="fs-desc">Products gaining momentum nationally. Carry at lower depth (2 units) and measure weekly. These become your 70% if they perform. They get cut if they don't.</div>
+            </div>
+          </div>
+          <div class="framework-step">
+            <div class="fs-arrow">&#9656;</div>
+            <div class="fs-body">
+              <div class="fs-title">10% — Educated Bets (Owner's discretion)</div>
+              <div class="fs-desc">Products you believe in based on customer feedback, trade show conversations, or emerging trends not yet reflected in velocity data. Carry at 1–2 units only. Strict 60-day review.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-eyebrow" style="margin-top:24px;">Category Allocation by Customer Segment</div>
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Customer Segment</th>
+              <th>Primary Category</th>
+              <th>Avg Transaction</th>
+              <th>Recommended SKUs</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>New Puppy / Kitten</strong></td>
+              <td>Plush + Chew Combo</td>
+              <td style="color:var(--green); font-weight:700;">$67</td>
+              <td>8–10</td>
+              <td>High purchase frequency, gifting driven</td>
+            </tr>
+            <tr>
+              <td><strong>Senior Pet Owner</strong></td>
+              <td>Enrichment / Low Impact</td>
+              <td style="color:var(--green); font-weight:700;">$48</td>
+              <td>5–7</td>
+              <td>High loyalty, willing to pay premium</td>
+            </tr>
+            <tr>
+              <td><strong>Active/Outdoor</strong></td>
+              <td>Fetch / Tug / Durable</td>
+              <td style="color:var(--green); font-weight:700;">$42</td>
+              <td>6–8</td>
+              <td>Seasonal peaks in spring/summer</td>
+            </tr>
+            <tr>
+              <td><strong>Anxious Pet Parent</strong></td>
+              <td>Calming / Enrichment</td>
+              <td style="color:var(--green); font-weight:700;">$58</td>
+              <td>4–6</td>
+              <td>Fastest-growing segment — up 40% YoY</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="page-footer">
+        <div class="pf-brand">PETJOY</div>
+        <div class="pf-text">petjoy.com · The B2B Pet Retail Playbook · Chapter 03</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 5: CHAPTERS 4 + 5 -->
+<div class="page">
+  <div class="page-inner">
+    <div class="sidebar"><div class="sidebar-logo">PETJOY</div></div>
+    <div class="page-content">
+      <div class="page-header">
+        <div class="ph-chapter">Chapters 04 + 05</div>
+        <div class="ph-right">
+          <div class="ph-report">The B2B Pet Retail Playbook</div>
+          <div class="ph-page">Page 11</div>
+        </div>
+      </div>
+
+      <div class="chapter-header" style="margin-bottom:24px;">
+        <div class="chapter-num-badge">04</div>
+        <div class="chapter-header-body">
+          <div class="chapter-eyebrow">Chapter Four</div>
+          <div class="chapter-title">Merchandising for Monthly Refresh</div>
+          <div class="chapter-sub">The visual and operational system for keeping your toy section feeling new every 30 days without a full reset.</div>
+        </div>
+      </div>
+
+      <p class="body-text">Monthly refresh isn't about redecorating. It's a disciplined operational cycle that ensures your section always represents what's moving now — not what you were excited about last quarter. The goal is that every regular customer who walks in on the first Saturday of the month sees something they haven't seen before.</p>
+
+      <div class="two-col" style="margin-bottom:20px;">
+        <div class="data-card">
+          <div class="data-card-title">The Monthly Cycle</div>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+            <li style="font-size:10pt; display:flex; gap:10px; align-items:flex-start;"><span style="color:var(--navy); font-weight:700; min-width:60px;">Week 1</span><span style="color:var(--muted);">Pull 30-day velocity report. Identify dead and rising items.</span></li>
+            <li style="font-size:10pt; display:flex; gap:10px; align-items:flex-start;"><span style="color:var(--navy); font-weight:700; min-width:60px;">Week 2</span><span style="color:var(--muted);">Place clearance on dead items. Submit new orders for top velocity additions.</span></li>
+            <li style="font-size:10pt; display:flex; gap:10px; align-items:flex-start;"><span style="color:var(--navy); font-weight:700; min-width:60px;">Week 3</span><span style="color:var(--muted);">New product arrives. Update planogram. Move clearance to endcap.</span></li>
+            <li style="font-size:10pt; display:flex; gap:10px; align-items:flex-start;"><span style="color:var(--navy); font-weight:700; min-width:60px;">Week 4</span><span style="color:var(--muted);">Full-section review. Staff briefing on new products. Prepare for next cycle.</span></li>
+          </ul>
+        </div>
+        <div class="data-card">
+          <div class="data-card-title">Visual Merchandising Rules</div>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+            <li style="font-size:10pt; display:flex; gap:10px;"><span style="color:var(--coral); font-weight:700;">Rule 1</span><span style="color:var(--muted);">New arrivals always at eye-level, center bay</span></li>
+            <li style="font-size:10pt; display:flex; gap:10px;"><span style="color:var(--coral); font-weight:700;">Rule 2</span><span style="color:var(--muted);">Clearance isolated to one designated endcap — not mixed in section</span></li>
+            <li style="font-size:10pt; display:flex; gap:10px;"><span style="color:var(--coral); font-weight:700;">Rule 3</span><span style="color:var(--muted);">Category signage refreshed monthly — stale signs signal stale product</span></li>
+            <li style="font-size:10pt; display:flex; gap:10px;"><span style="color:var(--coral); font-weight:700;">Rule 4</span><span style="color:var(--muted);">Maximum 6 SKUs per linear foot — any more signals clutter, not selection</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="chapter-header" style="background: linear-gradient(135deg, var(--green) 0%, #0D3D26 100%); margin-bottom:20px;">
+        <div class="chapter-num-badge" style="background:rgba(255,255,255,0.15); color:var(--gold);">05</div>
+        <div class="chapter-header-body">
+          <div class="chapter-eyebrow">Chapter Five</div>
+          <div class="chapter-title">The Numbers That Matter</div>
+          <div class="chapter-sub">The three KPIs that separate Category A operators from everyone else.</div>
+        </div>
+      </div>
+
+      <p class="body-text">Category A pet retail operators — the top quartile by margin performance — track three metrics obsessively. Every operational decision flows through these three numbers. If your weekly buying meeting doesn't start with these on the table, you're managing by feel.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi-card green">
+          <div class="kpi-label">Sell-Through Rate</div>
+          <div class="kpi-target">84%+</div>
+          <div class="kpi-desc">% of purchased inventory sold within 30 days. Below 70% = problem. Below 60% = emergency.</div>
+        </div>
+        <div class="kpi-card navy">
+          <div class="kpi-label">Inventory Turns</div>
+          <div class="kpi-target">8.5x</div>
+          <div class="kpi-desc">Annual inventory turns target. Category A average. Most independents run 3.2x — that gap is your margin.</div>
+        </div>
+        <div class="kpi-card coral">
+          <div class="kpi-label">Gross Margin Floor</div>
+          <div class="kpi-target">42%</div>
+          <div class="kpi-desc">Minimum gross margin after clearance. Any product that can't sustain 42% gross margin doesn't belong in the assortment.</div>
+        </div>
+      </div>
+
+      <div class="page-footer">
+        <div class="pf-brand">PETJOY</div>
+        <div class="pf-text">petjoy.com · The B2B Pet Retail Playbook · Chapters 04–05</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 6: CHAPTER 6 + BACK COVER CTA -->
+<div class="page">
+  <div class="page-inner">
+    <div class="sidebar"><div class="sidebar-logo">PETJOY</div></div>
+    <div class="page-content">
+      <div class="page-header">
+        <div class="ph-chapter">Chapter 06</div>
+        <div class="ph-right">
+          <div class="ph-report">The B2B Pet Retail Playbook</div>
+          <div class="ph-page">Page 16</div>
+        </div>
+      </div>
+
+      <div class="chapter-header" style="background: linear-gradient(135deg, #0A1628 0%, #1B2F4A 100%);">
+        <div class="chapter-num-badge">06</div>
+        <div class="chapter-header-body">
+          <div class="chapter-eyebrow">Chapter Six</div>
+          <div class="chapter-title">Building Your Growth Plan</div>
+          <div class="chapter-sub">A 90-day implementation roadmap for transforming your toy section from gut-feel buying to data-driven performance.</div>
+        </div>
+      </div>
+
+      <p class="body-text">Everything in this playbook comes down to one thing: replacing guesswork with a repeatable system. The stores that consistently grow toy section revenue year-over-year aren't staffed by buyers with better instincts. They run a system that improves with every cycle.</p>
+
+      <div class="section-eyebrow">Your 90-Day Implementation Timeline</div>
+
+      <ul class="numbered-list" style="margin-bottom:24px;">
+        <li>
+          <div class="nl-num">D1</div>
+          <div class="nl-body">
+            <div class="nl-title">Days 1–7: Baseline Audit</div>
+            <div class="nl-desc">Pull full toy inventory from POS. Classify every SKU as A (moving), B (slow), or C (dead). Calculate current sell-through rate and identify your top-5 and bottom-5 products. This is the only time you'll ever need to do this manually — PetJoy automates it from Day 8 forward.</div>
+          </div>
+        </li>
+        <li>
+          <div class="nl-num">D2</div>
+          <div class="nl-body">
+            <div class="nl-title">Days 8–21: First Clearance Cycle</div>
+            <div class="nl-desc">Clear all C-category items at 25–40% discount. Use recovered capital to purchase 3–5 products from the PetJoy Top 50 Q2 report that you don't currently carry. Position new arrivals at eye level, center bay.</div>
+          </div>
+        </li>
+        <li>
+          <div class="nl-num">D3</div>
+          <div class="nl-body">
+            <div class="nl-title">Days 22–45: Velocity Calibration</div>
+            <div class="nl-desc">Track weekly sell-through on new additions. Reorder anything that reaches 50% sellout within 14 days. Any new addition that hasn't sold a single unit by Day 35 is a B item — move it to clearance before it becomes a C.</div>
+          </div>
+        </li>
+        <li>
+          <div class="nl-num">D4</div>
+          <div class="nl-body">
+            <div class="nl-title">Days 46–90: System Installation</div>
+            <div class="nl-desc">Establish your weekly 30-minute buying review cadence. Review Trending Scores every Monday. Place orders on Tuesday. Receive and merchandise on Thursday. This rhythm, once established, runs automatically — and compounds every quarter.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="cta-chapter">
+        <div class="cta-chapter-body">
+          <h3>Let PetJoy Run the System for You</h3>
+          <p>The platform automates everything in this playbook — weekly Trending Scores, buy alerts, inventory triage reports, and reorder timing. Book a 15-minute demo and see live data for your store before the call ends.</p>
+        </div>
+        <div class="cta-chapter-action">
+          <div>Book a Free Demo</div>
+          <div>petjoy.com/demo</div>
+        </div>
+      </div>
+
+      <blockquote>
+        <p>"I read this playbook on a Sunday night and started the audit on Monday. By Day 45, my toy section sell-through was at 79% — up from 58%. I haven't touched a vendor catalog since. I just look at the data."</p>
+        <cite>David Park, Owner — Fetch & Friends Pet Supply · Chicago, IL · PetJoy subscriber since March 2026</cite>
+      </blockquote>
+
+      <div class="page-footer">
+        <div class="pf-brand">PETJOY · petjoy.com</div>
+        <div class="pf-text">© 2026 PetJoy Inc. · The B2B Pet Retail Playbook · All rights reserved</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

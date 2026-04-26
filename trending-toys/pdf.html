@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top 50 Trending Pet Toys Q2 2026 — PetJoy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #C8502A;
+    --coral-mid: #D9623D;
+    --coral-light: #FFF0EB;
+    --coral-pale: #FEF3EE;
+    --navy: #0A1628;
+    --gold: #F2C94C;
+    --green: #1B5E3B;
+    --bg: #FAFAF7;
+    --text: #1A2332;
+    --muted: #6B7280;
+    --border: #E5E7EB;
+    --white: #FFFFFF;
+    --rank-1: #C8502A;
+    --rank-2: #8B5E3C;
+    --rank-3: #5D6D7E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    margin: 0 auto 40px;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; page-break-after: always; width: 100%; }
+    .page:last-child { page-break-after: avoid; }
+  }
+
+  /* COVER */
+  .cover {
+    background: var(--coral);
+    min-height: 11in;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: rgba(0,0,0,0.08);
+    border-radius: 50%;
+  }
+
+  .cover-top {
+    padding: 48px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+  }
+
+  .logo {
+    font-size: 20pt;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+
+  .logo span { color: var(--gold); }
+
+  .report-badge {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 4px;
+  }
+
+  .cover-main {
+    flex: 1;
+    padding: 0 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-issue {
+    font-size: 10pt;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .cover-rank {
+    font-size: 120pt;
+    font-weight: 900;
+    color: rgba(255,255,255,0.12);
+    line-height: 0.85;
+    letter-spacing: -6px;
+    margin-bottom: -20px;
+    user-select: none;
+  }
+
+  .cover-title {
+    font-size: 48pt;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+  }
+
+  .cover-title em {
+    font-style: normal;
+    color: var(--gold);
+    display: block;
+  }
+
+  .cover-sub {
+    font-size: 13pt;
+    color: rgba(255,255,255,0.75);
+    max-width: 500px;
+    line-height: 1.65;
+    margin-bottom: 48px;
+  }
+
+  .cover-meta-row {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cover-meta-num {
+    font-size: 22pt;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .cover-meta-label {
+    font-size: 9pt;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .cover-meta-div {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  .cover-bottom {
+    padding: 24px 56px;
+    background: rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-bottom-text {
+    font-size: 9pt;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .cover-bottom-tag {
+    font-size: 9pt;
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  /* INNER PAGE STRUCTURE */
+  .page-inner {
+    padding: 52px 56px;
+    min-height: 11in;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 36px;
+    border-bottom: 2px solid var(--coral);
+  }
+
+  .ph-logo {
+    font-size: 14pt;
+    font-weight: 800;
+    color: var(--coral);
+  }
+
+  .ph-logo span { color: var(--navy); }
+
+  .ph-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .ph-report {
+    font-size: 9pt;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  .ph-page {
+    font-size: 9pt;
+    color: var(--muted);
+  }
+
+  .section-eyebrow {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-size: 24pt;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+  }
+
+  .divider {
+    width: 48px;
+    height: 3px;
+    background: var(--coral);
+    border-radius: 2px;
+    margin: 14px 0 22px;
+  }
+
+  /* INTRO / LETTER */
+  .letter-body {
+    font-size: 11pt;
+    color: var(--text);
+    line-height: 1.8;
+  }
+
+  .letter-body p { margin-bottom: 16px; }
+
+  .methodology-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 28px 0;
+  }
+
+  .method-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--coral);
+    border-radius: 0 0 10px 10px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .method-num {
+    font-size: 28pt;
+    font-weight: 900;
+    color: var(--coral);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .method-label {
+    font-size: 10pt;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .method-desc {
+    font-size: 9pt;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* CATEGORY OVERVIEW */
+  .cat-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+  }
+
+  .category-bar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  .cat-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .cat-bar-label {
+    font-size: 10pt;
+    font-weight: 600;
+    color: var(--navy);
+    min-width: 160px;
+  }
+
+  .cat-bar-track {
+    flex: 1;
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .cat-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: var(--coral);
+  }
+
+  .cat-bar-meta {
+    display: flex;
+    gap: 16px;
+    min-width: 120px;
+    justify-content: flex-end;
+  }
+
+  .cat-bar-num {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .cat-bar-change {
+    font-size: 9pt;
+    font-weight: 600;
+  }
+
+  .cat-bar-change.up { color: var(--green); }
+  .cat-bar-change.down { color: var(--coral); }
+
+  /* TOP 10 SPOTLIGHT */
+  .top10-header {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .top10-header-title {
+    font-size: 14pt;
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .top10-header-sub {
+    font-size: 10pt;
+    color: rgba(255,255,255,0.6);
+    margin-top: 3px;
+  }
+
+  .score-legend {
+    display: flex;
+    gap: 20px;
+  }
+
+  .score-key {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 9pt;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .score-key-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .rank-card {
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: var(--white);
+    transition: box-shadow 0.2s;
+  }
+
+  .rank-card.gold { border-color: #F2C94C; background: #FFFDF0; }
+  .rank-card.silver { border-color: #B8C0CC; background: #FAFBFC; }
+  .rank-card.bronze { border-color: #C8A96A; background: #FDFAF5; }
+
+  .rank-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16pt;
+    font-weight: 900;
+    color: var(--white);
+    flex-shrink: 0;
+    background: var(--coral);
+  }
+
+  .rank-card.gold .rank-badge { background: #C9A227; }
+  .rank-card.silver .rank-badge { background: #8B919A; }
+  .rank-card.bronze .rank-badge { background: #9B7540; }
+
+  .rank-body { flex: 1; }
+
+  .rank-product {
+    font-size: 13pt;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .rank-brand-cat {
+    font-size: 9.5pt;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .rank-brand-cat strong { color: var(--text); }
+
+  .rank-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .rank-tag {
+    background: var(--coral-pale);
+    color: var(--coral);
+    font-size: 8.5pt;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .rank-tag.green {
+    background: #E8F5EE;
+    color: var(--green);
+  }
+
+  .rank-tag.navy {
+    background: #EEF0F5;
+    color: var(--navy);
+  }
+
+  .rank-right {
+    text-align: right;
+    flex-shrink: 0;
+    min-width: 100px;
+  }
+
+  .score-display {
+    font-size: 28pt;
+    font-weight: 900;
+    color: var(--coral);
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .rank-card.gold .score-display { color: #C9A227; }
+
+  .score-label {
+    font-size: 8.5pt;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .score-change {
+    font-size: 9pt;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  .score-change.up { color: var(--green); }
+  .score-change.down { color: var(--coral); }
+
+  /* FULL TABLE */
+  .rankings-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .rankings-table thead th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.85);
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 12px 14px;
+    text-align: left;
+  }
+
+  .rankings-table thead th:last-child { text-align: right; }
+
+  .rankings-table tbody tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .rankings-table tbody tr:nth-child(even) { background: var(--bg); }
+
+  .rankings-table tbody td {
+    padding: 11px 14px;
+    font-size: 10pt;
+    color: var(--text);
+    vertical-align: middle;
+  }
+
+  .tbl-rank {
+    font-weight: 800;
+    color: var(--navy);
+    font-size: 11pt;
+  }
+
+  .tbl-score {
+    font-weight: 700;
+    color: var(--coral);
+    text-align: right;
+  }
+
+  .tbl-change { font-weight: 600; font-size: 9.5pt; }
+  .tbl-change.up { color: var(--green); }
+  .tbl-change.down { color: var(--coral); }
+
+  .tbl-cat {
+    background: var(--coral-pale);
+    color: var(--coral);
+    font-size: 8.5pt;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+
+  /* BUYING GUIDE */
+  .buying-guide-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 24px 0;
+  }
+
+  .buying-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+  }
+
+  .buying-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .buying-icon {
+    background: var(--coral-light);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18pt;
+  }
+
+  .buying-card-title {
+    font-size: 12pt;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .buying-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .buying-card ul li {
+    font-size: 10pt;
+    color: var(--text);
+    line-height: 1.5;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .buying-card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--coral);
+    font-weight: 700;
+  }
+
+  .callout-box {
+    background: var(--coral);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin: 24px 0;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .callout-box p {
+    font-size: 12pt;
+    color: var(--white);
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  .callout-icon {
+    font-size: 28pt;
+    flex-shrink: 0;
+    margin-top: -4px;
+  }
+
+  /* FOOTER */
+  .page-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pf-brand { font-size: 9pt; font-weight: 700; color: var(--coral); }
+  .pf-text { font-size: 8pt; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page cover">
+  <div class="cover-top">
+    <div class="logo">PET<span>JOY</span></div>
+    <div class="report-badge">Quarterly Intelligence Report</div>
+  </div>
+  <div class="cover-main">
+    <div class="cover-issue">Q2 2026 · Volume 7 · Independent Retail Edition</div>
+    <div class="cover-rank">50</div>
+    <h1 class="cover-title">Top Trending<br><em>Pet Toys 2026</em></h1>
+    <p class="cover-sub">The fastest-moving products across 200 independent pet retailers — ranked by real sell-through velocity, reorder demand, and margin performance.</p>
+    <div class="cover-meta-row">
+      <div class="cover-meta-item">
+        <div class="cover-meta-num">200+</div>
+        <div class="cover-meta-label">independent retailers tracked</div>
+      </div>
+      <div class="cover-meta-div"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-num">847</div>
+        <div class="cover-meta-label">toy SKUs analyzed</div>
+      </div>
+      <div class="cover-meta-div"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-num">Q2 2026</div>
+        <div class="cover-meta-label">reporting period</div>
+      </div>
+      <div class="cover-meta-div"></div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-num">8 weeks</div>
+        <div class="cover-meta-label">of velocity data</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-bottom-text">Published by PetJoy · petjoy.com · Retail Intelligence Platform for Independent Pet Stores</div>
+    <div class="cover-bottom-tag">Mid-Funnel Resource</div>
+  </div>
+</div>
+
+<!-- PAGE 2: INTRODUCTION + METHODOLOGY -->
+<div class="page">
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="ph-logo">PET<span>JOY</span></div>
+      <div class="ph-right">
+        <div class="ph-report">Top 50 Trending Pet Toys Q2 2026</div>
+        <div class="ph-page">Page 2</div>
+      </div>
+    </div>
+
+    <div class="section-eyebrow">Editor's Note</div>
+    <h2 class="section-title">The Data Behind the Rankings</h2>
+    <div class="divider"></div>
+
+    <div class="letter-body">
+      <p>Every quarter, PetJoy analyzes sell-through velocity across 200+ independent pet retailers in our network to surface the products gaining momentum — and flag those approaching stall. What you're holding is the result of 8 weeks of continuous tracking across 847 toy SKUs.</p>
+
+      <p>The Trending Score is not a manufacturer's sales figure or a trade show popularity contest. It's a composite metric built from three inputs: sell-through rate within 30 days, week-over-week velocity increase, and reorder frequency across our retailer network. A score of 90+ means a product is a category leader. A score below 60 is a warning flag.</p>
+
+      <p>Q2 2026 saw three clear trends emerge: enrichment toys moved from niche to mainstream, with interactive puzzle feeders claiming four of the top 10 slots. Natural material toys — specifically antler, rubber, and bamboo variants — outperformed synthetic alternatives across all price bands. And the $14.99–$22.99 price window proved to be the sweet spot, with 38 of the top 50 products living within that range.</p>
+
+      <p>Use this report at your next buying meeting. The recommendations on page 6 are actionable this week.</p>
+    </div>
+
+    <div class="methodology-grid">
+      <div class="method-card">
+        <div class="method-num">200+</div>
+        <div class="method-label">Retailer Network</div>
+        <div class="method-desc">Independent pet stores across 34 states contributing weekly POS velocity data to the PetJoy platform</div>
+      </div>
+      <div class="method-card">
+        <div class="method-num">847</div>
+        <div class="method-label">SKUs Analyzed</div>
+        <div class="method-desc">Every active toy SKU in our database evaluated for sell-through rate, reorder frequency, and margin performance</div>
+      </div>
+      <div class="method-card">
+        <div class="method-num">8 weeks</div>
+        <div class="method-label">Data Window</div>
+        <div class="method-desc">April 1 – May 26, 2026 tracking period. Scores reflect momentum, not one-week spikes. Sustained velocity wins.</div>
+      </div>
+    </div>
+
+    <div class="callout-box">
+      <div class="callout-icon">&#128270;</div>
+      <p>"A Score of 90+ means a product is turning at Category A velocity in at least 60% of the stores stocking it. These are the products your top competitors are selling out of every week. If you don't carry them, you're sending customers to someone who does."</p>
+    </div>
+
+    <div class="page-footer">
+      <div class="pf-brand">PETJOY</div>
+      <div class="pf-text">petjoy.com · Top 50 Trending Pet Toys Q2 2026 · Confidential — for PetJoy subscribers only</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: CATEGORY OVERVIEW -->
+<div class="page">
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="ph-logo">PET<span>JOY</span></div>
+      <div class="ph-right">
+        <div class="ph-report">Top 50 Trending Pet Toys Q2 2026</div>
+        <div class="ph-page">Page 3</div>
+      </div>
+    </div>
+
+    <div class="section-eyebrow">Category Analysis</div>
+    <h2 class="section-title">Q2 2026 Category Performance</h2>
+    <div class="divider"></div>
+
+    <p style="font-size:11pt; color:var(--text); line-height:1.75; margin-bottom:28px;">Eight toy categories were tracked this quarter. Enrichment and interactive toys saw the largest momentum gains, driven by rising consumer awareness of cognitive stimulation for pets. Natural and rope categories maintained steady performance. Electronic toys underperformed expectations amid returns concerns.</p>
+
+    <div class="category-bar-list">
+      <div class="cat-bar-row">
+        <div class="cat-bar-label">Enrichment / Puzzle</div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:92%;"></div></div>
+        <div class="cat-bar-meta">
+          <div class="cat-bar-num">14 SKUs</div>
+          <div class="cat-bar-change up">+31% YoY</div>
+        </div>
+      </div>
+      <div class="cat-bar-row">
+        <div class="cat-bar-label">Natural Material</div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:84%;"></div></div>
+        <div class="cat-bar-meta">
+          <div class="cat-bar-num">11 SKUs</div>
+          <div class="cat-bar-change up">+22% YoY</div>
+        </div>
+      </div>
+      <div class="cat-bar-row">
+        <div class="cat-bar-label">Plush / Comfort</div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:72%;"></div></div>
+        <div class="cat-bar-meta">
+          <div class="cat-bar-num">9 SKUs</div>
+          <div class="cat-bar-change up">+14% YoY</div>
+        </div>
+      </div>
+      <div class="cat-bar-row">
+        <div class="cat-bar-label">Fetch / Outdoor</div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:66%;"></div></div>
+        <div class="cat-bar-meta">
+          <div class="cat-bar-num">7 SKUs</div>
+          <div class="cat-bar-change up">+8% YoY</div>
+        </div>
+      </div>
+      <div class="cat-bar-row">
+        <div class="cat-bar-label">Rope / Tug</div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:58%;"></div></div>
+        <div class="cat-bar-meta">
+          <div class="cat-bar-num">5 SKUs</div>
+          <div class="cat-bar-change up">+5% YoY</div>
+        </div>
+      </div>
+      <div class="cat-bar-row">
+        <div class="cat-bar-label">Interactive / Tech</div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:48%; background:var(--muted);"></div></div>
+        <div class="cat-bar-meta">
+          <div class="cat-bar-num">3 SKUs</div>
+          <div class="cat-bar-change down">-12% YoY</div>
+        </div>
+      </div>
+      <div class="cat-bar-row">
+        <div class="cat-bar-label">Squeaker / Latex</div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:40%; background:var(--muted);"></div></div>
+        <div class="cat-bar-meta">
+          <div class="cat-bar-num">1 SKU</div>
+          <div class="cat-bar-change down">-8% YoY</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:24px; margin-top:24px;">
+      <div class="section-eyebrow" style="margin-bottom:14px;">Q2 Key Findings</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+        <div>
+          <div style="font-size:11pt; font-weight:700; color:var(--navy); margin-bottom:8px;">Enrichment Dominates</div>
+          <div style="font-size:10pt; color:var(--muted); line-height:1.6;">Puzzle feeders and enrichment toys now represent 28% of all toy velocity data — up from 17% in Q2 2025. The category is no longer niche. Any store without 6+ enrichment SKUs is leaving dollars on the floor.</div>
+        </div>
+        <div>
+          <div style="font-size:11pt; font-weight:700; color:var(--navy); margin-bottom:8px;">Price Band Clarity</div>
+          <div style="font-size:10pt; color:var(--muted); line-height:1.6;">The $14.99–$22.99 window accounts for 76% of the top 50. Products under $9.99 are declining as consumers invest more in quality. Products over $35 move well in stores with strong loyalty programs — slow everywhere else.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="pf-brand">PETJOY</div>
+      <div class="pf-text">petjoy.com · Top 50 Trending Pet Toys Q2 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 4: TOP 10 SPOTLIGHT -->
+<div class="page">
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="ph-logo">PET<span>JOY</span></div>
+      <div class="ph-right">
+        <div class="ph-report">Top 50 Trending Pet Toys Q2 2026</div>
+        <div class="ph-page">Page 4</div>
+      </div>
+    </div>
+
+    <div class="top10-header">
+      <div>
+        <div class="top10-header-title">#1–#10 Spotlight Rankings</div>
+        <div class="top10-header-sub">Top 10 products by PetJoy Trending Score — Q2 2026</div>
+      </div>
+      <div class="score-legend">
+        <div class="score-key"><div class="score-key-dot" style="background:var(--coral);"></div>Score = Velocity Rank</div>
+        <div class="score-key"><div class="score-key-dot" style="background:var(--green);"></div>vs. Prior Quarter</div>
+      </div>
+    </div>
+
+    <div class="rank-card gold">
+      <div class="rank-badge" style="font-size:13pt;">#1</div>
+      <div class="rank-body">
+        <div class="rank-product">EcoPaws Puzzle Feeder Pro</div>
+        <div class="rank-brand-cat"><strong>EcoPaws Co.</strong> · Enrichment / Puzzle · $21.99 MSRP</div>
+        <div class="rank-tags">
+          <span class="rank-tag green">Category Leader</span>
+          <span class="rank-tag">Enrichment</span>
+          <span class="rank-tag navy">Bamboo + Recycled Rubber</span>
+          <span class="rank-tag">Adult Dogs</span>
+        </div>
+      </div>
+      <div class="rank-right">
+        <div class="score-display">97</div>
+        <div class="score-label">Trending Score</div>
+        <div class="score-change up">+12 vs Q1</div>
+      </div>
+    </div>
+
+    <div class="rank-card silver">
+      <div class="rank-badge" style="font-size:13pt;">#2</div>
+      <div class="rank-body">
+        <div class="rank-product">ChewMax Natural Antler Ring</div>
+        <div class="rank-brand-cat"><strong>ChewMax USA</strong> · Natural Material / Chew · $18.99 MSRP</div>
+        <div class="rank-tags">
+          <span class="rank-tag green">High Repeat Purchase</span>
+          <span class="rank-tag">Natural Material</span>
+          <span class="rank-tag navy">Grade A Elk Antler</span>
+          <span class="rank-tag">All Sizes</span>
+        </div>
+      </div>
+      <div class="rank-right">
+        <div class="score-display">94</div>
+        <div class="score-label">Trending Score</div>
+        <div class="score-change up">+7 vs Q1</div>
+      </div>
+    </div>
+
+    <div class="rank-card">
+      <div class="rank-badge">#3</div>
+      <div class="rank-body">
+        <div class="rank-product">FetchCo Glow Ball Set (3-Pack)</div>
+        <div class="rank-brand-cat"><strong>FetchCo Outdoor</strong> · Fetch / Outdoor · $16.99 MSRP</div>
+        <div class="rank-tags">
+          <span class="rank-tag">Seasonal Surge</span>
+          <span class="rank-tag">Fetch</span>
+          <span class="rank-tag navy">LED, Non-Toxic Rubber</span>
+          <span class="rank-tag">Summer Driver</span>
+        </div>
+      </div>
+      <div class="rank-right">
+        <div class="score-display">88</div>
+        <div class="score-label">Trending Score</div>
+        <div class="score-change up">+18 vs Q1</div>
+      </div>
+    </div>
+
+    <div class="rank-card bronze">
+      <div class="rank-badge" style="font-size:13pt;">#4</div>
+      <div class="rank-body">
+        <div class="rank-product">TinyBark Interactive Squeaker Ball</div>
+        <div class="rank-brand-cat"><strong>TinyBark</strong> · Interactive / Squeaker · $14.99 MSRP</div>
+        <div class="rank-tags">
+          <span class="rank-tag">New Entry</span>
+          <span class="rank-tag">Small Breeds</span>
+          <span class="rank-tag navy">Latex-Free, Dishwasher Safe</span>
+        </div>
+      </div>
+      <div class="rank-right">
+        <div class="score-display">86</div>
+        <div class="score-label">Trending Score</div>
+        <div class="score-change up">NEW</div>
+      </div>
+    </div>
+
+    <div class="rank-card">
+      <div class="rank-badge">#5</div>
+      <div class="rank-body">
+        <div class="rank-product">SnugglePup Calming Plush — Bear Edition</div>
+        <div class="rank-brand-cat"><strong>SnugglePup</strong> · Plush / Comfort · $22.99 MSRP</div>
+        <div class="rank-tags">
+          <span class="rank-tag">High Gift Purchase</span>
+          <span class="rank-tag">Plush</span>
+          <span class="rank-tag navy">Anxiety Relief, Heartbeat Toy</span>
+          <span class="rank-tag">Puppies + Seniors</span>
+        </div>
+      </div>
+      <div class="rank-right">
+        <div class="score-display">81</div>
+        <div class="score-label">Trending Score</div>
+        <div class="score-change down">-3 vs Q1</div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:4px;">
+      <div class="rank-card" style="margin-bottom:0;">
+        <div class="rank-badge" style="font-size:12pt; width:36px; height:36px;">#6</div>
+        <div class="rank-body">
+          <div class="rank-product" style="font-size:11.5pt;">GreenLeaf Rubber Tug Duo</div>
+          <div class="rank-brand-cat" style="font-size:9pt;">GreenLeaf · Natural Rubber · $15.99</div>
+        </div>
+        <div class="rank-right"><div class="score-display" style="font-size:20pt;">79</div></div>
+      </div>
+      <div class="rank-card" style="margin-bottom:0;">
+        <div class="rank-badge" style="font-size:12pt; width:36px; height:36px;">#7</div>
+        <div class="rank-body">
+          <div class="rank-product" style="font-size:11.5pt;">PawPuzzle Level 3 Slide Board</div>
+          <div class="rank-brand-cat" style="font-size:9pt;">PawPuzzle · Enrichment · $26.99</div>
+        </div>
+        <div class="rank-right"><div class="score-display" style="font-size:20pt;">77</div></div>
+      </div>
+      <div class="rank-card" style="margin-bottom:0;">
+        <div class="rank-badge" style="font-size:12pt; width:36px; height:36px;">#8</div>
+        <div class="rank-body">
+          <div class="rank-product" style="font-size:11.5pt;">BarkRopes 4-Knot Braided Set</div>
+          <div class="rank-brand-cat" style="font-size:9pt;">BarkRopes · Rope / Tug · $13.99</div>
+        </div>
+        <div class="rank-right"><div class="score-display" style="font-size:20pt;">74</div></div>
+      </div>
+      <div class="rank-card" style="margin-bottom:0;">
+        <div class="rank-badge" style="font-size:12pt; width:36px; height:36px;">#9</div>
+        <div class="rank-body">
+          <div class="rank-product" style="font-size:11.5pt;">CoolPet Crinkle Fox + Fox Kit</div>
+          <div class="rank-brand-cat" style="font-size:9pt;">CoolPet · Plush · $19.99</div>
+        </div>
+        <div class="rank-right"><div class="score-display" style="font-size:20pt;">72</div></div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="pf-brand">PETJOY</div>
+      <div class="pf-text">petjoy.com · Top 50 Trending Pet Toys Q2 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 5: RANKINGS #11-50 TABLE -->
+<div class="page">
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="ph-logo">PET<span>JOY</span></div>
+      <div class="ph-right">
+        <div class="ph-report">Top 50 Trending Pet Toys Q2 2026</div>
+        <div class="ph-page">Page 5</div>
+      </div>
+    </div>
+
+    <div class="section-eyebrow">Complete Rankings</div>
+    <h2 class="section-title">Rankings #11–50</h2>
+    <div class="divider"></div>
+
+    <table class="rankings-table">
+      <thead>
+        <tr>
+          <th style="width:44px;">#</th>
+          <th>Product Name</th>
+          <th>Brand</th>
+          <th>Category</th>
+          <th style="width:70px;">MSRP</th>
+          <th style="width:56px;">vs Q1</th>
+          <th style="width:64px;">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="tbl-rank">10</td><td>WonderBall Treat Dispenser XL</td><td>WonderBall</td><td><span class="tbl-cat">Enrichment</span></td><td>$19.99</td><td class="tbl-change up">+9</td><td class="tbl-score">70</td></tr>
+        <tr><td class="tbl-rank">11</td><td>ZenBark Lick Mat — Floral</td><td>ZenBark</td><td><span class="tbl-cat">Enrichment</span></td><td>$14.99</td><td class="tbl-change up">+14</td><td class="tbl-score">68</td></tr>
+        <tr><td class="tbl-rank">12</td><td>RootChew Bully Stick Holder Pro</td><td>RootChew</td><td><span class="tbl-cat">Natural</span></td><td>$11.99</td><td class="tbl-change up">+6</td><td class="tbl-score">66</td></tr>
+        <tr><td class="tbl-rank">13</td><td>PawFlex Stretch Ring (3 sizes)</td><td>PawFlex</td><td><span class="tbl-cat">Fetch</span></td><td>$13.49</td><td class="tbl-change down">-2</td><td class="tbl-score">65</td></tr>
+        <tr><td class="tbl-rank">14</td><td>HappyHound Brain Box Level 2</td><td>HappyHound</td><td><span class="tbl-cat">Enrichment</span></td><td>$24.99</td><td class="tbl-change up">+11</td><td class="tbl-score">64</td></tr>
+        <tr><td class="tbl-rank">15</td><td>SqueakCity Dino 3-Pack</td><td>SqueakCity</td><td><span class="tbl-cat">Squeaker</span></td><td>$16.99</td><td class="tbl-change down">-5</td><td class="tbl-score">63</td></tr>
+        <tr><td class="tbl-rank">16</td><td>OutdoorPaws Spring Frisbee Set</td><td>OutdoorPaws</td><td><span class="tbl-cat">Fetch</span></td><td>$17.99</td><td class="tbl-change up">+22</td><td class="tbl-score">62</td></tr>
+        <tr><td class="tbl-rank">17</td><td>ChillPaws Cooling Chew Bone</td><td>ChillPaws</td><td><span class="tbl-cat">Natural</span></td><td>$12.99</td><td class="tbl-change up">+8</td><td class="tbl-score">61</td></tr>
+        <tr><td class="tbl-rank">18</td><td>NestPup Comfort Hedgehog — Large</td><td>NestPup</td><td><span class="tbl-cat">Plush</span></td><td>$18.99</td><td class="tbl-change down">-1</td><td class="tbl-score">60</td></tr>
+        <tr><td class="tbl-rank">19</td><td>BrightBall LED Chuck-It 2.0</td><td>BrightBall</td><td><span class="tbl-cat">Fetch</span></td><td>$19.99</td><td class="tbl-change up">+4</td><td class="tbl-score">59</td></tr>
+        <tr><td class="tbl-rank">20</td><td>TugTug Cotton Figure-8 Rope</td><td>TugTug</td><td><span class="tbl-cat">Rope</span></td><td>$9.99</td><td class="tbl-change down">-3</td><td class="tbl-score">58</td></tr>
+        <tr><td class="tbl-rank">21</td><td>UrbanPet Crinkle Avocado — 2 Sizes</td><td>UrbanPet</td><td><span class="tbl-cat">Plush</span></td><td>$14.99</td><td class="tbl-change up">+7</td><td class="tbl-score">57</td></tr>
+        <tr><td class="tbl-rank">22</td><td>GreenBite Grass Rope Ball</td><td>GreenBite</td><td><span class="tbl-cat">Natural</span></td><td>$10.99</td><td class="tbl-change up">+3</td><td class="tbl-score">56</td></tr>
+        <tr><td class="tbl-rank">23</td><td>PetPuzzle Maze Feeder — Small</td><td>PetPuzzle Co</td><td><span class="tbl-cat">Enrichment</span></td><td>$18.99</td><td class="tbl-change up">+9</td><td class="tbl-score">55</td></tr>
+        <tr><td class="tbl-rank">24</td><td>SeniorPaws Soft Grip Ring</td><td>SeniorPaws</td><td><span class="tbl-cat">Plush</span></td><td>$12.99</td><td class="tbl-change up">+16</td><td class="tbl-score">54</td></tr>
+        <tr><td class="tbl-rank">25</td><td>FlipChip Treat Slide Board XL</td><td>FlipChip</td><td><span class="tbl-cat">Enrichment</span></td><td>$29.99</td><td class="tbl-change up">+5</td><td class="tbl-score">53</td></tr>
+        <tr><td class="tbl-rank">26</td><td>MuttMitt Tug-Rope Combo</td><td>MuttMitt</td><td><span class="tbl-cat">Rope</span></td><td>$11.49</td><td class="tbl-change down">-4</td><td class="tbl-score">52</td></tr>
+        <tr><td class="tbl-rank">27</td><td>CalmDown Lavender Plush Burrow</td><td>CalmDown Co</td><td><span class="tbl-cat">Plush</span></td><td>$27.99</td><td class="tbl-change up">+19</td><td class="tbl-score">51</td></tr>
+        <tr><td class="tbl-rank">28</td><td>BarkBall Wobble Feeder — Medium</td><td>BarkBall</td><td><span class="tbl-cat">Enrichment</span></td><td>$16.99</td><td class="tbl-change up">+2</td><td class="tbl-score">50</td></tr>
+        <tr><td class="tbl-rank">29</td><td>PinePaw Natural Pine Stick Bundle</td><td>PinePaw</td><td><span class="tbl-cat">Natural</span></td><td>$8.99</td><td class="tbl-change down">-6</td><td class="tbl-score">49</td></tr>
+        <tr><td class="tbl-rank">30</td><td>AquaDog Water Toss Ball</td><td>AquaDog</td><td><span class="tbl-cat">Fetch</span></td><td>$13.99</td><td class="tbl-change up">+28</td><td class="tbl-score">48</td></tr>
+        <tr><td class="tbl-rank">31–40</td><td colspan="5" style="color:var(--muted); font-style:italic; font-size:10pt;">Scores 47–38 · Full detail in PetJoy platform subscriber report</td><td class="tbl-score" style="color:var(--muted);">47–38</td></tr>
+        <tr><td class="tbl-rank">41–50</td><td colspan="5" style="color:var(--muted); font-style:italic; font-size:10pt;">Scores 37–28 · Full detail in PetJoy platform subscriber report</td><td class="tbl-score" style="color:var(--muted);">37–28</td></tr>
+      </tbody>
+    </table>
+
+    <div style="background:var(--coral-pale); border:1px solid #FECDC7; border-radius:10px; padding:16px 20px; margin-top:20px; font-size:10pt; color:var(--muted);">
+      <strong style="color:var(--navy);">Full rankings access:</strong> PetJoy subscribers see complete data for all 50 products including weekly velocity trend, margin benchmarks, competitor carry data, and reorder timing signals. Log in at petjoy.com/dashboard.
+    </div>
+
+    <div class="page-footer">
+      <div class="pf-brand">PETJOY</div>
+      <div class="pf-text">petjoy.com · Top 50 Trending Pet Toys Q2 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 6: BUYING RECOMMENDATIONS + CTA -->
+<div class="page">
+  <div class="page-inner">
+    <div class="page-header">
+      <div class="ph-logo">PET<span>JOY</span></div>
+      <div class="ph-right">
+        <div class="ph-report">Top 50 Trending Pet Toys Q2 2026</div>
+        <div class="ph-page">Page 6</div>
+      </div>
+    </div>
+
+    <div class="section-eyebrow">Actionable Guidance</div>
+    <h2 class="section-title">Q2 Buying Recommendations</h2>
+    <div class="divider"></div>
+
+    <p style="font-size:11pt; color:var(--text); line-height:1.75; margin-bottom:28px;">Use these recommendations at your next buying meeting. Prioritized by velocity score and margin opportunity. All pricing reflects MSRP — actual wholesale varies by distributor relationship.</p>
+
+    <div class="buying-guide-grid">
+      <div class="buying-card">
+        <div class="buying-card-header">
+          <div class="buying-icon">&#9650;</div>
+          <div class="buying-card-title">Increase Immediately (Scores 85+)</div>
+        </div>
+        <ul>
+          <li>EcoPaws Puzzle Feeder Pro — if carrying, double your par level this week</li>
+          <li>ChewMax Natural Antler Ring — add at minimum 2 additional size variants</li>
+          <li>FetchCo Glow Ball (3-Pack) — seasonal demand window open through August</li>
+          <li>TinyBark Interactive Squeaker Ball — new entry, allocate 3–4 linear feet minimum</li>
+        </ul>
+      </div>
+      <div class="buying-card">
+        <div class="buying-card-header">
+          <div class="buying-icon">&#10133;</div>
+          <div class="buying-card-title">Introduce This Quarter (Scores 70–84)</div>
+        </div>
+        <ul>
+          <li>WonderBall Treat Dispenser XL — strong e-commerce to brick-and-mortar conversion</li>
+          <li>ZenBark Lick Mat (Floral) — highest reorder rate in the lick mat category</li>
+          <li>PawPuzzle Level 3 Slide Board — premium price point, strong gifting velocity</li>
+          <li>CalmDown Lavender Plush Burrow — anxiety toy category growing 40%+ annually</li>
+        </ul>
+      </div>
+      <div class="buying-card">
+        <div class="buying-card-header">
+          <div class="buying-icon">&#9888;</div>
+          <div class="buying-card-title">Monitor Carefully (Scores 50–69)</div>
+        </div>
+        <ul>
+          <li>SnugglePup Calming Plush — down 3 points from Q1, watch Q3 direction</li>
+          <li>SqueakCity Dino 3-Pack — squeaker category overall softening</li>
+          <li>TugTug Cotton Figure-8 Rope — price compression making margins thin</li>
+          <li>PinePaw Natural Pine Stick Bundle — regional performance variation; check your market</li>
+        </ul>
+      </div>
+      <div class="buying-card">
+        <div class="buying-card-header">
+          <div class="buying-icon">&#9660;</div>
+          <div class="buying-card-title">Consider Reducing (Scores Below 50)</div>
+        </div>
+        <ul>
+          <li>Any electronic toy not in the top 30 — returns and battery complaints rising</li>
+          <li>Latex squeakers under $8.99 — velocity declining across all markets this quarter</li>
+          <li>Single-size rope toys without premium material story — commoditized, margin thin</li>
+          <li>Any toy with Score below 40 not purchased in 90+ days — consider clearance</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background:var(--navy); border-radius:16px; padding:32px; margin-top:24px; display:flex; justify-content:space-between; align-items:center; gap:32px;">
+      <div>
+        <div style="font-size:9pt; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Get Real-Time Access</div>
+        <div style="font-size:16pt; font-weight:800; color:var(--white); margin-bottom:8px; line-height:1.3;">See live velocity data for your exact categories</div>
+        <div style="font-size:10.5pt; color:rgba(255,255,255,0.65); line-height:1.6;">PetJoy subscribers see updated Trending Scores weekly — not quarterly. Book a 15-minute demo and we'll show you live data for your top 3 toy categories before the call ends.</div>
+      </div>
+      <div style="flex-shrink:0; text-align:center; background:rgba(255,255,255,0.08); border-radius:12px; padding:24px 32px;">
+        <div style="font-size:32pt; font-weight:900; color:var(--gold); line-height:1;">15 min</div>
+        <div style="font-size:10pt; color:rgba(255,255,255,0.6); margin-top:4px;">demo · petjoy.com/demo</div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="pf-brand">PETJOY · petjoy.com</div>
+      <div class="pf-text">© 2026 PetJoy Inc. · All rights reserved · For internal retail use only</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
