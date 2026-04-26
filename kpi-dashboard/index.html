@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 60 KPI Dashboard | PetJoy | Founder OS Velocity</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1628;--navy-mid:#0F1F3D;--navy-light:#1A2F50;--navy-card:#132240;
+  --coral:#C8502A;--coral-light:#FEF0EB;
+  --gold:#F2C94C;--gold-light:#FEF9E7;
+  --green:#1B5E3B;--green-light:#E8F5EE;--green-bright:#2ECC71;
+  --blue:#4FA3E0;--blue-light:#EBF5FF;
+  --bg:#0A1628;--bg-alt:#0F1F3D;
+  --text:#FFFFFF;--muted:rgba(255,255,255,0.45);--border:rgba(255,255,255,0.08);
+  --sidebar-w:240px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--navy);-webkit-font-smoothing:antialiased;}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;min-height:100vh;}
+.main{min-width:0;overflow-x:hidden;}
+
+/* SIDEBAR */
+.sidebar{background:rgba(6,12,26,0.95);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:28px 0 24px;z-index:100;overflow-y:auto;border-right:1px solid var(--border);}
+.sb-logo{padding:0 22px 20px;border-bottom:1px solid var(--border);margin-bottom:18px;}
+.sb-brand{font-size:17px;font-weight:800;color:var(--text);letter-spacing:-0.5px;}
+.sb-brand span{color:var(--coral);}
+.sb-doc{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:5px;}
+.sb-day-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,204,113,0.12);border:1px solid rgba(46,204,113,0.25);color:var(--green-bright);font-size:10px;font-weight:700;padding:4px 10px;border-radius:6px;margin-top:10px;}
+.sb-day-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green-bright);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+.sb-section-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:2px;padding:0 22px 8px;}
+.sb-nav{flex:1;padding:0 12px;}
+.sb-link{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:7px;text-decoration:none;font-size:12px;color:rgba(255,255,255,0.45);font-weight:500;transition:all 0.15s;margin-bottom:1px;cursor:pointer;}
+.sb-link:hover{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.8);}
+.sb-link.active{background:rgba(200,80,42,0.16);color:var(--text);}
+.sb-link.active .sb-dot{background:var(--coral);}
+.sb-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.12);flex-shrink:0;transition:background 0.15s;}
+.sb-kpi-mini{font-size:10px;font-weight:700;color:var(--green-bright);margin-left:auto;}
+.sb-foot{padding:16px 22px 0;border-top:1px solid var(--border);margin-top:12px;}
+.sb-prep{font-size:10px;color:var(--muted);line-height:1.6;}
+.sb-prep strong{display:block;color:rgba(255,255,255,0.5);font-weight:600;margin-bottom:1px;}
+.live-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.2);color:var(--green-bright);font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:1px;margin-top:10px;}
+
+/* HEADER BAR */
+.topbar{background:var(--navy-mid);border-bottom:1px solid var(--border);padding:16px 48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;}
+.topbar-left{display:flex;align-items:center;gap:16px;}
+.topbar-title{font-size:15px;font-weight:700;color:var(--text);}
+.topbar-sub{font-size:12px;color:var(--muted);}
+.topbar-divider{width:1px;height:24px;background:var(--border);}
+.topbar-right{display:flex;align-items:center;gap:12px;}
+.topbar-date{font-size:11px;color:var(--muted);}
+.btn-export{display:inline-flex;align-items:center;gap:6px;background:rgba(200,80,42,0.15);border:1px solid rgba(200,80,42,0.3);color:var(--coral);font-size:11px;font-weight:700;padding:6px 14px;border-radius:6px;cursor:pointer;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.15s;}
+.btn-export:hover{background:rgba(200,80,42,0.25);}
+
+/* SECTION WRAPPER */
+.section{padding:48px 48px 56px;}
+.section-alt{background:rgba(15,31,61,0.5);}
+.sec-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;}
+.sec-eyebrow::before{content:'';width:20px;height:2px;background:var(--coral);}
+.sec-title{font-size:32px;font-weight:900;color:var(--text);letter-spacing:-1px;line-height:1.1;margin-bottom:6px;}
+.sec-sub{font-size:14px;color:var(--muted);max-width:580px;line-height:1.6;}
+
+/* KPI CARDS GRID */
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+.kpi-card{background:var(--navy-card);border:1px solid var(--border);border-radius:14px;padding:24px 22px 20px;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;}
+.kpi-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.4);}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.kpi-card.c-coral::before{background:var(--coral);}
+.kpi-card.c-gold::before{background:var(--gold);}
+.kpi-card.c-green::before{background:var(--green-bright);}
+.kpi-card.c-blue::before{background:var(--blue);}
+.kpi-card.c-purple::before{background:#9B59B6;}
+.kpi-card.c-teal::before{background:#1ABC9C;}
+.kpi-label{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;}
+.kpi-value{font-size:48px;font-weight:900;letter-spacing:-2.5px;line-height:1;margin-bottom:6px;}
+.kpi-value.v-coral{color:var(--coral);}
+.kpi-value.v-gold{color:var(--gold);}
+.kpi-value.v-green{color:var(--green-bright);}
+.kpi-value.v-blue{color:var(--blue);}
+.kpi-value.v-purple{color:#9B59B6;}
+.kpi-value.v-teal{color:#1ABC9C;}
+.kpi-delta{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:5px;margin-bottom:8px;}
+.delta-up{background:rgba(46,204,113,0.12);color:var(--green-bright);}
+.delta-up::before{content:'↑';}
+.delta-down{background:rgba(200,80,42,0.12);color:var(--coral);}
+.delta-down::before{content:'↓';}
+.kpi-desc{font-size:11px;color:var(--muted);line-height:1.5;}
+.kpi-sparkline{margin-top:14px;height:36px;}
+.kpi-target{display:flex;align-items:center;gap:8px;margin-top:12px;}
+.kpi-target-label{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+.progress-bar{flex:1;height:5px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:3px;transition:width 1.2s cubic-bezier(.23,1,.32,1);}
+.progress-pct{font-size:10px;font-weight:700;color:rgba(255,255,255,0.6);}
+
+/* COMPARISON TABLE */
+.compare-wrap{margin-top:32px;border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.compare-head{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border);padding:14px 24px;}
+.compare-head div{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;}
+.compare-head .ch-after{color:var(--green-bright);}
+.compare-row{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;transition:background 0.12s;}
+.compare-row:last-child{border-bottom:none;}
+.compare-row:hover{background:rgba(255,255,255,0.03);}
+.cr-metric{font-size:13px;font-weight:600;color:var(--text);}
+.cr-sub{font-size:10px;color:var(--muted);margin-top:2px;}
+.cr-before{font-size:14px;font-weight:700;color:var(--muted);}
+.cr-after{font-size:14px;font-weight:800;color:var(--green-bright);}
+.cr-delta{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;padding:3px 8px;border-radius:5px;}
+
+/* CHART SECTION */
+.chart-wrap{background:var(--navy-card);border:1px solid var(--border);border-radius:14px;padding:28px 28px 24px;margin-top:32px;}
+.chart-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;}
+.chart-title{font-size:16px;font-weight:700;color:var(--text);}
+.chart-sub{font-size:12px;color:var(--muted);margin-top:3px;}
+.chart-legend{display:flex;align-items:center;gap:16px;}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);}
+.legend-dot{width:8px;height:8px;border-radius:50%;}
+.chart-svg-wrap{width:100%;overflow:hidden;}
+svg.chart{width:100%;overflow:visible;}
+.chart-axis-label{font-family:'Poppins',sans-serif;font-size:10px;fill:rgba(255,255,255,0.3);}
+.chart-grid-line{stroke:rgba(255,255,255,0.05);stroke-width:1;}
+.chart-line-after{fill:none;stroke:var(--green-bright);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;}
+.chart-line-before{fill:none;stroke:rgba(255,255,255,0.18);stroke-width:2;stroke-dasharray:5,4;stroke-linejoin:round;}
+.chart-area-after{fill:url(#areaGradAfter);opacity:0.4;}
+.chart-area-before{fill:url(#areaGradBefore);opacity:0.15;}
+.chart-dot{transition:r 0.1s;}
+.chart-dot:hover{r:6;}
+
+/* VELOCITY MILESTONES */
+.milestones{margin-top:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.milestone{padding:24px 20px;border-right:1px solid var(--border);position:relative;}
+.milestone:last-child{border-right:none;}
+.ms-day{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;}
+.ms-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.ms-desc{font-size:11px;color:var(--muted);line-height:1.5;}
+.ms-status{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;margin-top:10px;text-transform:uppercase;letter-spacing:0.5px;}
+.ms-done{background:rgba(46,204,113,0.1);color:var(--green-bright);}
+.ms-done::before{content:'✓ ';}
+.ms-active{background:rgba(242,201,76,0.12);color:var(--gold);animation:ms-glow 2s infinite;}
+@keyframes ms-glow{0%,100%{box-shadow:none;}50%{box-shadow:0 0 8px rgba(242,201,76,0.25);}}
+.ms-active::before{content:'● ';}
+.ms-pending{background:rgba(255,255,255,0.05);color:var(--muted);}
+.ms-connector{position:absolute;top:50%;right:-1px;transform:translateY(-50%);width:1px;background:var(--border);height:40%;}
+
+/* WIN CALLOUTS */
+.wins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+.win-card{background:var(--navy-card);border:1px solid var(--border);border-radius:12px;padding:22px 20px;}
+.win-icon{font-size:28px;margin-bottom:12px;}
+.win-label{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;}
+.win-headline{font-size:20px;font-weight:800;color:var(--text);letter-spacing:-0.5px;line-height:1.2;margin-bottom:8px;}
+.win-sub{font-size:12px;color:var(--muted);line-height:1.5;}
+.win-card.featured{background:linear-gradient(135deg,rgba(200,80,42,0.12),rgba(242,201,76,0.06));border-color:rgba(200,80,42,0.25);}
+
+/* NEXT STEPS */
+.next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+.next-card{background:var(--navy-card);border:1px solid var(--border);border-radius:12px;padding:22px 20px;}
+.next-num{font-size:40px;font-weight:900;color:rgba(255,255,255,0.06);letter-spacing:-2px;line-height:1;margin-bottom:4px;}
+.next-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.next-sub{font-size:12px;color:var(--muted);line-height:1.5;}
+.next-cta{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:0.5px;margin-top:12px;}
+.next-cta::after{content:'→';}
+
+/* DIVIDER */
+.sec-divider{height:1px;background:var(--border);margin:0 48px;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:2px;}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-brand">Pet<span>Joy</span></div>
+    <div class="sb-doc">Day 60 Report</div>
+    <div class="sb-day-badge">Live Dashboard</div>
+  </div>
+  <div class="sb-section-label">Sections</div>
+  <nav class="sb-nav">
+    <a class="sb-link active" href="#kpis">
+      <span class="sb-dot"></span>KPI Overview
+      <span class="sb-kpi-mini">6</span>
+    </a>
+    <a class="sb-link" href="#chart">
+      <span class="sb-dot"></span>Revenue Trend
+    </a>
+    <a class="sb-link" href="#compare">
+      <span class="sb-dot"></span>Before vs After
+    </a>
+    <a class="sb-link" href="#milestones">
+      <span class="sb-dot"></span>Milestones
+    </a>
+    <a class="sb-link" href="#wins">
+      <span class="sb-dot"></span>Big Wins
+    </a>
+    <a class="sb-link" href="#next">
+      <span class="sb-dot"></span>Days 61-90
+    </a>
+  </nav>
+  <div class="sb-foot">
+    <div class="sb-prep">
+      <strong>Michelle Joy</strong>
+      Founder &amp; CEO, PetJoy<br>
+      Day 60 Review
+    </div>
+    <div class="live-badge">&#9679; Live Data</div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <div>
+        <div class="topbar-title">KPI Performance Dashboard</div>
+        <div class="topbar-sub">Velocity Program &mdash; Day 60 of 90</div>
+      </div>
+      <div class="topbar-divider"></div>
+      <div class="topbar-sub">Prepared by Founder OS &nbsp;|&nbsp; April 2026</div>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-date">Updated: April 26, 2026</div>
+      <div class="btn-export" onclick="window.print()">Export PDF</div>
+    </div>
+  </div>
+
+  <!-- KPI OVERVIEW -->
+  <section class="section" id="kpis">
+    <div class="sec-eyebrow">Performance</div>
+    <div class="sec-title">Day 60 KPI Overview</div>
+    <div class="sec-sub">All six core metrics tracked from Day 1 baseline. Green indicates at or above target; amber indicates on track but below target pace.</div>
+
+    <div class="kpi-grid">
+
+      <!-- Revenue per SKU -->
+      <div class="kpi-card c-coral">
+        <div class="kpi-label">Revenue per Active SKU</div>
+        <div class="kpi-value v-coral" data-count="847" data-prefix="$" data-suffix="">$847</div>
+        <div class="kpi-delta delta-up">+218% vs Day 0</div>
+        <div class="kpi-desc">From $266 avg at intake. Top 20 SKUs now drive 74% of category revenue.</div>
+        <div class="kpi-target">
+          <div class="kpi-target-label">Target: $900</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:94%;background:var(--coral);"></div></div>
+          <div class="progress-pct">94%</div>
+        </div>
+        <svg class="kpi-sparkline" viewBox="0 0 140 36" preserveAspectRatio="none">
+          <polyline points="0,30 20,26 40,22 60,18 80,14 100,10 120,6 140,4" fill="none" stroke="var(--coral)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        </svg>
+      </div>
+
+      <!-- Inventory Turnover -->
+      <div class="kpi-card c-gold">
+        <div class="kpi-label">Inventory Turnover Rate</div>
+        <div class="kpi-value v-gold" data-count="4.2" data-prefix="" data-suffix="x">4.2x</div>
+        <div class="kpi-delta delta-up">+110% vs Day 0</div>
+        <div class="kpi-desc">From 2.0x at intake. Dead stock cleared from 38% of catalog to 9%.</div>
+        <div class="kpi-target">
+          <div class="kpi-target-label">Target: 4.5x</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:93%;background:var(--gold);"></div></div>
+          <div class="progress-pct">93%</div>
+        </div>
+        <svg class="kpi-sparkline" viewBox="0 0 140 36" preserveAspectRatio="none">
+          <polyline points="0,32 20,28 40,24 60,20 80,15 100,12 120,9 140,7" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        </svg>
+      </div>
+
+      <!-- Wholesale Accounts -->
+      <div class="kpi-card c-green">
+        <div class="kpi-label">Active Wholesale Accounts</div>
+        <div class="kpi-value v-green" data-count="47" data-prefix="" data-suffix="">47</div>
+        <div class="kpi-delta delta-up">+35 accounts</div>
+        <div class="kpi-desc">From 12 at intake. 8 vet clinic partnerships added in last 30 days alone.</div>
+        <div class="kpi-target">
+          <div class="kpi-target-label">Target: 50</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:94%;background:var(--green-bright);"></div></div>
+          <div class="progress-pct">94%</div>
+        </div>
+        <svg class="kpi-sparkline" viewBox="0 0 140 36" preserveAspectRatio="none">
+          <polyline points="0,34 20,30 40,26 60,22 80,17 100,13 120,10 140,6" fill="none" stroke="var(--green-bright)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        </svg>
+      </div>
+
+      <!-- Avg Order Value -->
+      <div class="kpi-card c-blue">
+        <div class="kpi-label">Average Order Value (B2B)</div>
+        <div class="kpi-value v-blue" data-count="3140" data-prefix="$" data-suffix="">$3,140</div>
+        <div class="kpi-delta delta-up">+92% vs Day 0</div>
+        <div class="kpi-desc">From $1,632 at intake. Playbook bundles driving 3x larger initial orders.</div>
+        <div class="kpi-target">
+          <div class="kpi-target-label">Target: $3,000</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:100%;background:var(--blue);"></div></div>
+          <div class="progress-pct">105%</div>
+        </div>
+        <svg class="kpi-sparkline" viewBox="0 0 140 36" preserveAspectRatio="none">
+          <polyline points="0,30 20,27 40,23 60,19 80,15 100,11 120,8 140,4" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        </svg>
+      </div>
+
+      <!-- Content Reach -->
+      <div class="kpi-card c-purple">
+        <div class="kpi-label">Monthly Content Reach</div>
+        <div class="kpi-value v-purple" data-count="284000" data-prefix="" data-suffix="">284K</div>
+        <div class="kpi-delta delta-up">+1,840% vs Day 0</div>
+        <div class="kpi-desc">From 14.6K at intake. LinkedIn posts converting at 3.2% to demo requests.</div>
+        <div class="kpi-target">
+          <div class="kpi-target-label">Target: 250K</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:100%;background:#9B59B6;"></div></div>
+          <div class="progress-pct">114%</div>
+        </div>
+        <svg class="kpi-sparkline" viewBox="0 0 140 36" preserveAspectRatio="none">
+          <polyline points="0,34 20,32 40,28 60,22 80,16 100,10 120,6 140,3" fill="none" stroke="#9B59B6" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        </svg>
+      </div>
+
+      <!-- MRR -->
+      <div class="kpi-card c-teal">
+        <div class="kpi-label">Monthly Recurring Revenue</div>
+        <div class="kpi-value v-teal" data-count="68400" data-prefix="$" data-suffix="">$68.4K</div>
+        <div class="kpi-delta delta-up">+284% vs Day 0</div>
+        <div class="kpi-desc">From $17.8K at intake. Auto-replenishment program launched Day 21 now active on 29 accounts.</div>
+        <div class="kpi-target">
+          <div class="kpi-target-label">Target: $75K</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:91%;background:#1ABC9C;"></div></div>
+          <div class="progress-pct">91%</div>
+        </div>
+        <svg class="kpi-sparkline" viewBox="0 0 140 36" preserveAspectRatio="none">
+          <polyline points="0,33 20,29 40,25 60,20 80,15 100,11 120,7 140,4" fill="none" stroke="#1ABC9C" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+        </svg>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="sec-divider"></div>
+
+  <!-- REVENUE TREND CHART -->
+  <section class="section section-alt" id="chart">
+    <div class="sec-eyebrow">Trend</div>
+    <div class="sec-title">Monthly Revenue Trajectory</div>
+    <div class="sec-sub">12-month view comparing pre-Velocity baseline to post-enrollment performance across all revenue streams.</div>
+
+    <div class="chart-wrap">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Gross Revenue by Month</div>
+          <div class="chart-sub">PetJoy B2B + Direct channels combined</div>
+        </div>
+        <div class="chart-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--green-bright);"></div>After Velocity</div>
+          <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.3);"></div>Pre-Velocity Trend</div>
+        </div>
+      </div>
+      <div class="chart-svg-wrap">
+        <svg class="chart" viewBox="0 0 820 220" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="areaGradAfter" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2ECC71" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#2ECC71" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="areaGradBefore" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Grid lines -->
+          <line x1="40" y1="20" x2="800" y2="20" class="chart-grid-line"/>
+          <line x1="40" y1="60" x2="800" y2="60" class="chart-grid-line"/>
+          <line x1="40" y1="100" x2="800" y2="100" class="chart-grid-line"/>
+          <line x1="40" y1="140" x2="800" y2="140" class="chart-grid-line"/>
+          <line x1="40" y1="180" x2="800" y2="180" class="chart-grid-line"/>
+
+          <!-- Y axis labels -->
+          <text x="30" y="24" class="chart-axis-label" text-anchor="end">$90K</text>
+          <text x="30" y="64" class="chart-axis-label" text-anchor="end">$70K</text>
+          <text x="30" y="104" class="chart-axis-label" text-anchor="end">$50K</text>
+          <text x="30" y="144" class="chart-axis-label" text-anchor="end">$30K</text>
+          <text x="30" y="184" class="chart-axis-label" text-anchor="end">$10K</text>
+
+          <!-- X axis labels (months) -->
+          <text x="65" y="202" class="chart-axis-label" text-anchor="middle">May</text>
+          <text x="130" y="202" class="chart-axis-label" text-anchor="middle">Jun</text>
+          <text x="195" y="202" class="chart-axis-label" text-anchor="middle">Jul</text>
+          <text x="260" y="202" class="chart-axis-label" text-anchor="middle">Aug</text>
+          <text x="325" y="202" class="chart-axis-label" text-anchor="middle">Sep</text>
+          <text x="390" y="202" class="chart-axis-label" text-anchor="middle">Oct</text>
+          <text x="455" y="202" class="chart-axis-label" text-anchor="middle">Nov</text>
+          <text x="520" y="202" class="chart-axis-label" text-anchor="middle">Dec</text>
+          <text x="585" y="202" class="chart-axis-label" text-anchor="middle">Jan</text>
+          <text x="650" y="202" class="chart-axis-label" text-anchor="middle">Feb</text>
+          <text x="715" y="202" class="chart-axis-label" text-anchor="middle">Mar</text>
+          <text x="780" y="202" class="chart-axis-label" text-anchor="middle">Apr</text>
+
+          <!-- Enrollment marker -->
+          <line x1="390" y1="18" x2="390" y2="186" stroke="rgba(200,80,42,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <text x="392" y="34" class="chart-axis-label" style="fill:var(--coral);font-weight:700;">Enrolled</text>
+
+          <!-- Pre-velocity area (dashed baseline) -->
+          <polygon points="40,170 105,168 170,165 235,162 300,158 390,155 390,186 40,186" class="chart-area-before"/>
+          <polyline points="40,170 105,168 170,165 235,162 300,158 390,155" class="chart-line-before"/>
+
+          <!-- Post-velocity area (solid, rises sharply) -->
+          <polygon points="390,155 455,140 520,118 585,96 650,72 715,52 780,34 780,186 390,186" class="chart-area-after"/>
+          <polyline points="390,155 455,140 520,118 585,96 650,72 715,52 780,34" class="chart-line-after"/>
+
+          <!-- Data dots - after -->
+          <circle cx="390" cy="155" r="4" fill="var(--coral)" class="chart-dot"/>
+          <circle cx="455" cy="140" r="4" fill="var(--green-bright)" class="chart-dot"/>
+          <circle cx="520" cy="118" r="4" fill="var(--green-bright)" class="chart-dot"/>
+          <circle cx="585" cy="96" r="4" fill="var(--green-bright)" class="chart-dot"/>
+          <circle cx="650" cy="72" r="4" fill="var(--green-bright)" class="chart-dot"/>
+          <circle cx="715" cy="52" r="4" fill="var(--green-bright)" class="chart-dot"/>
+          <circle cx="780" cy="34" r="4" fill="var(--green-bright)" class="chart-dot"/>
+
+          <!-- Value labels on key points -->
+          <text x="456" y="132" class="chart-axis-label" text-anchor="middle" style="fill:var(--green-bright);font-weight:700;">$28K</text>
+          <text x="585" y="88" class="chart-axis-label" text-anchor="middle" style="fill:var(--green-bright);font-weight:700;">$49K</text>
+          <text x="780" y="26" class="chart-axis-label" text-anchor="middle" style="fill:var(--green-bright);font-weight:700;">$84K</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec-divider"></div>
+
+  <!-- BEFORE VS AFTER COMPARISON -->
+  <section class="section" id="compare">
+    <div class="sec-eyebrow">Comparison</div>
+    <div class="sec-title">Before vs After Velocity</div>
+    <div class="sec-sub">Day 0 intake snapshot compared to Day 60 actuals. Every metric has moved in the right direction.</div>
+
+    <div class="compare-wrap">
+      <div class="compare-head">
+        <div>Metric</div>
+        <div>Day 0 Baseline</div>
+        <div class="ch-after">Day 60 Actual</div>
+        <div>Change</div>
+      </div>
+
+      <div class="compare-row">
+        <div><div class="cr-metric">Monthly Recurring Revenue</div><div class="cr-sub">All revenue streams combined</div></div>
+        <div class="cr-before">$17,800</div>
+        <div class="cr-after">$68,400</div>
+        <div><span class="cr-delta delta-up">+284%</span></div>
+      </div>
+      <div class="compare-row">
+        <div><div class="cr-metric">Active Wholesale Accounts</div><div class="cr-sub">Verified purchase-active</div></div>
+        <div class="cr-before">12</div>
+        <div class="cr-after">47</div>
+        <div><span class="cr-delta delta-up">+292%</span></div>
+      </div>
+      <div class="compare-row">
+        <div><div class="cr-metric">Average Order Value (B2B)</div><div class="cr-sub">Per wholesale account, per order</div></div>
+        <div class="cr-before">$1,632</div>
+        <div class="cr-after">$3,140</div>
+        <div><span class="cr-delta delta-up">+92%</span></div>
+      </div>
+      <div class="compare-row">
+        <div><div class="cr-metric">Inventory Turnover Rate</div><div class="cr-sub">Times inventory turns per year</div></div>
+        <div class="cr-before">2.0x</div>
+        <div class="cr-after">4.2x</div>
+        <div><span class="cr-delta delta-up">+110%</span></div>
+      </div>
+      <div class="compare-row">
+        <div><div class="cr-metric">Dead Stock % of Catalog</div><div class="cr-sub">SKUs with &lt;2 units sold in 90 days</div></div>
+        <div class="cr-before">38%</div>
+        <div class="cr-after">9%</div>
+        <div><span class="cr-delta delta-up">-76%</span></div>
+      </div>
+      <div class="compare-row">
+        <div><div class="cr-metric">Monthly Content Reach</div><div class="cr-sub">LinkedIn + email combined</div></div>
+        <div class="cr-before">14,600</div>
+        <div class="cr-after">284,000</div>
+        <div><span class="cr-delta delta-up">+1,844%</span></div>
+      </div>
+      <div class="compare-row">
+        <div><div class="cr-metric">Revenue per Active SKU</div><div class="cr-sub">Monthly avg across active catalog</div></div>
+        <div class="cr-before">$266</div>
+        <div class="cr-after">$847</div>
+        <div><span class="cr-delta delta-up">+218%</span></div>
+      </div>
+      <div class="compare-row">
+        <div><div class="cr-metric">Lead-to-Account Conversion</div><div class="cr-sub">Qualified leads to active accounts</div></div>
+        <div class="cr-before">8%</div>
+        <div class="cr-after">31%</div>
+        <div><span class="cr-delta delta-up">+288%</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec-divider"></div>
+
+  <!-- VELOCITY MILESTONES -->
+  <section class="section section-alt" id="milestones">
+    <div class="sec-eyebrow">Timeline</div>
+    <div class="sec-title">90-Day Milestone Tracker</div>
+    <div class="sec-sub">Progress through the four phases of the PetJoy Velocity engagement.</div>
+
+    <div class="milestones">
+      <div class="milestone">
+        <div class="ms-day">Days 1-21</div>
+        <div class="ms-title">Foundation &amp; Brand</div>
+        <div class="ms-desc">Brand positioning, offer stack architecture, 70/20/10 catalog framework, content voice defined.</div>
+        <div class="ms-status ms-done">Completed</div>
+      </div>
+      <div class="milestone">
+        <div class="ms-day">Days 22-45</div>
+        <div class="ms-title">Content Engine</div>
+        <div class="ms-desc">30-post content library launched. B2B playbook distributed to 22 target accounts. VSL recorded and live.</div>
+        <div class="ms-status ms-done">Completed</div>
+      </div>
+      <div class="milestone">
+        <div class="ms-day">Days 46-60</div>
+        <div class="ms-title">Sales Activation</div>
+        <div class="ms-desc">Sales deck deployed. 35 new wholesale conversations opened. 19 closed. Auto-replenishment program live.</div>
+        <div class="ms-status ms-active">Active Now</div>
+      </div>
+      <div class="milestone">
+        <div class="ms-day">Days 61-90</div>
+        <div class="ms-title">Scale &amp; Systemize</div>
+        <div class="ms-desc">Referral program launch. 50-account target. Content-to-revenue attribution system. Quarterly playbook handoff.</div>
+        <div class="ms-status ms-pending">Starting Day 61</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec-divider"></div>
+
+  <!-- BIG WINS -->
+  <section class="section" id="wins">
+    <div class="sec-eyebrow">Highlights</div>
+    <div class="sec-title">Three Biggest Wins</div>
+    <div class="sec-sub">The moves that drove the most measurable impact in 60 days.</div>
+
+    <div class="wins-grid">
+      <div class="win-card featured">
+        <div class="win-icon">&#128200;</div>
+        <div class="win-label">Revenue Unlock</div>
+        <div class="win-headline">$50,600 in new MRR added in 60 days</div>
+        <div class="win-sub">The B2B playbook alone opened 19 accounts averaging $3,140 per first order. The auto-replenishment program converted 29 of those into recurring revenue relationships.</div>
+      </div>
+      <div class="win-card">
+        <div class="win-icon">&#128683;</div>
+        <div class="win-label">Dead Stock</div>
+        <div class="win-headline">$84K in stranded inventory recovered</div>
+        <div class="win-sub">The 70/20/10 catalog reset liquidated 29% of dead SKUs in 30 days. 8 vet clinic partnerships became natural homes for therapeutic-adjacent inventory that retail channels couldn't move.</div>
+      </div>
+      <div class="win-card">
+        <div class="win-icon">&#128241;</div>
+        <div class="win-label">Content System</div>
+        <div class="win-headline">284K monthly reach from a standing start</div>
+        <div class="win-sub">Zero paid media. 100% organic content built on Michelle's expertise positioning. Three posts went viral in the pet wellness niche, each driving 20+ inbound DMs from wholesale prospects.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec-divider"></div>
+
+  <!-- DAYS 61-90 -->
+  <section class="section section-alt" id="next">
+    <div class="sec-eyebrow">What's Next</div>
+    <div class="sec-title">Days 61-90 Game Plan</div>
+    <div class="sec-sub">Three priority moves to close the 90-day program at maximum momentum and set up Q3 independently.</div>
+
+    <div class="next-grid">
+      <div class="next-card">
+        <div class="next-num">01</div>
+        <div class="next-title">Referral Architecture</div>
+        <div class="next-sub">Launch a structured referral program for current wholesale accounts. Target: 3 new accounts per existing account. Incentive: 15% margin uplift on first referred order. System is already built -- activation call scheduled Day 62.</div>
+        <div class="next-cta">Priority One</div>
+      </div>
+      <div class="next-card">
+        <div class="next-num">02</div>
+        <div class="next-title">50-Account Close Sprint</div>
+        <div class="next-sub">Three accounts remain to hit the 50-account target. All three are in active conversation. The quarterly catalog launch event on Day 75 will be the close moment for all three simultaneously.</div>
+        <div class="next-cta">On Track</div>
+      </div>
+      <div class="next-card">
+        <div class="next-num">03</div>
+        <div class="next-title">Systemized Handoff</div>
+        <div class="next-sub">Build the quarterly playbook, content calendar template, and KPI tracking sheet so the entire engine runs without Founder OS active involvement. Day 90 = fully independent operation with documented systems.</div>
+        <div class="next-cta">Building Now</div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /main -->
+</div><!-- /layout -->
+
+<script>
+// Sidebar scroll spy
+const sections = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.sb-link');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.sb-link[href="#${e.target.id}"]`);
+      if(active) active.classList.add('active');
+    }
+  });
+},{threshold:0.3});
+sections.forEach(s => observer.observe(s));
+
+// Animated KPI counters
+function animateCount(el) {
+  const raw = el.dataset.count;
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+  const target = parseFloat(raw);
+  const isDecimal = raw.includes('.');
+  const isLarge = target >= 1000;
+  const duration = 1400;
+  const start = performance.now();
+  function tick(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - t, 3);
+    const val = target * ease;
+    let display;
+    if(isLarge) {
+      if(target >= 100000) display = (val/1000).toFixed(0) + 'K';
+      else display = Math.round(val).toLocaleString();
+    } else if(isDecimal) {
+      display = val.toFixed(1) + suffix;
+    } else {
+      display = Math.round(val).toString();
+    }
+    el.textContent = prefix + display + (isLarge || isDecimal ? '' : suffix);
+    if(t < 1) requestAnimationFrame(tick);
+    else {
+      // restore final formatted value
+      if(target >= 100000) el.textContent = prefix + (target/1000).toFixed(1) + 'K';
+      else if(target >= 1000) el.textContent = prefix + target.toLocaleString();
+      else if(isDecimal) el.textContent = prefix + target.toFixed(1) + suffix;
+      else el.textContent = prefix + target + suffix;
+    }
+  }
+  requestAnimationFrame(tick);
+}
+
+const countEls = document.querySelectorAll('[data-count]');
+const countObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      animateCount(e.target);
+      countObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+countEls.forEach(el => countObserver.observe(el));
+
+// Progress bars animate in
+const bars = document.querySelectorAll('.progress-fill');
+const barObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      const w = e.target.style.width;
+      e.target.style.width = '0%';
+      setTimeout(() => { e.target.style.width = w; }, 100);
+      barObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+bars.forEach(b => barObserver.observe(b));
+</script>
+</body>
+</html>
