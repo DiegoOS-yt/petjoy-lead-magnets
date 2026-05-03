@@ -4,29 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The B2B Pet Retail Playbook — PetJoy</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="https://founderos.com/favicon.ico">
 <style>
   :root {
-    --navy: #0A1628;
-    --navy-mid: #162236;
-    --navy-light: #EEF2F8;
-    --coral: #C8502A;
-    --coral-light: #FFF0EB;
-    --green: #1B5E3B;
-    --green-light: #E8F5EE;
-    --gold: #F2C94C;
-    --bg: #FAFAF7;
-    --text: #1A2332;
-    --muted: #6B7280;
-    --border: #E5E7EB;
+    --navy: #0A0A0A;
+    --navy-mid: #1A1A1A;
+    --navy-light: #F4F3EF;
+    --coral: #D4F53C;
+    --coral-light: rgba(212,245,60,0.12);
+    --green: #34D399;
+    --green-light: rgba(52,211,153,0.12);
+    --gold: #D4F53C;
+    --bg: #FAF9F6;
+    --text: #0A0A0A;
+    --muted: #8A8A8A;
+    --border: #E8E8E4;
     --white: #FFFFFF;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Poppins', sans-serif;
-    background: #E5E7EB;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #E8E8E4;
     color: var(--text);
     font-size: 11pt;
     line-height: 1.6;
@@ -581,7 +581,14 @@
 
   blockquote p { font-size: 11.5pt; font-style: italic; color: var(--navy); line-height: 1.6; margin-bottom: 10px; }
   blockquote cite { font-size: 9.5pt; font-weight: 600; color: var(--muted); font-style: normal; }
-</style>
+
+/* ===== FOS BRAND SPEC OVERRIDES ===== */
+.hero, .cover, .cta-box, .callout-box { background: var(--text) !important; }
+.btn-primary, .nav-cta, .rc-cta, .form-submit { background: var(--text) !important; color: #FFFFFF !important; border-color: var(--text) !important; }
+.btn-primary:hover, .nav-cta:hover, .rc-cta:hover, .form-submit:hover { opacity: 0.85; }
+.hero h1 em, .cover h1 em, .hero em { color: var(--lime, #D4F53C) !important; }
+.hero-eyebrow, .cover-eyebrow { background: rgba(212,245,60,0.12); border: 1px solid rgba(212,245,60,0.4); color: var(--lime, #D4F53C); }
+.hero-eyebrow::before, .cover-eyebrow::before { background: var(--lime, #D4F53C); }</style>
 </head>
 <body>
 
@@ -1024,7 +1031,7 @@
         </div>
       </div>
 
-      <div class="chapter-header" style="background: linear-gradient(135deg, #0A1628 0%, #1B2F4A 100%);">
+      <div class="chapter-header" style="background: linear-gradient(135deg, #0A0A0A 0%, #1B2F4A 100%);">
         <div class="chapter-num-badge">06</div>
         <div class="chapter-header-body">
           <div class="chapter-eyebrow">Chapter Six</div>

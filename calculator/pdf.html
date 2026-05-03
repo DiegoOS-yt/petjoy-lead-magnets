@@ -4,26 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Pet Store Profitability Calculator — PetJoy</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="https://founderos.com/favicon.ico">
 <style>
   :root {
-    --green: #1B5E3B;
-    --green-light: #2D7A52;
-    --green-pale: #E8F5EE;
-    --coral: #E8705A;
-    --navy: #0A1628;
-    --gold: #F2C94C;
-    --bg: #FAFAF7;
-    --text: #1A2332;
-    --text-muted: #6B7280;
-    --border: #E5E7EB;
+    --green: #34D399;
+    --green-light: #34D399;
+    --green-pale: rgba(52,211,153,0.12);
+    --coral: #D4F53C;
+    --navy: #0A0A0A;
+    --gold: #D4F53C;
+    --bg: #FAF9F6;
+    --text: #0A0A0A;
+    --text-muted: #8A8A8A;
+    --border: #E8E8E4;
     --white: #FFFFFF;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
     font-size: 11pt;
@@ -686,7 +686,14 @@
     text-align: center;
     letter-spacing: 0.5px;
   }
-</style>
+
+/* ===== FOS BRAND SPEC OVERRIDES ===== */
+.hero, .cover, .cta-box, .callout-box { background: var(--text) !important; }
+.btn-primary, .nav-cta, .rc-cta, .form-submit { background: var(--text) !important; color: #FFFFFF !important; border-color: var(--text) !important; }
+.btn-primary:hover, .nav-cta:hover, .rc-cta:hover, .form-submit:hover { opacity: 0.85; }
+.hero h1 em, .cover h1 em, .hero em { color: var(--lime, #D4F53C) !important; }
+.hero-eyebrow, .cover-eyebrow { background: rgba(212,245,60,0.12); border: 1px solid rgba(212,245,60,0.4); color: var(--lime, #D4F53C); }
+.hero-eyebrow::before, .cover-eyebrow::before { background: var(--lime, #D4F53C); }</style>
 </head>
 <body>
 
