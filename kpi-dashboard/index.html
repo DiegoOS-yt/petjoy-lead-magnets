@@ -4,173 +4,189 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Day 60 KPI Dashboard | PetJoy | Founder OS Velocity</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" href="https://founderos.com/favicon.ico">
 <style>
 :root{
-  --navy:#0A1628;--navy-mid:#0F1F3D;--navy-light:#1A2F50;--navy-card:#132240;
-  --coral:#C8502A;--coral-light:#FEF0EB;
-  --gold:#F2C94C;--gold-light:#FEF9E7;
-  --green:#1B5E3B;--green-light:#E8F5EE;--green-bright:#2ECC71;
-  --blue:#4FA3E0;--blue-light:#EBF5FF;
-  --bg:#0A1628;--bg-alt:#0F1F3D;
-  --text:#FFFFFF;--muted:rgba(255,255,255,0.45);--border:rgba(255,255,255,0.08);
+  --bg:#FAF9F6;
+  --text-primary:#0A0A0A;
+  --text-secondary:#4A4A4A;
+  --text-tertiary:#8A8A8A;
+  --lime:#D4F53C;
+  --lime-glow:rgba(212,245,60,0.12);
+  --lime-border:rgba(212,245,60,0.4);
+  --card-bg:#FFFFFF;
+  --card-border:#E8E8E4;
+  --card-border-hover:#D0D0CC;
+  --card-radius:14px;
+  --green:#34D399;
+  --green-glow:rgba(52,211,153,0.12);
+  --red:#EF4444;
+  --red-glow:rgba(239,68,68,0.12);
+  --purple:#A78BFA;
+  --pink:#F472B6;
+  --yellow:#FBBF24;
   --sidebar-w:240px;
+  --font:'Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--navy);-webkit-font-smoothing:antialiased;}
+body{font-family:var(--font);color:var(--text-primary);background:var(--bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.6;}
 
 /* LAYOUT */
 .layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;min-height:100vh;}
-.main{min-width:0;overflow-x:hidden;}
+.main{min-width:0;overflow-x:hidden;background:var(--bg);}
 
 /* SIDEBAR */
-.sidebar{background:rgba(6,12,26,0.95);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:28px 0 24px;z-index:100;overflow-y:auto;border-right:1px solid var(--border);}
-.sb-logo{padding:0 22px 20px;border-bottom:1px solid var(--border);margin-bottom:18px;}
-.sb-brand{font-size:17px;font-weight:800;color:var(--text);letter-spacing:-0.5px;}
-.sb-brand span{color:var(--coral);}
-.sb-doc{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:5px;}
-.sb-day-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,204,113,0.12);border:1px solid rgba(46,204,113,0.25);color:var(--green-bright);font-size:10px;font-weight:700;padding:4px 10px;border-radius:6px;margin-top:10px;}
-.sb-day-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green-bright);animation:pulse 2s infinite;}
+.sidebar{background:#FFFFFF;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:28px 0 24px;z-index:100;overflow-y:auto;border-right:1px solid var(--card-border);}
+.sb-logo{padding:0 22px 20px;border-bottom:1px solid var(--card-border);margin-bottom:18px;}
+.sb-brand{font-size:17px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;display:flex;align-items:center;gap:10px;}
+.sb-brand::before{content:'';width:22px;height:22px;border-radius:50%;background:var(--lime);flex-shrink:0;}
+.sb-doc{font-size:10px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.1em;margin-top:8px;}
+.sb-day-badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-glow);border:1px solid rgba(52,211,153,0.3);color:#1B7C56;font-size:10px;font-weight:600;padding:4px 10px;border-radius:100px;margin-top:12px;text-transform:uppercase;letter-spacing:.08em;}
+.sb-day-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
-.sb-section-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:2px;padding:0 22px 8px;}
+.sb-section-label{font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.1em;padding:0 22px 8px;}
 .sb-nav{flex:1;padding:0 12px;}
-.sb-link{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:7px;text-decoration:none;font-size:12px;color:rgba(255,255,255,0.45);font-weight:500;transition:all 0.15s;margin-bottom:1px;cursor:pointer;}
-.sb-link:hover{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.8);}
-.sb-link.active{background:rgba(200,80,42,0.16);color:var(--text);}
-.sb-link.active .sb-dot{background:var(--coral);}
-.sb-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.12);flex-shrink:0;transition:background 0.15s;}
-.sb-kpi-mini{font-size:10px;font-weight:700;color:var(--green-bright);margin-left:auto;}
-.sb-foot{padding:16px 22px 0;border-top:1px solid var(--border);margin-top:12px;}
-.sb-prep{font-size:10px;color:var(--muted);line-height:1.6;}
-.sb-prep strong{display:block;color:rgba(255,255,255,0.5);font-weight:600;margin-bottom:1px;}
-.live-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.2);color:var(--green-bright);font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:1px;margin-top:10px;}
+.sb-link{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:var(--text-secondary);font-weight:500;transition:all 0.15s;margin-bottom:2px;cursor:pointer;font-family:var(--font);}
+.sb-link:hover{background:var(--bg);color:var(--text-primary);}
+.sb-link.active{background:var(--lime-glow);color:var(--text-primary);font-weight:600;}
+.sb-link.active .sb-dot{background:var(--lime);}
+.sb-dot{width:6px;height:6px;border-radius:50%;background:var(--card-border);flex-shrink:0;transition:background 0.15s;}
+.sb-kpi-mini{font-size:10px;font-weight:700;color:var(--text-tertiary);margin-left:auto;}
+.sb-foot{padding:16px 22px 0;border-top:1px solid var(--card-border);margin-top:12px;}
+.sb-prep{font-size:11px;color:var(--text-secondary);line-height:1.6;}
+.sb-prep strong{display:block;color:var(--text-primary);font-weight:600;margin-bottom:1px;}
+.live-badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-glow);border:1px solid rgba(52,211,153,0.3);color:#1B7C56;font-size:10px;font-weight:600;padding:4px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:.08em;margin-top:10px;}
 
 /* HEADER BAR */
-.topbar{background:var(--navy-mid);border-bottom:1px solid var(--border);padding:16px 48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;}
-.topbar-left{display:flex;align-items:center;gap:16px;}
-.topbar-title{font-size:15px;font-weight:700;color:var(--text);}
-.topbar-sub{font-size:12px;color:var(--muted);}
-.topbar-divider{width:1px;height:24px;background:var(--border);}
-.topbar-right{display:flex;align-items:center;gap:12px;}
-.topbar-date{font-size:11px;color:var(--muted);}
-.btn-export{display:inline-flex;align-items:center;gap:6px;background:rgba(200,80,42,0.15);border:1px solid rgba(200,80,42,0.3);color:var(--coral);font-size:11px;font-weight:700;padding:6px 14px;border-radius:6px;cursor:pointer;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.15s;}
-.btn-export:hover{background:rgba(200,80,42,0.25);}
+.topbar{background:rgba(250,249,246,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--card-border);padding:18px 48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;}
+.topbar-left{display:flex;align-items:center;gap:20px;}
+.topbar-title{font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em;}
+.topbar-sub{font-size:13px;color:var(--text-tertiary);}
+.topbar-divider{width:1px;height:24px;background:var(--card-border);}
+.topbar-right{display:flex;align-items:center;gap:14px;}
+.topbar-date{font-size:12px;color:var(--text-tertiary);}
+.btn-export{display:inline-flex;align-items:center;gap:6px;background:var(--text-primary);color:#FFF;font-size:12px;font-weight:600;padding:9px 18px;border-radius:100px;cursor:pointer;letter-spacing:0;transition:opacity 0.2s,transform 0.2s;border:none;font-family:var(--font);}
+.btn-export:hover{opacity:0.85;transform:translateY(-1px);}
 
 /* SECTION WRAPPER */
-.section{padding:48px 48px 56px;}
-.section-alt{background:rgba(15,31,61,0.5);}
-.sec-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;}
-.sec-eyebrow::before{content:'';width:20px;height:2px;background:var(--coral);}
-.sec-title{font-size:32px;font-weight:900;color:var(--text);letter-spacing:-1px;line-height:1.1;margin-bottom:6px;}
-.sec-sub{font-size:14px;color:var(--muted);max-width:580px;line-height:1.6;}
+.section{padding:64px 48px 72px;}
+.section-alt{background:#F4F3EF;}
+.sec-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px;}
+.sec-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--lime);}
+.sec-title{font-size:42px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em;line-height:1.1;margin-bottom:8px;}
+.sec-sub{font-size:15px;color:var(--text-tertiary);max-width:620px;line-height:1.6;}
 
 /* KPI CARDS GRID */
-.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
-.kpi-card{background:var(--navy-card);border:1px solid var(--border);border-radius:14px;padding:24px 22px 20px;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;}
-.kpi-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.4);}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;}
+.kpi-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--card-radius);padding:28px 26px 24px;position:relative;overflow:hidden;transition:box-shadow 0.3s,border-color 0.3s;}
+.kpi-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.06);border-color:var(--card-border-hover);}
 .kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
-.kpi-card.c-coral::before{background:var(--coral);}
-.kpi-card.c-gold::before{background:var(--gold);}
-.kpi-card.c-green::before{background:var(--green-bright);}
-.kpi-card.c-blue::before{background:var(--blue);}
-.kpi-card.c-purple::before{background:#9B59B6;}
-.kpi-card.c-teal::before{background:#1ABC9C;}
-.kpi-label{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;}
-.kpi-value{font-size:48px;font-weight:900;letter-spacing:-2.5px;line-height:1;margin-bottom:6px;}
-.kpi-value.v-coral{color:var(--coral);}
-.kpi-value.v-gold{color:var(--gold);}
-.kpi-value.v-green{color:var(--green-bright);}
-.kpi-value.v-blue{color:var(--blue);}
-.kpi-value.v-purple{color:#9B59B6;}
-.kpi-value.v-teal{color:#1ABC9C;}
-.kpi-delta{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:5px;margin-bottom:8px;}
-.delta-up{background:rgba(46,204,113,0.12);color:var(--green-bright);}
+.kpi-card.c-coral::before{background:var(--lime);}
+.kpi-card.c-gold::before{background:var(--yellow);}
+.kpi-card.c-green::before{background:var(--green);}
+.kpi-card.c-blue::before{background:var(--lime);}
+.kpi-card.c-purple::before{background:var(--purple);}
+.kpi-card.c-teal::before{background:var(--green);}
+.kpi-label{font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;}
+.kpi-value{font-size:48px;font-weight:800;letter-spacing:-0.04em;line-height:1;margin-bottom:10px;color:var(--text-primary);}
+.kpi-value.v-coral,.kpi-value.v-gold,.kpi-value.v-green,.kpi-value.v-blue,.kpi-value.v-purple,.kpi-value.v-teal{color:var(--text-primary);}
+.kpi-delta{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;margin-bottom:10px;}
+.delta-up{background:var(--green-glow);color:#1B7C56;}
 .delta-up::before{content:'↑';}
-.delta-down{background:rgba(200,80,42,0.12);color:var(--coral);}
+.delta-down{background:var(--red-glow);color:#B91C1C;}
 .delta-down::before{content:'↓';}
-.kpi-desc{font-size:11px;color:var(--muted);line-height:1.5;}
-.kpi-sparkline{margin-top:14px;height:36px;}
-.kpi-target{display:flex;align-items:center;gap:8px;margin-top:12px;}
-.kpi-target-label{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
-.progress-bar{flex:1;height:5px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;}
-.progress-fill{height:100%;border-radius:3px;transition:width 1.2s cubic-bezier(.23,1,.32,1);}
-.progress-pct{font-size:10px;font-weight:700;color:rgba(255,255,255,0.6);}
+.kpi-desc{font-size:12px;color:var(--text-secondary);line-height:1.6;}
+.kpi-sparkline{margin-top:16px;height:36px;}
+.kpi-target{display:flex;align-items:center;gap:10px;margin-top:14px;}
+.kpi-target-label{font-size:10px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.08em;}
+.progress-bar{flex:1;height:6px;background:var(--bg);border:1px solid var(--card-border);border-radius:100px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:100px;transition:width 1.2s cubic-bezier(.23,1,.32,1);}
+.progress-pct{font-size:11px;font-weight:700;color:var(--text-secondary);}
 
 /* COMPARISON TABLE */
-.compare-wrap{margin-top:32px;border:1px solid var(--border);border-radius:14px;overflow:hidden;}
-.compare-head{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border);padding:14px 24px;}
-.compare-head div{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;}
-.compare-head .ch-after{color:var(--green-bright);}
-.compare-row{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;padding:16px 24px;border-bottom:1px solid var(--border);align-items:center;transition:background 0.12s;}
+.compare-wrap{margin-top:36px;border:1px solid var(--card-border);border-radius:var(--card-radius);overflow:hidden;background:var(--card-bg);}
+.compare-head{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;background:var(--bg);border-bottom:1px solid var(--card-border);padding:16px 26px;}
+.compare-head div{font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.08em;}
+.compare-head .ch-after{color:var(--text-primary);}
+.compare-row{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;padding:18px 26px;border-bottom:1px solid var(--card-border);align-items:center;transition:background 0.12s;}
 .compare-row:last-child{border-bottom:none;}
-.compare-row:hover{background:rgba(255,255,255,0.03);}
-.cr-metric{font-size:13px;font-weight:600;color:var(--text);}
-.cr-sub{font-size:10px;color:var(--muted);margin-top:2px;}
-.cr-before{font-size:14px;font-weight:700;color:var(--muted);}
-.cr-after{font-size:14px;font-weight:800;color:var(--green-bright);}
-.cr-delta{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;padding:3px 8px;border-radius:5px;}
+.compare-row:hover{background:var(--bg);}
+.cr-metric{font-size:14px;font-weight:600;color:var(--text-primary);}
+.cr-sub{font-size:11px;color:var(--text-tertiary);margin-top:3px;}
+.cr-before{font-size:14px;font-weight:600;color:var(--text-tertiary);}
+.cr-after{font-size:14px;font-weight:700;color:var(--text-primary);}
+.cr-delta{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;padding:4px 10px;border-radius:100px;}
 
 /* CHART SECTION */
-.chart-wrap{background:var(--navy-card);border:1px solid var(--border);border-radius:14px;padding:28px 28px 24px;margin-top:32px;}
-.chart-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;}
-.chart-title{font-size:16px;font-weight:700;color:var(--text);}
-.chart-sub{font-size:12px;color:var(--muted);margin-top:3px;}
-.chart-legend{display:flex;align-items:center;gap:16px;}
-.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);}
+.chart-wrap{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--card-radius);padding:32px;margin-top:36px;}
+.chart-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;}
+.chart-title{font-size:18px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;}
+.chart-sub{font-size:13px;color:var(--text-tertiary);margin-top:4px;}
+.chart-legend{display:flex;align-items:center;gap:18px;}
+.legend-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text-secondary);}
 .legend-dot{width:8px;height:8px;border-radius:50%;}
 .chart-svg-wrap{width:100%;overflow:hidden;}
 svg.chart{width:100%;overflow:visible;}
-.chart-axis-label{font-family:'Poppins',sans-serif;font-size:10px;fill:rgba(255,255,255,0.3);}
-.chart-grid-line{stroke:rgba(255,255,255,0.05);stroke-width:1;}
-.chart-line-after{fill:none;stroke:var(--green-bright);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;}
-.chart-line-before{fill:none;stroke:rgba(255,255,255,0.18);stroke-width:2;stroke-dasharray:5,4;stroke-linejoin:round;}
-.chart-area-after{fill:url(#areaGradAfter);opacity:0.4;}
-.chart-area-before{fill:url(#areaGradBefore);opacity:0.15;}
+.chart-axis-label{font-family:var(--font);font-size:10px;fill:var(--text-tertiary);}
+.chart-grid-line{stroke:var(--card-border);stroke-width:1;}
+.chart-line-after{fill:none;stroke:var(--green);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;}
+.chart-line-before{fill:none;stroke:var(--text-tertiary);stroke-width:2;stroke-dasharray:5,4;stroke-linejoin:round;opacity:0.5;}
+.chart-area-after{fill:url(#areaGradAfter);opacity:0.5;}
+.chart-area-before{fill:url(#areaGradBefore);opacity:0.4;}
 .chart-dot{transition:r 0.1s;}
 .chart-dot:hover{r:6;}
 
-/* VELOCITY MILESTONES */
-.milestones{margin-top:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;}
-.milestone{padding:24px 20px;border-right:1px solid var(--border);position:relative;}
+/* MILESTONES */
+.milestones{margin-top:36px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--card-border);border-radius:var(--card-radius);overflow:hidden;background:var(--card-bg);}
+.milestone{padding:28px 24px;border-right:1px solid var(--card-border);position:relative;}
 .milestone:last-child{border-right:none;}
-.ms-day{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;}
-.ms-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;}
-.ms-desc{font-size:11px;color:var(--muted);line-height:1.5;}
-.ms-status{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;margin-top:10px;text-transform:uppercase;letter-spacing:0.5px;}
-.ms-done{background:rgba(46,204,113,0.1);color:var(--green-bright);}
+.ms-day{font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
+.ms-title{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:8px;letter-spacing:-0.01em;}
+.ms-desc{font-size:12px;color:var(--text-secondary);line-height:1.6;}
+.ms-status{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;padding:4px 10px;border-radius:100px;margin-top:14px;text-transform:uppercase;letter-spacing:.08em;}
+.ms-done{background:var(--green-glow);color:#1B7C56;}
 .ms-done::before{content:'✓ ';}
-.ms-active{background:rgba(242,201,76,0.12);color:var(--gold);animation:ms-glow 2s infinite;}
-@keyframes ms-glow{0%,100%{box-shadow:none;}50%{box-shadow:0 0 8px rgba(242,201,76,0.25);}}
+.ms-active{background:var(--lime-glow);color:var(--text-primary);border:1px solid var(--lime-border);}
 .ms-active::before{content:'● ';}
-.ms-pending{background:rgba(255,255,255,0.05);color:var(--muted);}
-.ms-connector{position:absolute;top:50%;right:-1px;transform:translateY(-50%);width:1px;background:var(--border);height:40%;}
+.ms-pending{background:var(--bg);color:var(--text-tertiary);border:1px solid var(--card-border);}
 
 /* WIN CALLOUTS */
-.wins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
-.win-card{background:var(--navy-card);border:1px solid var(--border);border-radius:12px;padding:22px 20px;}
-.win-icon{font-size:28px;margin-bottom:12px;}
-.win-label{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;}
-.win-headline{font-size:20px;font-weight:800;color:var(--text);letter-spacing:-0.5px;line-height:1.2;margin-bottom:8px;}
-.win-sub{font-size:12px;color:var(--muted);line-height:1.5;}
-.win-card.featured{background:linear-gradient(135deg,rgba(200,80,42,0.12),rgba(242,201,76,0.06));border-color:rgba(200,80,42,0.25);}
+.wins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;}
+.win-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--card-radius);padding:28px 24px;transition:box-shadow 0.3s,border-color 0.3s;}
+.win-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.06);border-color:var(--card-border-hover);}
+.win-icon{font-size:28px;margin-bottom:14px;}
+.win-label{font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+.win-headline{font-size:22px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;line-height:1.25;margin-bottom:10px;}
+.win-sub{font-size:13px;color:var(--text-secondary);line-height:1.6;}
+.win-card.featured{border-left:3px solid var(--lime);}
 
 /* NEXT STEPS */
-.next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
-.next-card{background:var(--navy-card);border:1px solid var(--border);border-radius:12px;padding:22px 20px;}
-.next-num{font-size:40px;font-weight:900;color:rgba(255,255,255,0.06);letter-spacing:-2px;line-height:1;margin-bottom:4px;}
-.next-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;}
-.next-sub{font-size:12px;color:var(--muted);line-height:1.5;}
-.next-cta{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:0.5px;margin-top:12px;}
+.next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;}
+.next-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--card-radius);padding:28px 24px;transition:box-shadow 0.3s,border-color 0.3s;}
+.next-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.06);border-color:var(--card-border-hover);}
+.next-num{font-size:42px;font-weight:800;color:var(--card-border);letter-spacing:-0.04em;line-height:1;margin-bottom:6px;}
+.next-title{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:8px;letter-spacing:-0.01em;}
+.next-sub{font-size:12px;color:var(--text-secondary);line-height:1.6;}
+.next-cta{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--text-primary);text-transform:uppercase;letter-spacing:.08em;margin-top:14px;}
+.next-cta::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--lime);}
 .next-cta::after{content:'→';}
 
 /* DIVIDER */
-.sec-divider{height:1px;background:var(--border);margin:0 48px;}
+.sec-divider{height:1px;background:var(--card-border);margin:0 48px;}
 
 /* SCROLLBAR */
-::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar{width:6px;height:6px;}
 ::-webkit-scrollbar-track{background:transparent;}
-::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:2px;}
+::-webkit-scrollbar-thumb{background:var(--card-border);border-radius:3px;}
+::-webkit-scrollbar-thumb:hover{background:var(--card-border-hover);}
+
+@media print{
+  .sidebar{display:none;}
+  .layout{grid-template-columns:1fr;}
+  .topbar{position:relative;}
+  .btn-export{display:none;}
+}
 </style>
 </head>
 <body>
@@ -179,7 +195,7 @@ svg.chart{width:100%;overflow:visible;}
 <!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="sb-logo">
-    <div class="sb-brand">Pet<span>Joy</span></div>
+    <div class="sb-brand">PetJoy</div>
     <div class="sb-doc">Day 60 Report</div>
     <div class="sb-day-badge">Live Dashboard</div>
   </div>
@@ -250,11 +266,11 @@ svg.chart{width:100%;overflow:visible;}
         <div class="kpi-desc">From $266 avg at intake. Top 20 SKUs now drive 74% of category revenue.</div>
         <div class="kpi-target">
           <div class="kpi-target-label">Target: $900</div>
-          <div class="progress-bar"><div class="progress-fill" style="width:94%;background:var(--coral);"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:94%;background:var(--lime);"></div></div>
           <div class="progress-pct">94%</div>
         </div>
         <svg class="kpi-sparkline" viewBox="0 0 140 36" preserveAspectRatio="none">
-          <polyline points="0,30 20,26 40,22 60,18 80,14 100,10 120,6 140,4" fill="none" stroke="var(--coral)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <polyline points="0,30 20,26 40,22 60,18 80,14 100,10 120,6 140,4" fill="none" stroke="var(--lime)" stroke-width="2.5" stroke-linecap="round"/>
         </svg>
       </div>
 
@@ -266,11 +282,11 @@ svg.chart{width:100%;overflow:visible;}
         <div class="kpi-desc">From 2.0x at intake. Dead stock cleared from 38% of catalog to 9%.</div>
         <div class="kpi-target">
           <div class="kpi-target-label">Target: 4.5x</div>
-          <div class="progress-bar"><div class="progress-fill" style="width:93%;background:var(--gold);"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:93%;background:var(--yellow);"></div></div>
           <div class="progress-pct">93%</div>
         </div>
         <svg class="kpi-sparkline" viewBox="0 0 140 36" preserveAspectRatio="none">
-          <polyline points="0,32 20,28 40,24 60,20 80,15 100,12 120,9 140,7" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <polyline points="0,32 20,28 40,24 60,20 80,15 100,12 120,9 140,7" fill="none" stroke="var(--yellow)" stroke-width="2.5" stroke-linecap="round"/>
         </svg>
       </div>
 
@@ -282,11 +298,11 @@ svg.chart{width:100%;overflow:visible;}
         <div class="kpi-desc">From 12 at intake. 8 vet clinic partnerships added in last 30 days alone.</div>
         <div class="kpi-target">
           <div class="kpi-target-label">Target: 50</div>
-          <div class="progress-bar"><div class="progress-fill" style="width:94%;background:var(--green-bright);"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:94%;background:var(--green);"></div></div>
           <div class="progress-pct">94%</div>
         </div>
         <svg class="kpi-sparkline" viewBox="0 0 140 36" preserveAspectRatio="none">
-          <polyline points="0,34 20,30 40,26 60,22 80,17 100,13 120,10 140,6" fill="none" stroke="var(--green-bright)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <polyline points="0,34 20,30 40,26 60,22 80,17 100,13 120,10 140,6" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"/>
         </svg>
       </div>
 
@@ -298,11 +314,11 @@ svg.chart{width:100%;overflow:visible;}
         <div class="kpi-desc">From $1,632 at intake. Playbook bundles driving 3x larger initial orders.</div>
         <div class="kpi-target">
           <div class="kpi-target-label">Target: $3,000</div>
-          <div class="progress-bar"><div class="progress-fill" style="width:100%;background:var(--blue);"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:100%;background:var(--lime);"></div></div>
           <div class="progress-pct">105%</div>
         </div>
         <svg class="kpi-sparkline" viewBox="0 0 140 36" preserveAspectRatio="none">
-          <polyline points="0,30 20,27 40,23 60,19 80,15 100,11 120,8 140,4" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <polyline points="0,30 20,27 40,23 60,19 80,15 100,11 120,8 140,4" fill="none" stroke="var(--lime)" stroke-width="2.5" stroke-linecap="round"/>
         </svg>
       </div>
 
@@ -314,11 +330,11 @@ svg.chart{width:100%;overflow:visible;}
         <div class="kpi-desc">From 14.6K at intake. LinkedIn posts converting at 3.2% to demo requests.</div>
         <div class="kpi-target">
           <div class="kpi-target-label">Target: 250K</div>
-          <div class="progress-bar"><div class="progress-fill" style="width:100%;background:#9B59B6;"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:100%;background:var(--purple);"></div></div>
           <div class="progress-pct">114%</div>
         </div>
         <svg class="kpi-sparkline" viewBox="0 0 140 36" preserveAspectRatio="none">
-          <polyline points="0,34 20,32 40,28 60,22 80,16 100,10 120,6 140,3" fill="none" stroke="#9B59B6" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <polyline points="0,34 20,32 40,28 60,22 80,16 100,10 120,6 140,3" fill="none" stroke="var(--purple)" stroke-width="2.5" stroke-linecap="round"/>
         </svg>
       </div>
 
@@ -330,11 +346,11 @@ svg.chart{width:100%;overflow:visible;}
         <div class="kpi-desc">From $17.8K at intake. Auto-replenishment program launched Day 21 now active on 29 accounts.</div>
         <div class="kpi-target">
           <div class="kpi-target-label">Target: $75K</div>
-          <div class="progress-bar"><div class="progress-fill" style="width:91%;background:#1ABC9C;"></div></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:91%;background:var(--green);"></div></div>
           <div class="progress-pct">91%</div>
         </div>
         <svg class="kpi-sparkline" viewBox="0 0 140 36" preserveAspectRatio="none">
-          <polyline points="0,33 20,29 40,25 60,20 80,15 100,11 120,7 140,4" fill="none" stroke="#1ABC9C" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <polyline points="0,33 20,29 40,25 60,20 80,15 100,11 120,7 140,4" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"/>
         </svg>
       </div>
 
@@ -356,20 +372,20 @@ svg.chart{width:100%;overflow:visible;}
           <div class="chart-sub">PetJoy B2B + Direct channels combined</div>
         </div>
         <div class="chart-legend">
-          <div class="legend-item"><div class="legend-dot" style="background:var(--green-bright);"></div>After Velocity</div>
-          <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.3);"></div>Pre-Velocity Trend</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--green);"></div>After Velocity</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--text-tertiary);"></div>Pre-Velocity Trend</div>
         </div>
       </div>
       <div class="chart-svg-wrap">
         <svg class="chart" viewBox="0 0 820 220" preserveAspectRatio="xMidYMid meet">
           <defs>
             <linearGradient id="areaGradAfter" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#2ECC71" stop-opacity="0.4"/>
-              <stop offset="100%" stop-color="#2ECC71" stop-opacity="0"/>
+              <stop offset="0%" stop-color="#34D399" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#34D399" stop-opacity="0"/>
             </linearGradient>
             <linearGradient id="areaGradBefore" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.15"/>
-              <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+              <stop offset="0%" stop-color="#8A8A8A" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#8A8A8A" stop-opacity="0"/>
             </linearGradient>
           </defs>
 
@@ -402,8 +418,8 @@ svg.chart{width:100%;overflow:visible;}
           <text x="780" y="202" class="chart-axis-label" text-anchor="middle">Apr</text>
 
           <!-- Enrollment marker -->
-          <line x1="390" y1="18" x2="390" y2="186" stroke="rgba(200,80,42,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <text x="392" y="34" class="chart-axis-label" style="fill:var(--coral);font-weight:700;">Enrolled</text>
+          <line x1="390" y1="18" x2="390" y2="186" stroke="#0A0A0A" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+          <text x="392" y="34" class="chart-axis-label" style="fill:var(--text-primary);font-weight:700;">Enrolled</text>
 
           <!-- Pre-velocity area (dashed baseline) -->
           <polygon points="40,170 105,168 170,165 235,162 300,158 390,155 390,186 40,186" class="chart-area-before"/>
@@ -414,18 +430,18 @@ svg.chart{width:100%;overflow:visible;}
           <polyline points="390,155 455,140 520,118 585,96 650,72 715,52 780,34" class="chart-line-after"/>
 
           <!-- Data dots - after -->
-          <circle cx="390" cy="155" r="4" fill="var(--coral)" class="chart-dot"/>
-          <circle cx="455" cy="140" r="4" fill="var(--green-bright)" class="chart-dot"/>
-          <circle cx="520" cy="118" r="4" fill="var(--green-bright)" class="chart-dot"/>
-          <circle cx="585" cy="96" r="4" fill="var(--green-bright)" class="chart-dot"/>
-          <circle cx="650" cy="72" r="4" fill="var(--green-bright)" class="chart-dot"/>
-          <circle cx="715" cy="52" r="4" fill="var(--green-bright)" class="chart-dot"/>
-          <circle cx="780" cy="34" r="4" fill="var(--green-bright)" class="chart-dot"/>
+          <circle cx="390" cy="155" r="4" fill="var(--text-primary)" class="chart-dot"/>
+          <circle cx="455" cy="140" r="4" fill="var(--green)" class="chart-dot"/>
+          <circle cx="520" cy="118" r="4" fill="var(--green)" class="chart-dot"/>
+          <circle cx="585" cy="96" r="4" fill="var(--green)" class="chart-dot"/>
+          <circle cx="650" cy="72" r="4" fill="var(--green)" class="chart-dot"/>
+          <circle cx="715" cy="52" r="4" fill="var(--green)" class="chart-dot"/>
+          <circle cx="780" cy="34" r="4" fill="var(--green)" class="chart-dot"/>
 
           <!-- Value labels on key points -->
-          <text x="456" y="132" class="chart-axis-label" text-anchor="middle" style="fill:var(--green-bright);font-weight:700;">$28K</text>
-          <text x="585" y="88" class="chart-axis-label" text-anchor="middle" style="fill:var(--green-bright);font-weight:700;">$49K</text>
-          <text x="780" y="26" class="chart-axis-label" text-anchor="middle" style="fill:var(--green-bright);font-weight:700;">$84K</text>
+          <text x="456" y="132" class="chart-axis-label" text-anchor="middle" style="fill:var(--text-primary);font-weight:700;">$28K</text>
+          <text x="585" y="88" class="chart-axis-label" text-anchor="middle" style="fill:var(--text-primary);font-weight:700;">$49K</text>
+          <text x="780" y="26" class="chart-axis-label" text-anchor="middle" style="fill:var(--text-primary);font-weight:700;">$84K</text>
         </svg>
       </div>
     </div>
