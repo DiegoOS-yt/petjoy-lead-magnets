@@ -360,11 +360,9 @@ footer{background:var(--navy);padding:28px 64px;display:flex;align-items:center;
 @media print{.sidebar,.next-cta{display:none;}.main{margin-left:0;}.hero{min-height:auto;}}
 
 /* ===== BRAND SPEC OVERRIDES (Founder OS canonical) ===== */
-/* Hero italic — replace lime text with lime underline highlight (per FOS web spec) */
-.hero-title em{color:var(--white);position:relative;display:inline-block;}
-.hero-title em::after{content:'';position:absolute;left:0;right:0;bottom:6px;height:18px;background:var(--lime);z-index:-1;border-radius:3px;}
-.hero{position:relative;}
-.hero-title{position:relative;z-index:2;font-weight:700;letter-spacing:-0.03em;}
+/* Hero italic — plain white, no highlight */
+.hero-title em{color:var(--white);font-style:normal;}
+.hero-title{font-weight:700;letter-spacing:-0.03em;}
 
 /* Brand promise — was solid lime block, flip to black with lime left border */
 .brand-promise{background:var(--text);border-left:3px solid var(--lime);}
