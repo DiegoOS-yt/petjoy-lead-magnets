@@ -4,29 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brand Positioning | PetJoy | Founder OS Velocity</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<link rel="icon" href="https://founderos.com/favicon.ico">
 <style>
 :root {
-  --navy: #0A1628;
-  --navy-mid: #0F1F3D;
-  --navy-light: #1A2F50;
-  --coral: #C8502A;
-  --coral-light: #FEF0EB;
-  --gold: #F2C94C;
-  --gold-light: #FEF9E7;
-  --green: #1B5E3B;
-  --green-light: #E8F5EE;
-  --bg: #FAFAF7;
-  --bg-alt: #F3F2EE;
-  --text: #1A2332;
-  --muted: #6B7280;
-  --border: #E5E7EB;
+  /* Variable names retained for compatibility; values remapped to FOS brand spec */
+  --navy: #0A0A0A;
+  --navy-mid: #1A1A1A;
+  --navy-light: #2A2A2A;
+  --coral: #D4F53C;          /* lime — primary accent */
+  --coral-light: rgba(212,245,60,0.12);
+  --gold: #D4F53C;           /* lime — accent on dark sections */
+  --gold-light: rgba(212,245,60,0.12);
+  --green: #34D399;
+  --green-light: rgba(52,211,153,0.12);
+  --bg: #FAF9F6;
+  --bg-alt: #F4F3EF;
+  --text: #0A0A0A;
+  --muted: #8A8A8A;
+  --text-secondary: #4A4A4A;
+  --border: #E8E8E4;
+  --border-hover: #D0D0CC;
   --white: #FFFFFF;
+  --lime: #D4F53C;
+  --lime-glow: rgba(212,245,60,0.12);
+  --lime-border: rgba(212,245,60,0.4);
   --sidebar-w: 240px;
+  --font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;}
+body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
 
 /* LAYOUT */
 .layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;min-height:100vh;}
@@ -68,13 +75,13 @@ body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-we
 .kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
 .kpi-card.c1::before{background:var(--coral);}
 .kpi-card.c2::before{background:var(--gold);}
-.kpi-card.c3::before{background:#2ECC71;}
-.kpi-card.c4::before{background:#4FA3E0;}
+.kpi-card.c3::before{background:#34D399;}
+.kpi-card.c4::before{background:#34D399;}
 .kpi-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;}
 .kpi-value{font-size:42px;font-weight:900;color:var(--white);letter-spacing:-2px;line-height:1;margin-bottom:6px;}
 .kpi-sub{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.4;}
 .kpi-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:5px;vertical-align:middle;}
-.tag-up{background:rgba(46,204,113,0.15);color:#2ECC71;}
+.tag-up{background:rgba(46,204,113,0.15);color:#34D399;}
 .tag-gap{background:rgba(242,201,76,0.15);color:var(--gold);}
 .hero-insight{padding:18px 24px;background:rgba(242,201,76,0.07);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;max-width:680px;}
 .hero-insight-lbl{font-size:9px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:5px;}
@@ -105,7 +112,7 @@ body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-we
 .sec-sub{font-size:16px;color:var(--muted);line-height:1.65;max-width:540px;}
 .sec-dark .sec-sub{color:rgba(255,255,255,0.5);}
 .insight-box{background:var(--gold-light);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 18px;margin-top:24px;max-width:660px;}
-.ib-lbl{font-size:9px;font-weight:700;color:#7A5A00;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;}
+.ib-lbl{font-size:9px;font-weight:700;color:#0A0A0A;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;}
 .insight-box p{font-size:12px;color:var(--text);line-height:1.65;}
 
 /* SECTION 01 - BRAND STRATEGY */
@@ -132,17 +139,17 @@ body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-we
 .comp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:44px;}
 .comp-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;position:relative;overflow:hidden;}
 .threat-stripe{position:absolute;top:0;left:0;right:0;height:4px;}
-.tl{background:#2ECC71;}.tm{background:var(--gold);}.th{background:var(--coral);}
+.tl{background:#34D399;}.tm{background:var(--gold);}.th{background:var(--coral);}
 .comp-hd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;margin-top:6px;}
 .comp-name{font-size:17px;font-weight:800;color:var(--navy);letter-spacing:-0.3px;}
 .comp-type{font-size:11px;color:var(--muted);margin-top:2px;}
 .threat-badge{font-size:9px;font-weight:700;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;}
-.tb-l{background:#E8F8F0;color:#1B7A3E;}.tb-m{background:var(--gold-light);color:#7A5A00;}.tb-h{background:var(--coral-light);color:#9B3018;}
+.tb-l{background:rgba(52,211,153,0.12);color:#1B7C56;}.tb-m{background:var(--gold-light);color:#0A0A0A;}.tb-h{background:var(--coral-light);color:#B91C1C;}
 .comp-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:16px;}
 .comp-rows{display:flex;flex-direction:column;gap:7px;}
 .comp-row{display:flex;gap:8px;font-size:12px;line-height:1.4;align-items:flex-start;}
 .row-lbl{font-weight:700;font-size:9px;padding:2px 7px;border-radius:3px;white-space:nowrap;height:fit-content;margin-top:2px;flex-shrink:0;}
-.rl-s{background:#E8F8F0;color:#1B7A3E;}.rl-w{background:#FEF3EE;color:#9B3018;}.rl-p{background:var(--navy);color:var(--white);}
+.rl-s{background:rgba(52,211,153,0.12);color:#1B7C56;}.rl-w{background:rgba(239,68,68,0.1);color:#B91C1C;}.rl-p{background:var(--navy);color:var(--white);}
 .comp-row-txt{color:var(--text);}
 
 /* COMPETITIVE MAP */
@@ -185,7 +192,7 @@ body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-we
 .pchk{width:17px;height:17px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
 .price-card.featured .pchk{background:rgba(46,204,113,0.18);}
 .pchk svg{width:9px;height:9px;color:var(--green);}
-.price-card.featured .pchk svg{color:#2ECC71;}
+.price-card.featured .pchk svg{color:#34D399;}
 .price-target{font-size:11px;color:var(--muted);padding-top:14px;border-top:1px solid var(--border);}
 .price-card.featured .price-target{color:rgba(255,255,255,0.35);border-color:rgba(255,255,255,0.1);}
 .journey-steps{display:flex;align-items:stretch;gap:0;}
@@ -196,7 +203,7 @@ body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-we
 .j-step:last-child::after{display:none;}
 .j-num{font-size:9px;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
 .j-name{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;line-height:1.3;}
-.j-price{font-size:12px;font-weight:700;color:var(--coral);margin-bottom:6px;}
+.j-price{font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;}
 .j-desc{font-size:11px;color:var(--muted);line-height:1.55;}
 
 /* SECTION 04 - PERSONAS */
@@ -209,7 +216,7 @@ body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-we
 .persona-role{font-size:12px;color:var(--muted);margin-top:2px;}
 .persona-badge{margin-left:auto;font-size:10px;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap;}
 .pb-primary{background:var(--green-light);color:var(--green);}
-.pb-secondary{background:var(--coral-light);color:#9B3018;}
+.pb-secondary{background:var(--coral-light);color:#B91C1C;}
 .persona-body{padding:22px 26px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
 .pcol-title{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;}
 .persona-stats{display:flex;flex-direction:column;gap:0;margin-bottom:14px;}
@@ -225,7 +232,7 @@ body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-we
 .pobj-title{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;padding-top:16px;margin-bottom:12px;}
 .obj-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;}
 .obj-q,.obj-a{font-size:11px;padding:9px 11px;border-radius:6px;line-height:1.5;}
-.obj-q{background:#FEF0EB;color:#7A2A10;border-left:3px solid var(--coral);}
+.obj-q{background:rgba(212,245,60,0.12);color:#0A0A0A;border-left:3px solid var(--coral);}
 .obj-a{background:var(--green-light);color:#1A3D28;border-left:3px solid var(--green);}
 
 /* SECTION 05 - VOICE */
@@ -247,7 +254,7 @@ body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-we
 .vc-not .vc-lbl{color:var(--coral);}
 .vc-text{font-size:13px;line-height:1.7;font-style:italic;}
 .vc-this .vc-text{color:#1A3D28;}
-.vc-not .vc-text{color:#7A2A10;}
+.vc-not .vc-text{color:#0A0A0A;}
 .sample-posts{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:36px;}
 .post-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px;}
 .post-plat{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
@@ -265,7 +272,7 @@ body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg);-we
 .chips{display:flex;flex-wrap:wrap;gap:7px;}
 .chip{font-size:11px;font-weight:600;padding:4px 11px;border-radius:20px;}
 .lang-use .chip{background:var(--green-light);color:var(--green);}
-.lang-avoid .chip{background:var(--coral-light);color:#9B3018;}
+.lang-avoid .chip{background:var(--coral-light);color:#B91C1C;}
 
 /* SECTION 06 - PILLARS */
 .pillars-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:44px;}
@@ -351,6 +358,77 @@ footer{background:var(--navy);padding:28px 64px;display:flex;align-items:center;
   .pb-label{display:none;}
 }
 @media print{.sidebar,.next-cta{display:none;}.main{margin-left:0;}.hero{min-height:auto;}}
+
+/* ===== BRAND SPEC OVERRIDES (Founder OS canonical) ===== */
+/* Hero italic — replace lime text with lime underline highlight (per FOS web spec) */
+.hero-title em{color:var(--white);position:relative;display:inline-block;}
+.hero-title em::after{content:'';position:absolute;left:0;right:0;bottom:6px;height:18px;background:var(--lime);z-index:-1;border-radius:3px;}
+.hero{position:relative;}
+.hero-title{position:relative;z-index:2;font-weight:700;letter-spacing:-0.03em;}
+
+/* Brand promise — was solid lime block, flip to black with lime left border */
+.brand-promise{background:var(--text);border-left:3px solid var(--lime);}
+.bp-promise-lbl{color:rgba(255,255,255,0.55);}
+.bp-promise-text{color:var(--white);}
+
+/* Section eyebrows — replace 22px line bar with 6px lime dot (matches FOS web spec) */
+.sec-num::before{width:6px;height:6px;border-radius:50%;background:var(--lime);}
+.sec-dark .sec-num::before{background:var(--lime);}
+.sec-num{color:var(--muted);}
+.sec-dark .sec-num{color:rgba(255,255,255,0.55);}
+.hero-eyebrow::before{width:6px;height:6px;border-radius:50%;background:var(--lime);}
+.hero-eyebrow{color:rgba(255,255,255,0.55);}
+.sec-title{font-weight:700;letter-spacing:-0.03em;}
+
+/* Sidebar wordmark — plain text + lime nav dot */
+.sb-brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-0.02em;}
+.sb-brand::before{content:'';width:22px;height:22px;border-radius:50%;background:var(--lime);flex-shrink:0;}
+.sb-brand span{color:var(--white);}
+
+/* Insight boxes */
+.hero-insight-lbl{color:var(--white);}
+.insight-box{background:var(--lime-glow);border-left:3px solid var(--lime);}
+.ib-lbl{color:var(--text);}
+
+/* KPI value weights aligned to spec */
+.kpi-value{font-weight:800;letter-spacing:-0.04em;}
+
+/* Tighten heading letter-spacing */
+.bp-val,.comp-name,.persona-name,.diff-title,.j-name,.offer-card h3,.map-title{letter-spacing:-0.02em;}
+
+/* Avatars — black text on lime per contrast */
+.av-c,.hero-avatar{background:var(--lime);color:var(--text);}
+.av-g{background:var(--green);color:var(--text);}
+.persona-av{font-weight:700;}
+
+/* Threat badges */
+.tb-h{background:rgba(239,68,68,0.12);color:#B91C1C;}
+.tb-m{background:var(--lime-glow);color:var(--text);}
+
+/* Mission quote mark */
+.mission-block::before{color:rgba(212,245,60,0.18);}
+
+/* KPI card stripes — brand palette */
+.kpi-card.c1::before{background:var(--lime);}
+.kpi-card.c2::before{background:var(--lime);}
+.kpi-card.c3::before{background:var(--green);}
+.kpi-card.c4::before{background:var(--lime);}
+.tag-up{background:rgba(52,211,153,0.15);color:#1B7C56;}
+.tag-gap{background:var(--lime-glow);color:var(--text);}
+
+/* Sidebar tag + confid pill */
+.sb-tag{background:var(--lime-glow);color:var(--white);border:1px solid var(--lime-border);border-radius:100px;}
+.confid{background:var(--lime-glow);border-color:var(--lime-border);color:var(--white);border-radius:100px;}
+
+/* Sidebar links use Helvetica + smoother active state */
+.sb-link{font-family:var(--font);}
+.sb-link.active{background:rgba(212,245,60,0.18);}
+.sb-link.active .sb-dot{background:var(--lime);}
+
+/* Scrollbar polish */
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+::-webkit-scrollbar-thumb:hover{background:var(--border-hover);}
 </style>
 </head>
 <body>
@@ -359,7 +437,7 @@ footer{background:var(--navy);padding:28px 64px;display:flex;align-items:center;
 <!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="sb-logo">
-    <div class="sb-brand">Pet<span>Joy</span></div>
+    <div class="sb-brand">PetJoy</div>
     <div class="sb-tag">Velocity Deliverable</div>
   </div>
   <div class="sb-section-label">Contents</div>
@@ -574,14 +652,14 @@ footer{background:var(--navy);padding:28px 64px;display:flex;align-items:center;
     <svg viewBox="0 0 640 440" class="map-svg" xmlns="http://www.w3.org/2000/svg">
       <!-- Quadrant fills -->
       <rect x="70" y="60" width="255" height="310" fill="#F9F9F9" opacity="0.8"/>
-      <rect x="325" y="60" width="255" height="155" fill="#E8F5EE" opacity="0.6"/>
+      <rect x="325" y="60" width="255" height="155" fill="rgba(52,211,153,0.12)" opacity="0.6"/>
       <rect x="325" y="215" width="255" height="155" fill="#FFFBF0" opacity="0.5"/>
       <rect x="70" y="215" width="255" height="155" fill="#F9F9F9" opacity="0.5"/>
       <!-- Quadrant labels -->
-      <text x="197" y="88" text-anchor="middle" font-size="11" fill="#9CA3AF" font-family="Poppins,sans-serif" font-weight="600">Relationship Builders</text>
-      <text x="452" y="88" text-anchor="middle" font-size="11" fill="#1B5E3B" font-family="Poppins,sans-serif" font-weight="700">Market Leaders</text>
-      <text x="452" y="374" text-anchor="middle" font-size="11" fill="#9CA3AF" font-family="Poppins,sans-serif" font-weight="600">Product Specialists</text>
-      <text x="197" y="374" text-anchor="middle" font-size="11" fill="#9CA3AF" font-family="Poppins,sans-serif" font-weight="600">Commodity Players</text>
+      <text x="197" y="88" text-anchor="middle" font-size="11" fill="#9CA3AF" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="600">Relationship Builders</text>
+      <text x="452" y="88" text-anchor="middle" font-size="11" fill="#34D399" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700">Market Leaders</text>
+      <text x="452" y="374" text-anchor="middle" font-size="11" fill="#9CA3AF" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="600">Product Specialists</text>
+      <text x="197" y="374" text-anchor="middle" font-size="11" fill="#9CA3AF" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="600">Commodity Players</text>
       <!-- Grid dividers -->
       <line x1="325" y1="60" x2="325" y2="370" stroke="#E5E7EB" stroke-width="1.5" stroke-dasharray="5,4"/>
       <line x1="70" y1="215" x2="580" y2="215" stroke="#E5E7EB" stroke-width="1.5" stroke-dasharray="5,4"/>
@@ -591,32 +669,32 @@ footer{background:var(--navy);padding:28px 64px;display:flex;align-items:center;
       <polygon points="580,370 568,364 568,376" fill="#D1D5DB"/>
       <polygon points="70,60 64,72 76,72" fill="#D1D5DB"/>
       <!-- Axis labels -->
-      <text x="325" y="408" text-anchor="middle" font-size="12" fill="#6B7280" font-family="Poppins,sans-serif" font-weight="600">Curation Quality</text>
-      <text x="22" y="215" text-anchor="middle" font-size="12" fill="#6B7280" font-family="Poppins,sans-serif" font-weight="600" transform="rotate(-90,22,215)">Relationship Depth</text>
+      <text x="325" y="408" text-anchor="middle" font-size="12" fill="#6B7280" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="600">Curation Quality</text>
+      <text x="22" y="215" text-anchor="middle" font-size="12" fill="#6B7280" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="600" transform="rotate(-90,22,215)">Relationship Depth</text>
       <!-- Traditional Wholesale -->
       <circle cx="172" cy="326" r="14" fill="#D1D5DB"/>
-      <text x="172" y="331" text-anchor="middle" font-size="10" font-weight="800" fill="#374151" font-family="Poppins,sans-serif">TW</text>
-      <text x="172" y="307" text-anchor="middle" font-size="10" fill="#9CA3AF" font-family="Poppins,sans-serif">Traditional Wholesale</text>
+      <text x="172" y="331" text-anchor="middle" font-size="10" font-weight="800" fill="#374151" font-family="Helvetica Neue,Helvetica,Arial,sans-serif">TW</text>
+      <text x="172" y="307" text-anchor="middle" font-size="10" fill="#9CA3AF" font-family="Helvetica Neue,Helvetica,Arial,sans-serif">Traditional Wholesale</text>
       <!-- Fetch Supply -->
       <circle cx="350" cy="286" r="14" fill="#FDE68A"/>
-      <text x="350" y="291" text-anchor="middle" font-size="10" font-weight="800" fill="#374151" font-family="Poppins,sans-serif">FS</text>
-      <text x="350" y="267" text-anchor="middle" font-size="10" fill="#9CA3AF" font-family="Poppins,sans-serif">Fetch Supply Co</text>
+      <text x="350" y="291" text-anchor="middle" font-size="10" font-weight="800" fill="#374151" font-family="Helvetica Neue,Helvetica,Arial,sans-serif">FS</text>
+      <text x="350" y="267" text-anchor="middle" font-size="10" fill="#9CA3AF" font-family="Helvetica Neue,Helvetica,Arial,sans-serif">Fetch Supply Co</text>
       <!-- PetPak -->
       <circle cx="256" cy="208" r="14" fill="#FCA5A5"/>
-      <text x="256" y="213" text-anchor="middle" font-size="10" font-weight="800" fill="#374151" font-family="Poppins,sans-serif">PP</text>
-      <text x="256" y="189" text-anchor="middle" font-size="10" fill="#9CA3AF" font-family="Poppins,sans-serif">PetPak B2B</text>
+      <text x="256" y="213" text-anchor="middle" font-size="10" font-weight="800" fill="#374151" font-family="Helvetica Neue,Helvetica,Arial,sans-serif">PP</text>
+      <text x="256" y="189" text-anchor="middle" font-size="10" fill="#9CA3AF" font-family="Helvetica Neue,Helvetica,Arial,sans-serif">PetPak B2B</text>
       <!-- BarkBox -->
       <circle cx="420" cy="218" r="14" fill="#FCA5A5"/>
-      <text x="420" y="223" text-anchor="middle" font-size="10" font-weight="800" fill="#374151" font-family="Poppins,sans-serif">BB</text>
-      <text x="420" y="199" text-anchor="middle" font-size="10" fill="#9CA3AF" font-family="Poppins,sans-serif">BarkBox Wholesale</text>
+      <text x="420" y="223" text-anchor="middle" font-size="10" font-weight="800" fill="#374151" font-family="Helvetica Neue,Helvetica,Arial,sans-serif">BB</text>
+      <text x="420" y="199" text-anchor="middle" font-size="10" fill="#9CA3AF" font-family="Helvetica Neue,Helvetica,Arial,sans-serif">BarkBox Wholesale</text>
       <!-- PetJoy (top right, dominant) -->
-      <circle cx="504" cy="90" r="22" fill="#0A1628"/>
-      <text x="504" y="95" text-anchor="middle" font-size="11" font-weight="800" fill="white" font-family="Poppins,sans-serif">PJ</text>
-      <text x="504" y="124" text-anchor="middle" font-size="12" fill="#0A1628" font-family="Poppins,sans-serif" font-weight="800">PetJoy</text>
+      <circle cx="504" cy="90" r="22" fill="#0A0A0A"/>
+      <text x="504" y="95" text-anchor="middle" font-size="11" font-weight="800" fill="white" font-family="Helvetica Neue,Helvetica,Arial,sans-serif">PJ</text>
+      <text x="504" y="124" text-anchor="middle" font-size="12" fill="#0A0A0A" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="800">PetJoy</text>
       <!-- Arrow to PetJoy -->
-      <path d="M504 68 L498 56 L510 56 Z" fill="#C8502A"/>
+      <path d="M504 68 L498 56 L510 56 Z" fill="#D4F53C"/>
       <!-- Quadrant arrow hint -->
-      <text x="558" y="76" text-anchor="middle" font-size="16" fill="#1B5E3B">&#8599;</text>
+      <text x="558" y="76" text-anchor="middle" font-size="16" fill="#34D399">&#8599;</text>
     </svg>
   </div>
 
